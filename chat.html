@@ -186,7 +186,7 @@
       const typing = addBubble("Typing...", false);
 
       try {
-        const res = await fetch("/api/chat.php", {
+        const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: text })
@@ -219,3 +219,4 @@
   </script>
 </body>
 </html>
+
