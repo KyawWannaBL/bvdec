@@ -232,6 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const send = $('#chatSend');
 
     if(list && input && send){
+      // CORRECTED LINE: Using /api/chat
       const chatEndpoint = '/api/chat'; 
 
       function bubble(text, who){ 
