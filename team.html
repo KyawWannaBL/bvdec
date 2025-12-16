@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BRITIUM VENTURES — Our Team</title>
+  <meta name="description" content="Meet the team behind Britium Ventures — experts in logistics, compliance, and future-forward trade solutions."/>
+  <meta name="theme-color" content="#020617"/>
+  <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png"/>
+
+  <!-- Fonts & Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background-color: #020617;
+      color: #a0aec0;
+      font-family: 'Inter', sans-serif;
+    }
+    .font-garamond {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .text-accent {
+      color: #FFC700;
+    }
+    .team-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(255, 199, 0, 0.2);
+    }
+    .animated-element {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    .animated-element.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+<!-- HEADER -->
+<header class="fixed inset-x-0 top-0 z-50 bg-black/30 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Logo" class="h-9 w-9">
+      <span class="font-garamond text-xl font-bold text-white">BRITIUM <span class="text-accent">VENTURES</span></span>
+    </a>
+    <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-200">
+      <a href="index.html" class="hover:text-[#FFC700]">Home</a>
+      <a href="about.html" class="hover:text-[#FFC700]">About</a>
+      <a href="team.html" class="text-[#FFC700] font-bold">Team</a>
+      <a href="careers.html" class="hover:text-[#FFC700]">Careers</a>
+      <a href="capabilities.html" class="hover:text-[#FFC700]">Capabilities</a>
+      <a href="solutions.html" class="hover:text-[#FFC700]">Solutions</a>
+      <a href="products.html" class="hover:text-[#FFC700]">Products</a>
+      <a href="markets.html" class="hover:text-[#FFC700]">Markets</a>
+      <a href="gallery.html" class="hover:text-[#FFC700]">Gallery</a>
+      <a href="contact.html" class="hover:text-[#FFC700]">Contact</a>
+      <a href="chat.html" class="px-4 py-2 rounded-md bg-[#FFC700]/10 text-[#FFC700] border border-[#FFC700]/20 hover:bg-[#FFC700]/20">AI Chat</a>
+    </nav>
+    <button id="mobile-toggle" class="md:hidden text-white text-2xl">☰</button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu-container" class="fixed inset-0 z-40 md:hidden hidden">
+  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/70"></div>
+  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-900/90 p-8 transform translate-x-full transition-transform">
+    <div class="flex flex-col gap-y-6 mt-16 text-lg text-white">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="careers.html">Careers</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="products.html">Products</a>
+      <a href="markets.html">Markets</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="chat.html">AI Chat</a>
+    </div>
+  </nav>
+</div>
+<section class="py-20 bg-[#0a0a0a] text-center">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-garamond font-bold text-white mb-12">Meet Our <span class="text-[#FFC700]">Team</span></h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10">
+
+      <!-- 1 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004305/1-PK1SREP3scoHJBQtlG9UMw.png" alt="Kyaw Wanna" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Kyaw Wanna</p>
+        <p class="text-sm text-gray-400">Managing Director</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004302/2-EzyWA2DZzPFHjQf-LyJuxQ.png" alt="Moe Myint San" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Moe Myint San</p>
+        <p class="text-sm text-gray-400">General Manager</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004299/3-9Vc6rHOAB0dqzNQzKm0MMQ.png" alt="Sai Nyan Htun" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Sai Nyan Htun</p>
+        <p class="text-sm text-gray-400">Head of Office</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004296/4-IlISvFFNl9M2Aax7XMbamg.png" alt="Aye Thuzar Aung" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Aye Thuzar Aung</p>
+        <p class="text-sm text-gray-400">Head of Legal</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004292/5-GicXwdW2_SQnaAVsmC7b9g.png" alt="Myo Kyaw Kyaw" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Myo Kyaw Kyaw</p>
+        <p class="text-sm text-gray-400">Head of Trade & Logistics</p>
+      </div>
+
+      <!-- 6 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004289/6-7CbY6bZdkYHJOOhloEHOlA.png" alt="Zun Min Htwe" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Zun Min Htwe</p>
+        <p class="text-sm text-gray-400">Project Manager</p>
+      </div>
+
+           <!-- 7 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004287/7-tpGNnK1rxKKqGQCtcpK-Nw.png" alt="Thiha Aung" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Thiha Aung</p>
+        <p class="text-sm text-gray-400">Senior Brokerage</p>
+      </div>
+
+      <!-- 8 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004286/8-o5npWy0_MoefGgQ3Qxk6qg.png" alt="Myo Myint Thu" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Myo Myint Thu</p>
+        <p class="text-sm text-gray-400">Senior Executive (Business Dev)</p>
+      </div>
+
+      <!-- 9 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004283/9-UYX3nW6FOmDWJFdYsZcmhw.png" alt="Yoon Me Me Kyaw" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Yoon Me Me Kyaw</p>
+        <p class="text-sm text-gray-400">Junior Trader</p>
+      </div>
+
+      <!-- 10 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004280/10-l4ZU3w4AKltj1c_SqYJY5g.png" alt="Kay Khine Nyunt" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Kay Khine Nyunt</p>
+        <p class="text-sm text-gray-400">Advocate</p>
+      </div>
+
+      <!-- 11 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004277/11-kxOFKLAPr8DrRX4aKC7D7Q.png" alt="Bo Bo" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Bo Bo</p>
+        <p class="text-sm text-gray-400">Admin Assistant</p>
+      </div>
+
+      <!-- 12 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004274/12-t36jhbfoSKh1CFCA1lhckw.png" alt="Aye Chan Naung" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Aye Chan Naung</p>
+        <p class="text-sm text-gray-400">Asst. Manager (HR/Admin)</p>
+      </div>
+
+      <!-- 13 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004271/13-pyHJrg5InGNe6PwVMPpw-Q.png" alt="M Nin Sar" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">M Nin Sar</p>
+        <p class="text-sm text-gray-400">Senior Sales Representative</p>
+      </div>
+
+      <!-- 14 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004268/14-IxiXDxGocFnlK4w0r0qLqQ.png" alt="Zin Mar Hnin" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Zin Mar Hnin</p>
+        <p class="text-sm text-gray-400">Senior Sales Representative</p>
+      </div>
+
+      <!-- 15 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004265/15-eu5pFJxaABH7-uccuXl8Lw.png" alt="Zaw Min Htike" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Zaw Min Htike</p>
+        <p class="text-sm text-gray-400">MD Office</p>
+      </div>
+
+      <!-- 16 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004259/16-vwn2kkQi1TyV3pXfWsEYvQ.png" alt="Hnin Yu Naing" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Hnin Yu Naing</p>
+        <p class="text-sm text-gray-400">Senior Executive (Admin/HR)</p>
+      </div>
+
+      <!-- 17 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19004256/17-t8ydrMaQk0PBFUkxincAfw.png" alt="Moe Moe Khaing" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Moe Moe Khaing</p>
+        <p class="text-sm text-gray-400">Senior Accountant</p>
+      </div>
+
+      <!-- 18 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19084399/YinYinAung-7e-Mh-5NbW06whVU5Z6WNw.png" alt="Yin Yin Aung" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Yin Yin Aung</p>
+        <p class="text-sm text-gray-400">Admin Assistant</p>
+      </div>
+
+      <!-- 19 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19084614/EiEiMyo-sIGjyWhqrp10Q9BqqecRGg.png" alt="Ei Ei Myo" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Ei Ei Myo</p>
+        <p class="text-sm text-gray-400">Showroom Incharge</p>
+      </div>
+
+      <!-- 20 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19090581/20--TQwCGSCraL9ze2hNNkBpA.png" alt="Shwe Poe Eain" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Shwe Poe Eain</p>
+        <p class="text-sm text-gray-400">Cashier</p>
+      </div>
+
+      <!-- 21 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19084572/MyoThu-ZSKc-8Ft2KuLPbhl9vTufQ.png" alt="Aung Myo Thu" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Aung Myo Thu</p>
+        <p class="text-sm text-gray-400">Admin Assistant</p>
+      </div>
+
+      <!-- 22 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19090623/24-Aja7AsXUoKlv03jEJ7KtNQ.png" alt="Aye Chan Myat Noe Khin" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Aye Chan Myat Noe Khin</p>
+        <p class="text-sm text-gray-400">Digital Marketing</p>
+      </div>
+
+      <!-- 23 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19084425/ShineHtetAung-fC0z1cYrFtpUv3liPFXoXw.png" alt="Shine Htet Aung" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Shine Htet Aung</p>
+        <p class="text-sm text-gray-400">Sales Assistant</p>
+      </div>
+
+      <!-- 24 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19090420/HnitOoWai-YQKwb58qftjIJWpfkEAiVQ.png" alt="Hnit Oo Wai" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Hnit Oo Wai</p>
+        <p class="text-sm text-gray-400">MD Office</p>
+      </div>
+
+      <!-- 25 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19046714/ChatGPTImageSep9202510_35_28AM-q292l1bhuVaZI3OTLctcWA.png" alt="Min Htet Zaw" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Min Htet Zaw</p>
+        <p class="text-sm text-gray-400">Sales Executive</p>
+      </div>
+
+      <!-- 26 -->
+      <div class="group cursor-pointer transition-transform duration-300 hover:scale-105">
+        <img src="https://cdn1.site-media.eu/images/0/19047055/ChatGPTImageSep9202510_57_39AM-1L9B2SszU0jf-nQk8pe9_g.png" alt="Kyaw Swar Win" class="rounded-full w-full object-contain mx-auto hover:rotate-1 transition-all duration-300" onclick="animateImage(this)" />
+        <p class="mt-3 text-white font-semibold">Kyaw Swar Win</p>
+        <p class="text-sm text-gray-400">Admin Assistant</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="py-8 text-center text-slate-400 border-t border-slate-700 bg-slate-950">
+  <p>&copy; <span id="year"></span> BRITIUM VENTURES</p>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+// --- HERO VIDEO SOUND CONTROLS ---
+  const heroVideo = document.querySelector("#hero video");
+  const muteBtn = document.getElementById("mute-btn");
+  const volumeSlider = document.getElementById("volume-slider");
+
+  if (heroVideo) {
+    async function playVideoWithSound() {
+      try {
+        heroVideo.muted = false;
+        await heroVideo.play();
+        muteBtn.textContent = "🔊";
+      } catch (err) {
+        heroVideo.muted = true;
+        heroVideo.play();
+        muteBtn.textContent = "🔇";
+      }
+    }
+    playVideoWithSound();
+
+    muteBtn.addEventListener("click", () => {
+      heroVideo.muted = !heroVideo.muted;
+      muteBtn.textContent = heroVideo.muted ? "🔇" : "🔊";
+    });
+
+    volumeSlider.addEventListener("input", (e) => {
+      heroVideo.volume = e.target.value;
+      if (heroVideo.volume > 0) {
+        heroVideo.muted = false;
+        muteBtn.textContent = "🔊";
+      } else {
+        heroVideo.muted = true;
+        muteBtn.textContent = "🔇";
+      }
+    });
+  }
+
+  // --- INITIALIZE PARTICLE BACKGROUND ---
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 60, density: { enable: true, value_area: 800 } },
+      color: { value: "#B8860B" },
+      shape: { type: "circle" },
+      opacity: { value: 0.4, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+      size: { value: 2, random: true, anim: { enable: false } },
+      line_linked: { enable: true, distance: 150, color: "#B8860B", opacity: 0.2, width: 1 },
+      move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false }, resize: true },
+      modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } } }
+    },
+    retina_detect: true
+  });
+
+ function animateImage(img) {
+    img.classList.add("scale-125");
+    setTimeout(() => img.classList.remove("scale-125"), 300);
+  }
+
+  // Mobile toggle
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu-container');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+  mobileToggle.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+    setTimeout(() => document.getElementById('mobile-menu').classList.remove('translate-x-full'), 20);
+  });
+
+  mobileMenuOverlay.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.add('translate-x-full');
+    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+  });
+
+  // Reveal animation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
