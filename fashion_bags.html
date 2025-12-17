@@ -24,7 +24,9 @@
     
     /* Hover Effects */
     .product-card:hover { transform: translateY(-5px); border-color: rgba(255, 199, 0, 0.5); }
-    .product-card:hover .product-img { transform: scale(1.05); }
+    
+    /* Image Zoom Cursor */
+    .zoom-cursor { cursor: zoom-in; }
     
     /* Cart Badge Animation */
     @keyframes bounceIn {
@@ -33,12 +35,13 @@
       100% { transform: scale(1); }
     }
     .badge-anim { animation: bounceIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
+    .chat-bubble { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
     /* Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0f172a; }
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #475569; }
   </style>
 </head>
 <body class="antialiased relative">
@@ -66,15 +69,16 @@
   <main class="pt-28 pb-20 max-w-7xl mx-auto px-6">
     <div class="text-center mb-16">
       <h1 class="text-5xl md:text-6xl font-garamond font-bold text-white mb-4">The <span class="text-[#FFC700]">2025 Collection</span></h1>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Discover our executive and lifestyle bags. Select items to build your inquiry list, and we will send you a formal quotation.</p>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Discover our executive and lifestyle bags. Click any image to enlarge details.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="2.jpg" alt="Monogrammed Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-001</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('2.jpg')">
+          <img src="2.jpg" alt="Monogrammed Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-001</span>
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogrammed Crossbody</h3>
@@ -87,9 +91,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="3.jpg" alt="Classic Saddle Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-002</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('3.jpg')">
+          <img src="3.jpg" alt="Classic Saddle Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-002</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Classic Saddle Bag</h3>
@@ -102,9 +106,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="4.jpg" alt="Signature Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-003</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('4.jpg')">
+          <img src="4.jpg" alt="Signature Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-003</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Signature Crossbody</h3>
@@ -117,9 +121,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="5.jpg" alt="Signature Hobo Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-004</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('5.jpg')">
+          <img src="5.jpg" alt="Signature Hobo Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-004</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Signature Hobo Bag</h3>
@@ -132,9 +136,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="6.jpg" alt="Elegant Monogram Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-005</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('6.jpg')">
+          <img src="6.jpg" alt="Elegant Monogram Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-005</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Elegant Monogram Crossbody</h3>
@@ -147,9 +151,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="7.jpg" alt="Chic Monogram Top Handle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-006</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('7.jpg')">
+          <img src="7.jpg" alt="Chic Monogram Top Handle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-006</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Chic Monogram Top Handle</h3>
@@ -162,9 +166,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="8.jpg" alt="Classic Flap Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-007</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('8.jpg')">
+          <img src="8.jpg" alt="Classic Flap Shoulder Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-007</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Classic Flap Shoulder Bag</h3>
@@ -177,9 +181,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="9.jpg" alt="Vintage Chain Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-008</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('9.jpg')">
+          <img src="9.jpg" alt="Vintage Chain Shoulder Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-008</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Vintage Chain Shoulder Bag</h3>
@@ -192,9 +196,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="10.jpg" alt="Midnight Glow Clutch" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-009</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('10.jpg')">
+          <img src="10.jpg" alt="Midnight Glow Clutch" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-009</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Midnight Glow Clutch</h3>
@@ -207,9 +211,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="11.jpg" alt="Stylish Stripe Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-010</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('11.jpg')">
+          <img src="11.jpg" alt="Stylish Stripe Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-010</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Stylish Stripe Crossbody</h3>
@@ -222,9 +226,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="12.jpg" alt="Vibrant Stripe Monogram" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-011</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('12.jpg')">
+          <img src="12.jpg" alt="Vibrant Stripe Monogram" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-011</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Vibrant Stripe Monogram</h3>
@@ -237,9 +241,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="13.jpg" alt="Chic Leather (Rabbit)" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-012</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('13.jpg')">
+          <img src="13.jpg" alt="Chic Leather (Rabbit)" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-012</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Chic Leather (Rabbit)</h3>
@@ -252,9 +256,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="14.jpg" alt="Classic Double Buckle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-013</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('14.jpg')">
+          <img src="14.jpg" alt="Classic Double Buckle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-013</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Classic Double Buckle</h3>
@@ -267,9 +271,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="15.jpg" alt="Classic MK Handbag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-014</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('15.jpg')">
+          <img src="15.jpg" alt="Classic MK Handbag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-014</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Classic MK Handbag</h3>
@@ -282,9 +286,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="16.jpg" alt="Scarlet Elegance Chain" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-015</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('16.jpg')">
+          <img src="16.jpg" alt="Scarlet Elegance Chain" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-015</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Scarlet Elegance Chain</h3>
@@ -297,9 +301,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="17.jpg" alt="Monogram Backpack Set" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-016</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('17.jpg')">
+          <img src="17.jpg" alt="Monogram Backpack Set" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-016</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogram Backpack Set</h3>
@@ -312,9 +316,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="18.jpg" alt="Luxe Monogram Flap" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-017</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('18.jpg')">
+          <img src="18.jpg" alt="Luxe Monogram Flap" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-017</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Monogram Flap</h3>
@@ -327,9 +331,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="19.jpg" alt="Elegant Color-Block Tote" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-018</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('19.jpg')">
+          <img src="19.jpg" alt="Elegant Color-Block Tote" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-018</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Elegant Color-Block Tote</h3>
@@ -342,9 +346,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="20.jpg" alt="Trendy Monogram Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-019</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('20.jpg')">
+          <img src="20.jpg" alt="Trendy Monogram Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-019</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Trendy Monogram Crossbody</h3>
@@ -357,9 +361,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="23.jpg" alt="Classic Monogram Satchel" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-022</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('23.jpg')">
+          <img src="23.jpg" alt="Classic Monogram Satchel" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-022</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Classic Monogram Satchel</h3>
@@ -372,9 +376,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="24.jpg" alt="Modern Leather Satchel" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-023</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('24.jpg')">
+          <img src="24.jpg" alt="Modern Leather Satchel" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-023</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Modern Leather Satchel</h3>
@@ -387,9 +391,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="25.jpg" alt="Luxe Leather Hobo" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-024</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('25.jpg')">
+          <img src="25.jpg" alt="Luxe Leather Hobo" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-024</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Leather Hobo</h3>
@@ -402,9 +406,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="26.jpg" alt="Heritage Monogram Satchel" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-025</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('26.jpg')">
+          <img src="26.jpg" alt="Heritage Monogram Satchel" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-025</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Heritage Monogram Satchel</h3>
@@ -417,9 +421,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="27.jpg" alt="Signature Saddle Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-026</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('27.jpg')">
+          <img src="27.jpg" alt="Signature Saddle Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-026</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Signature Saddle Crossbody</h3>
@@ -432,9 +436,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="28.jpg" alt="Luxe Leather Hobo (Large)" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-027</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('28.jpg')">
+          <img src="28.jpg" alt="Luxe Leather Hobo (Large)" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-027</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Leather Hobo (Large)</h3>
@@ -447,9 +451,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="29.jpg" alt="Elegant Chain Shoulder" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-028</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('29.jpg')">
+          <img src="29.jpg" alt="Elegant Chain Shoulder" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-028</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Elegant Chain Shoulder</h3>
@@ -462,9 +466,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="30.jpg" alt="Luxe Mini Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-029</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('30.jpg')">
+          <img src="30.jpg" alt="Luxe Mini Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-029</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Mini Crossbody</h3>
@@ -477,9 +481,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="31.jpg" alt="Smile Charm Mini Tote" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-030</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('31.jpg')">
+          <img src="31.jpg" alt="Smile Charm Mini Tote" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-030</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Smile Charm Mini Tote</h3>
@@ -492,9 +496,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="32.jpg" alt="Elegant Structured Top Handle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-031</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('32.jpg')">
+          <img src="32.jpg" alt="Elegant Structured Top Handle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-031</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Elegant Structured Top Handle</h3>
@@ -507,9 +511,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="33.jpg" alt="Stylish Mini Top Handle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-032</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('33.jpg')">
+          <img src="33.jpg" alt="Stylish Mini Top Handle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-032</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Stylish Mini Top Handle</h3>
@@ -522,9 +526,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="34.jpg" alt="Luxe Monogram Chain Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-033</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('34.jpg')">
+          <img src="34.jpg" alt="Luxe Monogram Chain Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-033</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Monogram Chain</h3>
@@ -537,9 +541,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="35.jpg" alt="Classic Elegant Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-034</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('35.jpg')">
+          <img src="35.jpg" alt="Classic Elegant Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-034</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Classic Elegant Crossbody</h3>
@@ -552,9 +556,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="36.jpg" alt="Elegant Chain Strap Shoulder" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-035</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('36.jpg')">
+          <img src="36.jpg" alt="Elegant Chain Strap Shoulder" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-035</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Elegant Chain Strap</h3>
@@ -567,9 +571,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="37.jpg" alt="Woven Leather Structured Handbag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-036</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('37.jpg')">
+          <img src="37.jpg" alt="Woven Leather Structured Handbag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-036</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Woven Leather Handbag</h3>
@@ -582,9 +586,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="38.jpg" alt="Sleek Minimalist Hobo" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-037</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('38.jpg')">
+          <img src="38.jpg" alt="Sleek Minimalist Hobo" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-037</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Sleek Minimalist Hobo</h3>
@@ -597,9 +601,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="39.jpg" alt="Floral Chain Accent Shoulder" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-038</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('39.jpg')">
+          <img src="39.jpg" alt="Floral Chain Accent Shoulder" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-038</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Floral Chain Accent</h3>
@@ -612,9 +616,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="40.jpg" alt="Elegant Gold Chain Quilted" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-039</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('40.jpg')">
+          <img src="40.jpg" alt="Elegant Gold Chain Quilted" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-039</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Gold Chain Quilted</h3>
@@ -627,9 +631,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="41.jpg" alt="Luxe Monogram Saddle Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-040</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('41.jpg')">
+          <img src="41.jpg" alt="Luxe Monogram Saddle Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-040</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Saddle Crossbody</h3>
@@ -642,9 +646,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="42.jpg" alt="Luxe Classic Leather Tote" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-041</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('42.jpg')">
+          <img src="42.jpg" alt="Luxe Classic Leather Tote" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-041</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Classic Leather Tote</h3>
@@ -657,9 +661,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="43.jpg" alt="Luxe Minimalist Leather Flap" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-042</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('43.jpg')">
+          <img src="43.jpg" alt="Luxe Minimalist Leather Flap" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-042</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Minimalist Leather Flap</h3>
@@ -672,9 +676,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="44.jpg" alt="Luxe Quilted Leather Chain" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-043</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('44.jpg')">
+          <img src="44.jpg" alt="Luxe Quilted Leather Chain" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-043</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Luxe Quilted Leather Chain</h3>
@@ -687,9 +691,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="45.jpg" alt="Monogram Vintage Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-044</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('45.jpg')">
+          <img src="45.jpg" alt="Monogram Vintage Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-044</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogram Vintage Crossbody</h3>
@@ -702,9 +706,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="46.jpg" alt="Quilted Chain Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-045</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('46.jpg')">
+          <img src="46.jpg" alt="Quilted Chain Shoulder Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-045</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Quilted Chain Shoulder Bag</h3>
@@ -717,9 +721,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="47.jpg" alt="Elegant Mini Top Handle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-046</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('47.jpg')">
+          <img src="47.jpg" alt="Elegant Mini Top Handle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-046</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Elegant Mini Top Handle</h3>
@@ -732,9 +736,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="48.jpg" alt="Chic Leather Bucket Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-047</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('48.jpg')">
+          <img src="48.jpg" alt="Chic Leather Bucket Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-047</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Chic Leather Bucket Bag</h3>
@@ -747,9 +751,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="49.jpg" alt="Crocodile-Textured Mini Handbag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-048</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('49.jpg')">
+          <img src="49.jpg" alt="Crocodile-Textured Mini Handbag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-048</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Crocodile-Textured Mini</h3>
@@ -762,9 +766,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="50.jpg" alt="Vintage-Inspired Round Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-049</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('50.jpg')">
+          <img src="50.jpg" alt="Vintage-Inspired Round Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-049</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Vintage-Inspired Round Bag</h3>
@@ -777,9 +781,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="51.jpg" alt="Signature Monogram Structured Tote" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-050</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('51.jpg')">
+          <img src="51.jpg" alt="Signature Monogram Structured Tote" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-050</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Signature Structured Tote</h3>
@@ -792,9 +796,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="52.jpg" alt="Signature Monogram Structured Tote (Black)" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-050</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('52.jpg')">
+          <img src="52.jpg" alt="Signature Monogram Structured Tote (Black)" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVOSBG-050</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Signature Structured Tote (Black)</h3>
@@ -807,9 +811,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="53.jpg" alt="Triomphe Leather Crossbody" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0011</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('53.jpg')">
+          <img src="53.jpg" alt="Triomphe Leather Crossbody" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0011</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Triomphe Leather Crossbody</h3>
@@ -822,9 +826,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="54.jpg" alt="Signature Monogram Tote" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0005</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('54.jpg')">
+          <img src="54.jpg" alt="Signature Monogram Tote" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0005</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Signature Monogram Tote</h3>
@@ -837,9 +841,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="55.jpg" alt="Vintage Half-Moon Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0018</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('55.jpg')">
+          <img src="55.jpg" alt="Vintage Half-Moon Shoulder Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0018</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Vintage Half-Moon Shoulder</h3>
@@ -852,9 +856,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="56.jpg" alt="Elegant White Tote" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0021</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('56.jpg')">
+          <img src="56.jpg" alt="Elegant White Tote" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0021</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Elegant White Tote</h3>
@@ -867,9 +871,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="57.jpg" alt="Monogram Clutch with Chain" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0017</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('57.jpg')">
+          <img src="57.jpg" alt="Monogram Clutch with Chain" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0017</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogram Clutch with Chain</h3>
@@ -882,9 +886,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="58.jpg" alt="Quilted Chain Handle Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0014</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('58.jpg')">
+          <img src="58.jpg" alt="Quilted Chain Handle Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0014</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Quilted Chain Handle Bag</h3>
@@ -897,9 +901,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="59.jpg" alt="Dionysus Style Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-008</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('59.jpg')">
+          <img src="59.jpg" alt="Dionysus Style Shoulder Bag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-008</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Dionysus Style Shoulder Bag</h3>
@@ -912,9 +916,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="60.jpg" alt="Monogram Top Handle Satchel" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-008</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('60.jpg')">
+          <img src="60.jpg" alt="Monogram Top Handle Satchel" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-008</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogram Top Handle Satchel</h3>
@@ -927,9 +931,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="61.jpg" alt="Crocodile Effect Top Handle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0022</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('61.jpg')">
+          <img src="61.jpg" alt="Crocodile Effect Top Handle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0022</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Crocodile Effect Top Handle</h3>
@@ -942,9 +946,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="62.jpg" alt="Monogram Tote with Pouch" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-007</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('62.jpg')">
+          <img src="62.jpg" alt="Monogram Tote with Pouch" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-007</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogram Tote with Pouch</h3>
@@ -957,9 +961,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="63.jpg" alt="Monogram Clutch with Chain" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0017</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('63.jpg')">
+          <img src="63.jpg" alt="Monogram Clutch with Chain" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0017</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogram Clutch with Chain</h3>
@@ -972,9 +976,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="64.jpg" alt="Coach-Style Monogram Handbag" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-006</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('64.jpg')">
+          <img src="64.jpg" alt="Coach-Style Monogram Handbag" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-006</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Coach-Style Monogram Handbag</h3>
@@ -987,9 +991,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="65.jpg" alt="Embossed Leather Tote" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0010</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('65.jpg')">
+          <img src="65.jpg" alt="Embossed Leather Tote" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0010</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Embossed Leather Tote</h3>
@@ -1002,9 +1006,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="66.jpg" alt="Monogram Top Handle Satchel" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0020</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('66.jpg')">
+          <img src="66.jpg" alt="Monogram Top Handle Satchel" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0020</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Monogram Top Handle Satchel</h3>
@@ -1017,9 +1021,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="67.jpg" alt="Croc-Embossed Top Handle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0022</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('67.jpg')">
+          <img src="67.jpg" alt="Croc-Embossed Top Handle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0022</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Croc-Embossed Top Handle</h3>
@@ -1032,9 +1036,9 @@
       </div>
 
       <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
-        <div class="h-72 overflow-hidden relative bg-gray-800">
-          <img src="68.jpg" alt="Quilted Mini Top Handle" class="product-img w-full h-full object-cover transition duration-700">
-          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0023</span>
+        <div class="h-72 overflow-hidden relative bg-gray-800 cursor-zoom-in" onclick="openImageModal('68.jpg')">
+          <img src="68.jpg" alt="Quilted Mini Top Handle" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider pointer-events-none">BVBCFC-0023</span>
         </div>
         <div class="p-5">
           <h3 class="text-lg font-bold text-white truncate">Quilted Mini Top Handle</h3>
@@ -1049,7 +1053,7 @@
     </div>
   </main>
 
-   <section id="chat" class="py-16 bg-[#0B1221] border-t border-white/10">
+  <section id="chat" class="py-16 bg-[#0B1221] border-t border-white/10">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-garamond font-bold text-white">Ask <span class="text-[#FFC700]">BRIA</span> About Bags</h2>
@@ -1100,87 +1104,67 @@
     </div>
   </div>
 
+  <div id="image-modal" class="fixed inset-0 z-[80] bg-black/95 hidden flex items-center justify-center backdrop-blur-md p-4 transition-opacity duration-300" onclick="closeImageModal()">
+    <div class="relative max-w-4xl max-h-[90vh] w-full flex items-center justify-center">
+      <img id="modal-img" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10">
+      <button onclick="closeImageModal()" class="absolute -top-10 right-0 text-white hover:text-[#FFC700] text-3xl font-bold transition">&times;</button>
+    </div>
+  </div>
+
   <footer class="bg-black py-8 text-center text-gray-500 text-xs border-t border-gray-900">
     &copy; <span id="year"></span> Britium Ventures Co., Ltd. All Rights Reserved.
   </footer>
 
   <script>
-    // --- INQUIRY LOGIC ---
+    // --- CART LOGIC ---
     let inquiryItems = [];
-
     function addToInquiry(name, sku) {
-      // Check if item already exists
-      const exists = inquiryItems.some(item => item.sku === sku);
-      if(exists) {
-        alert("This item is already in your inquiry list.");
-        return;
-      }
-
+      if(inquiryItems.some(item => item.sku === sku)) return alert("Item already added.");
       inquiryItems.push({ name, sku });
       updateInquiryUI();
-      
-      // Animate badge
       const badge = document.getElementById('inquiry-count');
-      badge.classList.remove('hidden');
-      badge.classList.add('badge-anim');
-      setTimeout(() => badge.classList.remove('badge-anim'), 300);
+      badge.classList.remove('hidden'); badge.classList.add('badge-anim'); setTimeout(()=>badge.classList.remove('badge-anim'),300);
     }
-
-    function removeFromInquiry(index) {
-      inquiryItems.splice(index, 1);
-      updateInquiryUI();
-    }
-
-    function clearInquiryList() {
-      inquiryItems = [];
-      updateInquiryUI();
-    }
-
+    function removeFromInquiry(index) { inquiryItems.splice(index, 1); updateInquiryUI(); }
+    function clearInquiryList() { inquiryItems = []; updateInquiryUI(); }
     function updateInquiryUI() {
       const badge = document.getElementById('inquiry-count');
       const list = document.getElementById('inquiry-list');
       const hiddenInput = document.getElementById('hidden-inquiry-data');
-
-      // Update Badge
       badge.textContent = inquiryItems.length;
-      if (inquiryItems.length === 0) badge.classList.add('hidden');
-      else badge.classList.remove('hidden');
-
-      // Update List HTML
+      badge.classList.toggle('hidden', inquiryItems.length === 0);
+      
       if (inquiryItems.length === 0) {
         list.innerHTML = '<li class="italic text-gray-500 text-center py-6">Your list is empty.</li>';
         hiddenInput.value = "";
       } else {
         list.innerHTML = inquiryItems.map((item, index) => `
-          <li class="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 hover:bg-white/5 p-2 rounded transition">
-            <div class="flex flex-col">
-              <span class="font-semibold text-white">${item.name}</span>
-              <span class="text-[10px] text-gray-500 tracking-wider">${item.sku}</span>
-            </div>
-            <button onclick="removeFromInquiry(${index})" class="text-gray-500 hover:text-red-400 transition px-2">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </li>
-        `).join('');
-        
-        // Update Form Data
+          <li class="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 p-2">
+            <div><span class="font-semibold text-white block">${item.name}</span><span class="text-[10px] text-gray-500">${item.sku}</span></div>
+            <button onclick="removeFromInquiry(${index})" class="text-gray-500 hover:text-red-400"><i class="fas fa-trash-alt"></i></button>
+          </li>`).join('');
         hiddenInput.value = inquiryItems.map(i => `${i.name} [${i.sku}]`).join(', ');
       }
     }
+    function toggleInquiryModal() { document.getElementById('inquiry-modal').classList.toggle('hidden'); }
+    function validateForm() { if(inquiryItems.length===0){alert("Select items first."); return false;} return true; }
 
-    function toggleInquiryModal() {
-      const modal = document.getElementById('inquiry-modal');
-      modal.classList.toggle('hidden');
+    // --- IMAGE MODAL LOGIC ---
+    function openImageModal(src) {
+      const modal = document.getElementById('image-modal');
+      const img = document.getElementById('modal-img');
+      img.src = src;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
     }
 
-    function validateForm() {
-      if (inquiryItems.length === 0) {
-        alert("Please select at least one item before sending an inquiry.");
-        return false;
-      }
-      return true;
+    function closeImageModal() {
+      const modal = document.getElementById('image-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
     }
- // --- CHATBOT LOGIC ---
+
+    // --- CHATBOT LOGIC ---
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("year").textContent = new Date().getFullYear();
       const chatInput = document.getElementById("chatInput");
