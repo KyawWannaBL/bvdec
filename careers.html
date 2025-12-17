@@ -212,9 +212,8 @@
     <h2 class="font-garamond text-3xl font-bold text-white text-center mb-8">Apply <span class="text-[#FFC700]">Now</span></h2>
     
     <form action="https://formsubmit.co/job_application@britiumventures.com" method="POST" enctype="multipart/form-data" class="space-y-6 glass p-8 rounded-xl shadow-2xl">
-      
       <input type="hidden" name="_next" value="https://www.britiumventures.com/careers.html?success=true">
-      <input type="hidden" name="_subject" value="New Job Application - Britium Ventures">
+      <input type="hidden" name="_subject" value="New Job Application (Britium)">
       <input type="hidden" name="_captcha" value="false">
 
       <div class="grid md:grid-cols-2 gap-6">
@@ -252,7 +251,8 @@
       <div class="border-2 border-dashed border-slate-600 rounded-lg p-6 hover:border-[#FFC700] transition bg-slate-800/50">
         <label class="block text-white mb-3 font-semibold text-lg">📎 Attach Documents</label>
         
-        <input type="file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple required 
+        <input type="file" id="file-upload" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple required 
+          onchange="validateFileSize(this)"
           class="block w-full text-sm text-slate-400
             file:mr-4 file:py-3 file:px-6
             file:rounded-full file:border-0
@@ -261,8 +261,8 @@
             hover:file:bg-yellow-500
             cursor-pointer" />
             
-        <p class="text-xs text-slate-400 mt-2">
-          Accepted: PDF, DOCX, JPG, PNG.
+        <p id="file-msg" class="text-xs text-slate-400 mt-2">
+          Accepted: PDF, DOCX, JPG, PNG (Max Total: 10MB).
         </p>
       </div>
 
@@ -291,6 +291,28 @@
     if (section && select) {
       select.value = jobTitle; 
       section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // --- FILE SIZE VALIDATOR ---
+  function validateFileSize(input) {
+    const limit = 10 * 1024 * 1024; // 10MB in bytes
+    let totalSize = 0;
+    
+    if (input.files) {
+      for (let i = 0; i < input.files.length; i++) {
+        totalSize += input.files[i].size;
+      }
+    }
+
+    const msg = document.getElementById('file-msg');
+    
+    if (totalSize > limit) {
+      alert("⚠️ File too large! The total size must be less than 10MB.");
+      input.value = ""; // Clear input
+      msg.innerHTML = "<span class='text-red-400'>❌ File removed. Total size exceeded 10MB.</span>";
+    } else {
+      msg.innerHTML = "<span class='text-green-400'>✔ File size OK.</span>";
     }
   }
 
