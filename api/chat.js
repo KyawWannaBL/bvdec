@@ -1,66 +1,61 @@
 // api/chat.js
+import fetch from "node-fetch";
+
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ reply: 'Method Not Allowed' });
-  }
-
-  const { message } = req.body;
-  const apiKey = process.env.OPENAI_API_KEY;
-  const assistantId = process.env.OPENAI_ASSISTANT_ID;
-
-  if (!apiKey || !assistantId) {
-    return res.status(500).json({ reply: "Configuration Error: API Keys missing on server." });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method Not Allowed" });
   }
 
   try {
-    const runResponse = await fetch("https://api.openai.com/v1/threads/runs", {
+    const { message } = req.body;
+
+    if (!message || typeof message !== "string") {
+      return res.status(400).json({ error: "Invalid message" });
+    }
+
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      console.error("OPENAI_API_KEY is missing");
+      return res.status(500).json({ error: "Server configuration error" });
+    }
+
+    const openaiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-        "OpenAI-Beta": "assistants=v2"
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        assistant_id: assistantId,
-        thread: { messages: [{ role: "user", content: message }] }
-      })
+        model: process.env.OPENAI_MODEL || "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content: "You are a helpful assistant for logistics and trade." },
+          { role: "user", content: message },
+        ],
+        max_tokens: 500,
+        temperature: 0.3,
+      }),
     });
 
-    const runData = await runResponse.json();
-    if (runData.error) throw new Error(runData.error.message);
-    
-    const threadId = runData.thread_id;
-    const runId = runData.id;
-
-    let status = "queued";
-    let attempts = 0;
-
-    while (status !== "completed") {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      attempts++;
-      if (attempts > 20) return res.status(504).json({ reply: "Timeout: AI took too long." });
-
-      const checkResponse = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs/${runId}`, {
-        headers: { "Authorization": `Bearer ${apiKey}`, "OpenAI-Beta": "assistants=v2" }
-      });
-      
-      const checkData = await checkResponse.json();
-      status = checkData.status;
-      if (status === "failed" || status === "cancelled") throw new Error("AI failed.");
+    if (!openaiResponse.ok) {
+      const errorBody = await openaiResponse.text();
+      console.error("OpenAI API error:", openaiResponse.status, errorBody);
+      return res.status(502).json({ error: "AI service error" });
     }
 
-    const msgResponse = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
-      headers: { "Authorization": `Bearer ${apiKey}`, "OpenAI-Beta": "assistants=v2" }
-    });
+    const openaiData = await openaiResponse.json();
 
-    const msgData = await msgResponse.json();
-    let reply = msgData.data[0].content[0].text.value;
-    reply = reply.replace(/【.*?】/g, '');
+    const reply = openaiData.choices?.[0]?.message?.content?.trim();
 
-    return res.status(200).json({ reply: reply });
+    if (!reply) {
+      console.warn("No reply from AI", openaiData);
+      return res.status(500).json({ error: "No response from AI" });
+    }
 
-  } catch (error) {
-    console.error("API Error:", error);
-    return res.status(500).json({ reply: "System Error: " + error.message });
+    return res.status(200).json({ reply });
+
+  } catch (err) {
+    console.error("Server error:", err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 }
