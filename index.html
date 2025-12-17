@@ -29,6 +29,7 @@
     
     .acrylic-panel { background: rgba(17, 34, 64, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(251,191,36,0.3); border-radius: 1rem; padding: 2rem; }
     
+    /* Bria Greeter */
     #bria-greeter {
       position: fixed; bottom: 20px; right: 20px;
       background: rgba(17, 34, 64, 0.95); border: 2px solid #FFC700;
@@ -71,7 +72,7 @@
 
 <div id="mobile-menu-container" class="fixed inset-0 z-40 xl:hidden hidden">
   <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
-  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-[#0a192f] p-8 border-l border-[#FFC700]/30 transform translate-x-full transition-transform duration-300">
+  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-[#0a192f] p-8 border-l border-[#FFC700]/30 transform translate-x-full transition-transform duration-300 overflow-y-auto">
     <button id="mobile-menu-close" class="absolute top-4 right-4 text-white text-3xl">×</button>
     <div class="flex flex-col gap-y-5 mt-10 text-lg text-white font-medium">
       <a href="index.html" class="hover:text-[#FFC700]">Home</a>
@@ -102,6 +103,31 @@
     <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
       <a href="contact.html" class="bg-[#FFC700] hover:bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold transition">Get Consultation</a>
       <a href="express.html" class="border border-[#FFC700] text-[#FFC700] hover:bg-[#FFC700]/10 px-8 py-3 rounded-lg font-semibold transition">Britium Express</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-slate-900 border-b border-gray-800">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center gap-12 fade-in">
+      <div class="md:w-1/2">
+        <h2 class="text-3xl font-garamond font-bold text-white mb-4">🚀 Britium <span class="text-[#FFC700]">Express</span></h2>
+        <p class="text-gray-300 mb-6 text-justify">
+          Need speed? Britium Express offers premium, expedited logistics solutions for urgent shipments. 
+          We guarantee priority handling, real-time tracking, and swift customs clearance to ensure your goods arrive on time, every time.
+        </p>
+        <ul class="text-gray-400 mb-8 space-y-2">
+          <li>✔ Priority Customs Clearance</li>
+          <li>✔ Door-to-Door Rapid Delivery</li>
+          <li>✔ 24/7 Dedicated Support</li>
+        </ul>
+        <a href="express.html" class="text-[#FFC700] font-bold border-b-2 border-[#FFC700] hover:text-white hover:border-white transition pb-1">
+          Explore Express Services &rarr;
+        </a>
+      </div>
+      <div class="md:w-1/2">
+        <img src="https://cdn1.site-media.eu/images/0/19003953/BritiumGalleryclip3-63hi_eYOvc_Ssdm3P-Jsow.mp4" class="rounded-lg shadow-2xl border border-[#FFC700]/20 w-full h-64 object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
     </div>
   </div>
 </section>
@@ -232,7 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const send = $('#chatSend');
 
     if(list && input && send){
-      // CORRECTED LINE: Using /api/chat
       const chatEndpoint = '/api/chat'; 
 
       function bubble(text, who){ 
@@ -240,16 +265,25 @@ document.addEventListener("DOMContentLoaded", () => {
           const b = document.createElement('div'); b.className = (who==='user' ? 'bg-[#FFC700] text-black shadow-lg shadow-amber-500/20' : 'bg-[#1e293b] text-white border border-gray-600') + ' rounded-lg px-4 py-2 max-w-[80%] text-sm md:text-base'; 
           b.innerHTML = text.replace(/\n/g,'<br>'); w.appendChild(b); list.appendChild(w); list.scrollTop = list.scrollHeight; return b; 
       }
+      
       bubble("👋 Hello! I'm BRIA. How can I assist with your logistics or trade needs today?", 'ai');
+      
       async function sendMsg(){ 
           const text = input.value.trim(); if(!text) return;
           bubble(text, 'user'); input.value = ''; const loadingBubble = bubble('Thinking...', 'ai');
+          
           try {
-              const r = await fetch(chatEndpoint, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({message: text}) });
+              const r = await fetch(chatEndpoint, { 
+                  method: 'POST', 
+                  headers: {'Content-Type': 'application/json'}, 
+                  body: JSON.stringify({message: text}) 
+              });
+              
               if(!r.ok) throw new Error(`HTTP Error: ${r.status}`);
-              const d = await r.json(); loadingBubble.innerHTML = d.reply ? d.reply.replace(/\n/g,'<br>') : "⚠️ No response received.";
+              const d = await r.json(); 
+              loadingBubble.innerHTML = d.reply ? d.reply.replace(/\n/g,'<br>') : "⚠️ No response received.";
           } catch(e) {
-              loadingBubble.innerHTML = "<span class='text-red-400'>⚠️ Network Error:</span> Could not reach the server.";
+              loadingBubble.innerHTML = "<span class='text-red-400'>⚠️ Network Error:</span> Could not reach server. Please try again.";
           }
       }
       send.addEventListener('click', sendMsg);
