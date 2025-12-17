@@ -2,239 +2,196 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products | BRITIUM VENTURES</title>
-  <meta name="description" content="Explore Britium Ventures' curated portfolio: fashion bags, dual screens, flexitanks, and branded gifts."/>
-  <meta name="theme-color" content="#020617"/>
   <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body { background-color: #020617; color: #e2e8f0; font-family: 'Poppins', sans-serif; }
     .font-garamond { font-family: 'Cormorant Garamond', serif; }
-    .glass { background: rgba(11,21,39,0.65); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-    .hero-video { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .hero-overlay { background: rgba(10,25,47,.55); position: absolute; inset: 0; z-index: 1; }
-    .hero-content { z-index: 2; position: relative; }
-    .text-justify { text-align: justify; }
-    .spinner { border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid #FFC700; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .glass { background: rgba(11, 21, 39, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(255, 199, 0, 0.3); }
+    
+    /* Chat Scrollbar */
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .chat-bubble { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased">
 
-<!-- HEADER -->
-<header class="fixed inset-x-0 top-0 z-50 bg-black/30 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3">
-      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
-      <span class="font-garamond text-xl font-bold text-white"> BRITIUM <span class="text-gold">VENTURES</span>
-    </a>
-    <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-200">
-      <a href="index.html" class="hover:text-[#FFC700]">Home</a>
-      <a href="about.html" class="hover:text-[#FFC700]">About</a>
-      <a href="team.html" class="hover:text-[#FFC700]">Team</a>
-      <a href="careers.html" class="hover:text-[#FFC700]">Careers</a>
-      <a href="capabilities.html" class="hover:text-[#FFC700]">Capabilities</a>
-      <a href="solutions.html" class="hover:text-[#FFC700]">Solutions</a>
-      <a href="products.html" class="hover:text-[#FFC700]">Products</a>
-      <a href="markets.html" class="hover:text-[#FFC700]">Markets</a>
-      <a href="gallery.html" class="hover:text-[#FFC700]">Gallery</a>
-      <a href="contact.html" class="hover:text-[#FFC700]">Contact</a>
-      <a href="chat.html" class="px-4 py-2 rounded-md bg-[#FFC700]/10 text-[#FFC700] border border-[#FFC700]/20 hover:bg-[#FFC700]/20">AI Chat</a>
-    </nav>
-    <button id="mobile-toggle" class="md:hidden text-white text-3xl" aria-label="Toggle Menu">☰</button>
-  </div>
-</header>
-
-<!-- MOBILE MENU -->
-<div id="mobile-menu-container" class="fixed inset-0 z-40 md:hidden hidden">
-  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/70"></div>
-  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-900/90 p-8 transform translate-x-full transition-transform">
-    <div class="flex flex-col gap-y-6 mt-16 text-lg text-white mobile-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="team.html">Team</a>
-      <a href="careers.html">Careers</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="products.html">Products</a>
-      <a href="markets.html">Markets</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="chat.html">AI Chat</a>
+  <header class="fixed w-full z-50 bg-black/80 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" class="h-10">
+        <span class="text-xl font-bold text-white font-garamond">BRITIUM <span class="text-[#FFC700]">VENTURES</span></span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm font-semibold">
+        <a href="index.html" class="hover:text-[#FFC700]">Home</a>
+        <a href="products.html" class="text-[#FFC700]">Products</a>
+        <a href="contact.html" class="hover:text-[#FFC700]">Contact</a>
+        <a href="#chat" class="border border-[#FFC700] text-[#FFC700] px-3 py-1 rounded hover:bg-[#FFC700] hover:text-black transition">Ask AI</a>
+      </nav>
     </div>
-  </nav>
-</div>
+  </header>
 
+  <section class="relative h-[50vh] flex items-center justify-center text-center bg-[url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070')] bg-cover bg-center">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10 px-6">
+      <h1 class="text-5xl font-garamond font-bold text-white">Our <span class="text-[#FFC700]">Collections</span></h1>
+      <p class="mt-4 text-lg text-gray-300">Curated excellence in Fashion, Technology, and Logistics.</p>
+    </div>
+  </section>
 
-<!-- Hero -->
-<section class="relative h-[60vh] flex items-center justify-center text-center overflow-hidden">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="https://cdn1.site-media.eu/images/0/19098157/souvenirset-xjSXUa2AGIj6cQFlj3RDKQ.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-content px-6">
-    <h1 class="text-5xl font-garamond font-bold text-white">Our <span class="text-[#FFC700]">Products</span></h1>
-    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-300">From lifestyle and technology to transport and corporate solutions, explore our curated offerings.</p>
-  </div>
-</section>
+  <section class="py-20 max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <a href="fashion_bags.html" class="glass p-8 rounded-2xl card-hover transition duration-300 group">
+        <div class="h-48 overflow-hidden rounded-xl mb-6">
+          <img src="https://cdn1.site-media.eu/images/0/19097393/40-s2coCKilqJ0_9jU0STnhwg.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        </div>
+        <h3 class="text-2xl font-bold text-white group-hover:text-[#FFC700]">Fashion Bags Collection</h3>
+        <p class="text-gray-400 mt-2">Explore our 2025 Executive & Casual bag lineup. View prices and request quotes.</p>
+        <span class="inline-block mt-4 text-[#FFC700] font-semibold">View Gallery &rarr;</span>
+      </a>
 
-<!-- Product Grid -->
-<section class="py-20 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-  <a href="fashion_bags.html" class="glass p-6 rounded-xl hover:shadow-2xl hover:-translate-y-2 transition">
-    <img src="https://cdn1.site-media.eu/images/0/19097393/40-s2coCKilqJ0_9jU0STnhwg.png" class="w-full h-48 object-cover rounded-lg" alt="Fashion Bags">
-    <h3 class="mt-4 text-white text-xl font-semibold">Fashion Bags</h3>
-    <p class="text-sm mt-2 text-justify">Elegant executive totes and handbags crafted for professionals and events.</p>
-  </a>
-  <a href="dual_screen_extender.html" class="glass p-6 rounded-xl hover:shadow-2xl hover:-translate-y-2 transition">
-    <img src="https://cdn1.site-media.eu/images/0/19098380/Writeaboutlaptopscreenextender-G4j3Uhd9BGOvOl1hTu5abQ.jpg" class="w-full h-48 object-cover rounded-lg" alt="Dual Screen Extender">
-    <h3 class="mt-4 text-white text-xl font-semibold">Dual Screen Extender</h3>
-    <p class="text-sm mt-2 text-justify">Triple-display productivity booster for remote professionals and tech-savvy workers.</p>
-  </a>
-  <a href="flexitank.html" class="glass p-6 rounded-xl hover:shadow-2xl hover:-translate-y-2 transition">
-    <img src="https://cdn1.site-media.eu/images/0/19084610/flexitank-view-through-1-6gDpogFbDeNyOJK_tyuvog.jpg" class="w-full h-48 object-cover rounded-lg" alt="Flexitanks">
-    <h3 class="mt-4 text-white text-xl font-semibold">Flexitanks</h3>
-    <p class="text-sm mt-2 text-justify">High-volume, certified flexitank transport solutions (12k–24k L capacity).</p>
-  </a>
-  <a href="promotion_gift.html" class="glass p-6 rounded-xl hover:shadow-2xl hover:-translate-y-2 transition">
-    <img src="https://cdn1.site-media.eu/images/0/19097413/34-xGzFTSIduS1KFNfO64o9Sw.jpg" class="w-full h-48 object-cover rounded-lg" alt="Promotional Gifts">
-    <h3 class="mt-4 text-white text-xl font-semibold">Promotional Gifts</h3>
-    <p class="text-sm mt-2 text-justify">Branded items for conferences, clients, and internal engagement campaigns.</p>
-  </a>
-</section>
+      <a href="dual_screen_extender.html" class="glass p-8 rounded-2xl card-hover transition duration-300 group">
+        <div class="h-48 overflow-hidden rounded-xl mb-6">
+          <img src="https://cdn1.site-media.eu/images/0/19098380/Writeaboutlaptopscreenextender-G4j3Uhd9BGOvOl1hTu5abQ.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        </div>
+        <h3 class="text-2xl font-bold text-white group-hover:text-[#FFC700]">Screen Extenders</h3>
+        <p class="text-gray-400 mt-2">Boost productivity with our portable triple-screen monitors.</p>
+        <span class="inline-block mt-4 text-[#FFC700] font-semibold">View Tech &rarr;</span>
+      </a>
 
-<!-- AI Assistant -->
-<section id="ai-assistant" class="py-24 bg-slate-900/50 text-center">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-4xl font-garamond font-bold text-white">✨ AI <span class="text-[#FFC700]">Product Assistant</span></h2>
-    <p class="mt-4 text-slate-300">Ask about our offerings — powered by OpenAI's GPT-3.5.</p>
-    <div class="glass rounded-xl p-6 mt-10 text-left">
-      <div id="ai-chat-window" class="h-64 overflow-y-auto space-y-3 p-3 text-sm">
-        <div class="p-3 rounded-md bg-slate-700/50">Hi! Ask me anything about Britium products.</div>
+      <a href="flexitank.html" class="glass p-8 rounded-2xl card-hover transition duration-300 group">
+        <div class="h-48 overflow-hidden rounded-xl mb-6">
+          <img src="https://cdn1.site-media.eu/images/0/19084610/flexitank-view-through-1-6gDpogFbDeNyOJK_tyuvog.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        </div>
+        <h3 class="text-2xl font-bold text-white group-hover:text-[#FFC700]">Bulk Liquid Flexitanks</h3>
+        <p class="text-gray-400 mt-2">Industrial-grade transport solutions for oils and fluids.</p>
+        <span class="inline-block mt-4 text-[#FFC700] font-semibold">View Solutions &rarr;</span>
+      </a>
+
+      <a href="promotion_gift.html" class="glass p-8 rounded-2xl card-hover transition duration-300 group">
+        <div class="h-48 overflow-hidden rounded-xl mb-6">
+          <img src="https://cdn1.site-media.eu/images/0/19097413/34-xGzFTSIduS1KFNfO64o9Sw.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        </div>
+        <h3 class="text-2xl font-bold text-white group-hover:text-[#FFC700]">Corporate Gifting</h3>
+        <p class="text-gray-400 mt-2">Premium branding sets for your organization.</p>
+        <span class="inline-block mt-4 text-[#FFC700] font-semibold">View Catalog &rarr;</span>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="chat" class="py-16 bg-[#0B1221] border-t border-white/10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-garamond font-bold text-white">Ask <span class="text-[#FFC700]">BRIA</span> About Our Products</h2>
+        <p class="text-gray-400 mt-2">Not sure which product is right for you? Ask our AI assistant for details or recommendations.</p>
       </div>
-      <div class="flex mt-4 gap-2">
-        <input id="ai-chat-input" class="flex-1 px-4 py-2 rounded-lg bg-slate-800 border border-slate-600 text-white" placeholder="e.g., What is a flexitank used for?" />
-        <button id="ai-chat-send" class="px-5 py-2 rounded-lg bg-[#FFC700] text-black font-semibold hover:bg-yellow-500">Send</button>
+
+      <div class="glass rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[500px] border border-[#FFC700]/20">
+        
+        <div id="chatMessages" class="flex-1 overflow-y-auto p-6 space-y-4">
+          <div class="flex justify-start chat-bubble">
+            <div class="bg-slate-700 text-white rounded-lg rounded-tl-none px-5 py-3 max-w-[85%] border border-slate-600 shadow-md">
+              <p class="font-semibold text-[#FFC700] mb-1 text-xs">BRIA AI</p>
+              👋 Hello! I can help you compare our bag collections, explain Flexitank specs, or suggest corporate gifts. What are you looking for today?
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 bg-black/40 border-t border-white/10 flex gap-3 items-center">
+          <input id="chatInput" type="text" placeholder="Type your question here..." class="flex-1 bg-slate-900 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#FFC700] border border-slate-700 transition placeholder-gray-500">
+          <button id="chatSend" class="bg-[#FFC700] text-black px-6 py-3 rounded-xl font-bold hover:bg-yellow-400 transition shadow-lg flex items-center gap-2">
+            Send <span class="text-lg">➤</span>
+          </button>
+        </div>
       </div>
     </div>
-    <div id="ai-spinner" class="mt-4 hidden justify-center"><div class="spinner"></div></div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="py-12 bg-slate-950/50 text-slate-400 border-t border-slate-800 text-sm">
-  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-    <div>
-      <h4 class="font-garamond text-lg font-bold text-white">BRITIUM <span class="text-[#FFC700]">VENTURES</span></h4>
-      <p class="mt-2">Confidence in Motion.</p>
-    </div>
-    <div>
-      <h5 class="font-semibold text-white uppercase mb-2">Contact Us</h5>
-      <p>Yangon, Myanmar</p>
-      <a href="mailto:info@britiumventures.com" class="hover:text-[#FFC700] block">info@britiumventures.com</a>
-      <a href="tel:+95989747711" class="hover:text-[#FFC700] block">+95-9-89747711</a>
-    </div>
-    <div>
-      <h5 class="font-semibold text-white uppercase mb-2">Follow Us</h5>
-      <div class="flex space-x-4">
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" class="w-5 h-5" alt="LinkedIn" /></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" class="w-5 h-5" alt="Facebook" /></a>
-      </div>
-    </div>
-    <div>
-      <h5 class="font-semibold text-white uppercase mb-2">Legal</h5>
-      <a href="#" class="block hover:text-[#FFC700]">Privacy Policy</a>
-      <a href="#" class="block hover:text-[#FFC700]">Terms of Service</a>
-    </div>
-  </div>
-  <div class="mt-6 text-center text-xs">&copy; <span id="yr"></span> BRITIUM VENTURES CO., LTD. All rights reserved.</div>
-</footer>
+  <footer class="bg-black py-8 text-center text-gray-500 text-xs border-t border-gray-900">
+    &copy; <span id="year"></span> Britium Ventures Co., Ltd. All Rights Reserved.
+  </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-  const chatWindow = document.getElementById('ai-chat-window');
-  const chatInput = document.getElementById('ai-chat-input');
-  const chatSend = document.getElementById('ai-chat-send');
-  const spinner = document.getElementById('ai-spinner');
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+      const chatMessages = document.getElementById("chatMessages");
 
-  const addMessage = (text, isUser = false) => {
-    const div = document.createElement('div');
-    div.className = `p-3 rounded-md ${isUser ? 'bg-[#FFC700] text-black ml-auto' : 'bg-slate-700/50'}`;
-    div.textContent = text;
-    chatWindow.appendChild(div);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-  };
+      function addMessage(text, isUser) {
+        const div = document.createElement("div");
+        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} chat-bubble`;
+        
+        const label = isUser ? '' : '<p class="font-semibold text-[#FFC700] mb-1 text-xs">BRIA AI</p>';
+        const bubbleClass = isUser 
+          ? 'bg-[#FFC700] text-black rounded-tr-none' 
+          : 'bg-slate-700 text-white border border-slate-600 rounded-tl-none';
 
-  chatSend.addEventListener('click', async () => {
-    const input = chatInput.value.trim();
-    if (!input) return;
-    addMessage(input, true);
-    chatInput.value = '';
-    spinner.classList.remove('hidden');
+        div.innerHTML = `
+          <div class="${bubbleClass} rounded-2xl px-5 py-3 max-w-[85%] shadow-md text-sm leading-relaxed">
+            ${label}
+            ${text}
+          </div>
+        `;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
 
-    try {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Authorization": "OPENAI_API_KEY", 
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [
-            { role: "system", content: "You are a product expert at Britium Ventures." },
-            { role: "user", content: input }
-          ],
-          temperature: 0.7
-        })
-      });
-      const data = await response.json();
-      const reply = data.choices?.[0]?.message?.content || "⚠️ AI didn't respond.";
-      addMessage(reply);
-    } catch (err) {
-      console.error(err);
-      addMessage("⚠️ Unable to reach AI. Please try again.");
-    } finally {
-      spinner.classList.add('hidden');
-    }
-  });
+      async function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
 
-  chatInput.addEventListener('keypress', e => {
-    if (e.key === 'Enter') chatSend.click();
-  });
-});
-  // Mobile menu toggle
-  const toggleBtn = document.getElementById("mobile-toggle");
-  const menuContainer = document.getElementById("mobile-menu-container");
-  const menu = document.getElementById("mobile-menu");
-  const overlay = document.getElementById("mobile-menu-overlay");
+        addMessage(text, true);
+        chatInput.value = "";
+        
+        // Loading Indicator
+        const loadingId = "loading-" + Date.now();
+        const loadingDiv = document.createElement("div");
+        loadingDiv.className = "flex justify-start chat-bubble";
+        loadingDiv.innerHTML = `
+          <div class="bg-slate-700 text-gray-300 rounded-2xl rounded-tl-none px-5 py-3 text-sm border border-slate-600 flex gap-2 items-center">
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+          </div>`;
+        chatMessages.appendChild(loadingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  toggleBtn.addEventListener("click", () => {
-    menuContainer.classList.remove("hidden");
-    setTimeout(() => {
-      menu.classList.remove("translate-x-full");
-    }, 10);
-  });
+        try {
+          const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text })
+          });
 
-  overlay.addEventListener("click", () => {
-    menu.classList.add("translate-x-full");
-    setTimeout(() => {
-      menuContainer.classList.add("hidden");
-    }, 300);
-  });
+          const data = await response.json();
+          loadingDiv.remove(); 
+          
+          if (data.reply) {
+            // Clean up formatting for HTML display
+            const cleanReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, "<br>");
+            addMessage(cleanReply, false);
+          } else {
+            addMessage("⚠️ I'm having trouble connecting. Please try again.", false);
+          }
+        } catch (err) {
+          loadingDiv.remove();
+          addMessage("⚠️ Server error. Please check your connection.", false);
+        }
+      }
 
-  // Optional: close menu when clicking any link inside
-  document.querySelectorAll(".mobile-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.add("translate-x-full");
-      setTimeout(() => {
-        menuContainer.classList.add("hidden");
-      }, 300);
+      chatSend.addEventListener("click", sendMessage);
+      chatInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
     });
-  });
-</script>
+  </script>
+
 </body>
 </html>
