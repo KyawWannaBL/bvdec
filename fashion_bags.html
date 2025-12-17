@@ -1,420 +1,1229 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fashion Bags — BRITIUM VENTURES</title>
-  <meta name="description" content="Discover Britium’s curated collection of fashion bags — executive totes, satchels, and accessories designed for modern professionals."/>
-  <meta name="theme-color" content="#020617"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Bags Collection | BRITIUM VENTURES</title>
   <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png">
-
-  <!-- Fonts & Tailwind CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Custom Styles -->
   <style>
-    body {
-      background-color: #020617;
-      color: #e2e8f0;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-    }
+    body { background-color: #020617; color: #e2e8f0; font-family: 'Poppins', sans-serif; }
     .font-garamond { font-family: 'Cormorant Garamond', serif; }
-    .glass {
-      background: rgba(11, 21, 39, 0.65);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Glassmorphism Card Style */
+    .glass { 
+      background: rgba(30, 41, 59, 0.4); 
+      backdrop-filter: blur(12px); 
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    
+    /* Hover Effects */
+    .product-card:hover { transform: translateY(-5px); border-color: rgba(255, 199, 0, 0.5); }
+    .product-card:hover .product-img { transform: scale(1.05); }
+    
+    /* Cart Badge Animation */
+    @keyframes bounceIn {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(10, 25, 47, 0.55);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      height: 100%;
-    }
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .video-grid video {
-      width: 100%;
-      border-radius: .75rem;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    }
-    .spinner {
-      border: 4px solid rgba(255,255,255,0.3);
-      border-top: 4px solid #FFC700;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    .badge-anim { animation: bounceIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
   </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased relative">
 
-<!-- HEADER -->
-<header class="fixed inset-x-0 top-0 z-50 bg-black/30 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3">
-      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
-       <span class="font-garamond text-xl font-bold text-white"> BRITIUM <span class="text-gold">VENTURES</span>
-    </a>
-    <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-200">
-      <a href="index.html" class="hover:text-[#FFC700]">Home</a>
-      <a href="about.html" class="hover:text-[#FFC700]">About</a>
-      <a href="team.html" class="hover:text-[#FFC700]">Team</a>
-      <a href="careers.html" class="hover:text-[#FFC700]">Careers</a>
-      <a href="capabilities.html" class="hover:text-[#FFC700]">Capabilities</a>
-      <a href="solutions.html" class="hover:text-[#FFC700]">Solutions</a>
-      <a href="products.html" class="hover:text-[#FFC700]">Products</a>
-      <a href="markets.html" class="hover:text-[#FFC700]">Markets</a>
-      <a href="gallery.html" class="hover:text-[#FFC700]">Gallery</a>
-      <a href="contact.html" class="hover:text-[#FFC700]">Contact</a>
-      <a href="chat.html" class="px-4 py-2 rounded-md bg-[#FFC700]/10 text-[#FFC700] border border-[#FFC700]/20 hover:bg-[#FFC700]/20">AI Chat</a>
-    </nav>
-    <button id="mobile-toggle" class="md:hidden text-white text-3xl" aria-label="Toggle Menu">☰</button>
-  </div>
-</header>
-
-<!-- MOBILE MENU -->
-<div id="mobile-menu-container" class="fixed inset-0 z-40 md:hidden hidden">
-  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/70"></div>
-  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-900/90 p-8 transform translate-x-full transition-transform">
-    <div class="flex flex-col gap-y-6 mt-16 text-lg text-white mobile-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="team.html">Team</a>
-      <a href="careers.html">Careers</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="products.html">Products</a>
-      <a href="markets.html">Markets</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="chat.html">AI Chat</a>
+  <header class="fixed w-full z-50 bg-black/90 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="products.html" class="flex items-center gap-2 text-gray-300 hover:text-[#FFC700] transition">
+        <i class="fas fa-arrow-left"></i> <span class="font-semibold">Back to Categories</span>
+      </a>
+      <div class="text-xl font-bold text-white font-garamond">BRITIUM <span class="text-[#FFC700]">GALLERY</span></div>
     </div>
-  </nav>
-</div>
+  </header>
 
-<!-- HERO -->
-<section class="relative h-[55vh] flex items-center justify-center overflow-hidden">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="https://cdn1.site-media.eu/images/0/19097903/BritiumGalleryclip-oNM6gC5WMR694Zk0x5F35Q.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="font-garamond text-white text-5xl font-bold">Fashion <span class="text-[#FFC700]">Bags</span></h1>
-    <p class="mt-3 max-w-2xl">Executive totes, handbags, satchels, and accessories crafted for elegance and resilience.</p>
+  <div onclick="toggleInquiryModal()" class="fixed bottom-8 right-8 z-[60] bg-[#FFC700] text-black px-6 py-4 rounded-full shadow-2xl cursor-pointer hover:bg-yellow-400 transition transform hover:scale-105 border-4 border-black/30 group flex items-center gap-3">
+    <div class="relative">
+      <i class="fas fa-clipboard-list text-2xl"></i>
+      <span id="inquiry-count" class="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold h-6 w-6 flex items-center justify-center rounded-full border-2 border-[#FFC700] hidden">0</span>
+    </div>
+    <div class="text-left leading-tight hidden md:block">
+      <div class="font-bold text-sm uppercase tracking-wide">Inquiry List</div>
+      <div class="text-xs opacity-80">Click to Request Quote</div>
+    </div>
   </div>
-</section>
 
-<!-- AI STYLE FINDER -->
-<section class="py-20" id="ai-style-finder">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="font-garamond text-4xl font-bold text-white">✨ AI <span class="text-[#FFC700]">Style Finder</span></h2>
-    <p class="mt-4 text-slate-300">Not sure which bag suits your needs? Select your preferences and let our AI stylist recommend one.</p>
-    <div class="glass p-8 rounded-xl mt-12 text-left">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="occasion" class="text-white block mb-2 text-sm font-medium">Primary Occasion</label>
-          <select id="occasion" class="w-full bg-slate-800 border border-slate-700 text-white rounded-md p-2">
-            <option>Daily Work & Office</option>
-            <option>Evening Social Event</option>
-            <option>Weekend Casual Outing</option>
-            <option>Business Travel</option>
-          </select>
+  <main class="pt-28 pb-20 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h1 class="text-5xl md:text-6xl font-garamond font-bold text-white mb-4">The <span class="text-[#FFC700]">2025 Collection</span></h1>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Discover our executive and lifestyle bags. Select items to build your inquiry list, and we will send you a formal quotation.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="2.jpg" alt="Monogrammed Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-001</span>
         </div>
-        <div>
-          <label for="items" class="text-white block mb-2 text-sm font-medium">Items You Carry</label>
-          <select id="items" class="w-full bg-slate-800 border border-slate-700 text-white rounded-md p-2">
-            <option>Just the essentials (phone, keys, wallet)</option>
-            <option>Laptop and documents</option>
-            <option>A mix of personal items</option>
-          </select>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogrammed Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 14cm x 5cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">90,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogrammed Crossbody', 'BVOSBG-001')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
         </div>
       </div>
-      <div class="mt-6 text-center">
-        <button id="find-style-btn" class="px-8 py-3 bg-[#FFC700] text-slate-950 font-bold rounded-lg hover:bg-yellow-500 transition">Find My Style</button>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="3.jpg" alt="Classic Saddle Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-002</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Classic Saddle Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 16cm x 6.5cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">52,500 MMK</p></div>
+            <button onclick="addToInquiry('Classic Saddle Bag', 'BVOSBG-002')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
       </div>
-      <div id="style-suggestion" class="mt-6"></div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="4.jpg" alt="Signature Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-003</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Signature Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 15cm x 10cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">78,000 MMK</p></div>
+            <button onclick="addToInquiry('Signature Crossbody', 'BVOSBG-003')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="5.jpg" alt="Signature Hobo Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-004</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Signature Hobo Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">26cm x 23cm x 9cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">80,000 MMK</p></div>
+            <button onclick="addToInquiry('Signature Hobo Bag', 'BVOSBG-004')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="6.jpg" alt="Elegant Monogram Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-005</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Elegant Monogram Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">83,000 MMK</p></div>
+            <button onclick="addToInquiry('Elegant Monogram Crossbody', 'BVOSBG-005')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="7.jpg" alt="Chic Monogram Top Handle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-006</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Chic Monogram Top Handle</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 16cm x 7cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">77,000 MMK</p></div>
+            <button onclick="addToInquiry('Chic Monogram Top Handle', 'BVOSBG-006')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="8.jpg" alt="Classic Flap Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-007</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Classic Flap Shoulder Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">28cm x 15cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">75,000 MMK</p></div>
+            <button onclick="addToInquiry('Classic Flap Shoulder Bag', 'BVOSBG-007')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="9.jpg" alt="Vintage Chain Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-008</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Vintage Chain Shoulder Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">30cm x 20cm x 9cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">82,000 MMK</p></div>
+            <button onclick="addToInquiry('Vintage Chain Shoulder Bag', 'BVOSBG-008')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="10.jpg" alt="Midnight Glow Clutch" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-009</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Midnight Glow Clutch</h3>
+          <p class="text-xs text-gray-400 mb-4">23cm x 16cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">108,000 MMK</p></div>
+            <button onclick="addToInquiry('Midnight Glow Clutch', 'BVOSBG-009')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="11.jpg" alt="Stylish Stripe Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-010</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Stylish Stripe Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 16cm x 9cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">79,000 MMK</p></div>
+            <button onclick="addToInquiry('Stylish Stripe Crossbody', 'BVOSBG-010')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="12.jpg" alt="Vibrant Stripe Monogram" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-011</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Vibrant Stripe Monogram</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 16cm x 9cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">92,000 MMK</p></div>
+            <button onclick="addToInquiry('Vibrant Stripe Monogram', 'BVOSBG-011')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="13.jpg" alt="Chic Leather (Rabbit)" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-012</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Chic Leather (Rabbit)</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 20cm x 10cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">110,000 MMK</p></div>
+            <button onclick="addToInquiry('Chic Leather (Rabbit)', 'BVOSBG-012')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="14.jpg" alt="Classic Double Buckle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-013</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Classic Double Buckle</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 10cm x 20cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">73,000 MMK</p></div>
+            <button onclick="addToInquiry('Classic Double Buckle', 'BVOSBG-013')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="15.jpg" alt="Classic MK Handbag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-014</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Classic MK Handbag</h3>
+          <p class="text-xs text-gray-400 mb-4">26cm x 20cm x 12cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">88,000 MMK</p></div>
+            <button onclick="addToInquiry('Classic MK Handbag', 'BVOSBG-014')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="16.jpg" alt="Scarlet Elegance Chain" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-015</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Scarlet Elegance Chain</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 15cm x 7cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">74,000 MMK</p></div>
+            <button onclick="addToInquiry('Scarlet Elegance Chain', 'BVOSBG-015')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="17.jpg" alt="Monogram Backpack Set" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-016</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogram Backpack Set</h3>
+          <p class="text-xs text-gray-400 mb-4">27.5cm x 31cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">115,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogram Backpack Set', 'BVOSBG-016')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="18.jpg" alt="Luxe Monogram Flap" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-017</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Monogram Flap</h3>
+          <p class="text-xs text-gray-400 mb-4">21cm x 14cm x 7cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">77,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Monogram Flap', 'BVOSBG-017')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="19.jpg" alt="Elegant Color-Block Tote" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-018</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Elegant Color-Block Tote</h3>
+          <p class="text-xs text-gray-400 mb-4">38cm x 28.8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">79,000 MMK</p></div>
+            <button onclick="addToInquiry('Elegant Color-Block Tote', 'BVOSBG-018')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="20.jpg" alt="Trendy Monogram Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-019</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Trendy Monogram Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">24cm x 14cm x 12cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">66,000 MMK</p></div>
+            <button onclick="addToInquiry('Trendy Monogram Crossbody', 'BVOSBG-019')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="23.jpg" alt="Classic Monogram Satchel" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-022</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Classic Monogram Satchel</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">93,000 MMK</p></div>
+            <button onclick="addToInquiry('Classic Monogram Satchel', 'BVOSBG-022')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="24.jpg" alt="Modern Leather Satchel" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-023</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Modern Leather Satchel</h3>
+          <p class="text-xs text-gray-400 mb-4">29cm x 15cm x 9cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">70,000 MMK</p></div>
+            <button onclick="addToInquiry('Modern Leather Satchel', 'BVOSBG-023')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="25.jpg" alt="Luxe Leather Hobo" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-024</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Leather Hobo</h3>
+          <p class="text-xs text-gray-400 mb-4">28cm x 13cm x 20cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">105,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Leather Hobo', 'BVOSBG-024')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="26.jpg" alt="Heritage Monogram Satchel" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-025</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Heritage Monogram Satchel</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 16cm x 9cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">87,000 MMK</p></div>
+            <button onclick="addToInquiry('Heritage Monogram Satchel', 'BVOSBG-025')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="27.jpg" alt="Signature Saddle Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-026</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Signature Saddle Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 18cm x 6cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">74,000 MMK</p></div>
+            <button onclick="addToInquiry('Signature Saddle Crossbody', 'BVOSBG-026')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="28.jpg" alt="Luxe Leather Hobo (Large)" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-027</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Leather Hobo (Large)</h3>
+          <p class="text-xs text-gray-400 mb-4">42cm x 29cm x 10cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">51,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Leather Hobo (Large)', 'BVOSBG-027')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="29.jpg" alt="Elegant Chain Shoulder" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-028</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Elegant Chain Shoulder</h3>
+          <p class="text-xs text-gray-400 mb-4">21cm x 14cm x 7cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">84,000 MMK</p></div>
+            <button onclick="addToInquiry('Elegant Chain Shoulder', 'BVOSBG-028')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="30.jpg" alt="Luxe Mini Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-029</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Mini Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 14cm x 5cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">73,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Mini Crossbody', 'BVOSBG-029')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="31.jpg" alt="Smile Charm Mini Tote" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-030</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Smile Charm Mini Tote</h3>
+          <p class="text-xs text-gray-400 mb-4">28cm x 25cm x 15cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">80,000 MMK</p></div>
+            <button onclick="addToInquiry('Smile Charm Mini Tote', 'BVOSBG-030')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="32.jpg" alt="Elegant Structured Top Handle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-031</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Elegant Structured Top Handle</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 18cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">77,000 MMK</p></div>
+            <button onclick="addToInquiry('Elegant Structured Top Handle', 'BVOSBG-031')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="33.jpg" alt="Stylish Mini Top Handle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-032</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Stylish Mini Top Handle</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">80,000 MMK</p></div>
+            <button onclick="addToInquiry('Stylish Mini Top Handle', 'BVOSBG-032')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="34.jpg" alt="Luxe Monogram Chain Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-033</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Monogram Chain</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">78,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Monogram Chain Crossbody', 'BVOSBG-033')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="35.jpg" alt="Classic Elegant Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-034</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Classic Elegant Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 14cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">88,500 MMK</p></div>
+            <button onclick="addToInquiry('Classic Elegant Crossbody', 'BVOSBG-034')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="36.jpg" alt="Elegant Chain Strap Shoulder" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-035</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Elegant Chain Strap</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 15cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">88,500 MMK</p></div>
+            <button onclick="addToInquiry('Elegant Chain Strap Shoulder', 'BVOSBG-035')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="37.jpg" alt="Woven Leather Structured Handbag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-036</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Woven Leather Handbag</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 18cm x 12cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">79,000 MMK</p></div>
+            <button onclick="addToInquiry('Woven Leather Structured Handbag', 'BVOSBG-036')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="38.jpg" alt="Sleek Minimalist Hobo" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-037</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Sleek Minimalist Hobo</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">78,000 MMK</p></div>
+            <button onclick="addToInquiry('Sleek Minimalist Hobo', 'BVOSBG-037')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="39.jpg" alt="Floral Chain Accent Shoulder" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-038</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Floral Chain Accent</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 14cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">84,000 MMK</p></div>
+            <button onclick="addToInquiry('Floral Chain Accent Shoulder', 'BVOSBG-038')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="40.jpg" alt="Elegant Gold Chain Quilted" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-039</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Gold Chain Quilted</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">90,000 MMK</p></div>
+            <button onclick="addToInquiry('Elegant Gold Chain Quilted', 'BVOSBG-039')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="41.jpg" alt="Luxe Monogram Saddle Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-040</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Saddle Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">25cm x 18cm x 12cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">84,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Monogram Saddle Crossbody', 'BVOSBG-040')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="42.jpg" alt="Luxe Classic Leather Tote" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-041</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Classic Leather Tote</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">92,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Classic Leather Tote', 'BVOSBG-041')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="43.jpg" alt="Luxe Minimalist Leather Flap" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-042</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Minimalist Leather Flap</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">80,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Minimalist Leather Flap', 'BVOSBG-042')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="44.jpg" alt="Luxe Quilted Leather Chain" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-043</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Luxe Quilted Leather Chain</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">85,000 MMK</p></div>
+            <button onclick="addToInquiry('Luxe Quilted Leather Chain', 'BVOSBG-043')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="45.jpg" alt="Monogram Vintage Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-044</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogram Vintage Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">80,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogram Vintage Crossbody', 'BVOSBG-044')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="46.jpg" alt="Quilted Chain Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-045</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Quilted Chain Shoulder Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">85,000 MMK</p></div>
+            <button onclick="addToInquiry('Quilted Chain Shoulder Bag', 'BVOSBG-045')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="47.jpg" alt="Elegant Mini Top Handle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-046</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Elegant Mini Top Handle</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 17cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">80,000 MMK</p></div>
+            <button onclick="addToInquiry('Elegant Mini Top Handle', 'BVOSBG-046')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="48.jpg" alt="Chic Leather Bucket Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-047</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Chic Leather Bucket Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">22cm x 17cm x 10cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">80,000 MMK</p></div>
+            <button onclick="addToInquiry('Chic Leather Bucket Bag', 'BVOSBG-047')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="49.jpg" alt="Crocodile-Textured Mini Handbag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-048</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Crocodile-Textured Mini</h3>
+          <p class="text-xs text-gray-400 mb-4">17cm x 21cm x 8cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">85,000 MMK</p></div>
+            <button onclick="addToInquiry('Crocodile-Textured Mini Handbag', 'BVOSBG-048')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="50.jpg" alt="Vintage-Inspired Round Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-049</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Vintage-Inspired Round Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">20cm x 18cm x 9cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">95,000 MMK</p></div>
+            <button onclick="addToInquiry('Vintage-Inspired Round Bag', 'BVOSBG-049')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="51.jpg" alt="Signature Monogram Structured Tote" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-050</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Signature Structured Tote</h3>
+          <p class="text-xs text-gray-400 mb-4">21cm x 13cm x 10cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">85,000 MMK</p></div>
+            <button onclick="addToInquiry('Signature Monogram Structured Tote', 'BVOSBG-050')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="52.jpg" alt="Signature Monogram Structured Tote (Black)" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVOSBG-050</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Signature Structured Tote (Black)</h3>
+          <p class="text-xs text-gray-400 mb-4">21cm x 13cm x 10cm</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">85,000 MMK</p></div>
+            <button onclick="addToInquiry('Signature Monogram Structured Tote (Black)', 'BVOSBG-050')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="53.jpg" alt="Triomphe Leather Crossbody" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0011</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Triomphe Leather Crossbody</h3>
+          <p class="text-xs text-gray-400 mb-4">Elegant design with gold hardware</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">168,000 MMK</p></div>
+            <button onclick="addToInquiry('Triomphe Leather Crossbody', 'BVBCFC-0011')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="54.jpg" alt="Signature Monogram Tote" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0005</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Signature Monogram Tote</h3>
+          <p class="text-xs text-gray-400 mb-4">Spacious design for daily essentials</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">285,000 MMK</p></div>
+            <button onclick="addToInquiry('Signature Monogram Tote', 'BVBCFC-0005')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="55.jpg" alt="Vintage Half-Moon Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0018</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Vintage Half-Moon Shoulder</h3>
+          <p class="text-xs text-gray-400 mb-4">Chic monogram with chain detail</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">168,000 MMK</p></div>
+            <button onclick="addToInquiry('Vintage Half-Moon Shoulder Bag', 'BVBCFC-0018')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="56.jpg" alt="Elegant White Tote" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0021</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Elegant White Tote</h3>
+          <p class="text-xs text-gray-400 mb-4">Sophisticated design with gold accents</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">168,000 MMK</p></div>
+            <button onclick="addToInquiry('Elegant White Tote', 'BVBCFC-0021')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="57.jpg" alt="Monogram Clutch with Chain" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0017</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogram Clutch with Chain</h3>
+          <p class="text-xs text-gray-400 mb-4">Compact and stylish for evenings</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogram Clutch with Chain', 'BVBCFC-0017')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="58.jpg" alt="Quilted Chain Handle Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0014</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Quilted Chain Handle Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">Luxurious chevron quilting</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Quilted Chain Handle Bag', 'BVBCFC-0014')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="59.jpg" alt="Dionysus Style Shoulder Bag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-008</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Dionysus Style Shoulder Bag</h3>
+          <p class="text-xs text-gray-400 mb-4">Iconic buckle detail with chain strap</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Dionysus Style Shoulder Bag', 'BVBCFC-008')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="60.jpg" alt="Monogram Top Handle Satchel" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-008</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogram Top Handle Satchel</h3>
+          <p class="text-xs text-gray-400 mb-4">Structured design with signature print</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogram Top Handle Satchel', 'BVBCFC-008')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="61.jpg" alt="Crocodile Effect Top Handle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0022</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Crocodile Effect Top Handle</h3>
+          <p class="text-xs text-gray-400 mb-4">Available in vibrant colors</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Crocodile Effect Top Handle', 'BVBCFC-0022')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="62.jpg" alt="Monogram Tote with Pouch" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-007</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogram Tote with Pouch</h3>
+          <p class="text-xs text-gray-400 mb-4">Includes matching round coin purse</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">168,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogram Tote with Pouch', 'BVBCFC-007')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="63.jpg" alt="Monogram Clutch with Chain" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0017</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogram Clutch with Chain</h3>
+          <p class="text-xs text-gray-400 mb-4">Stylish evening clutch</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogram Clutch with Chain', 'BVBCFC-0017')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="64.jpg" alt="Coach-Style Monogram Handbag" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-006</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Coach-Style Monogram Handbag</h3>
+          <p class="text-xs text-gray-400 mb-4">Classic and elegant design</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Coach-Style Monogram Handbag', 'BVBCFC-006')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="65.jpg" alt="Embossed Leather Tote" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0010</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Embossed Leather Tote</h3>
+          <p class="text-xs text-gray-400 mb-4">Spacious and sophisticated</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Embossed Leather Tote', 'BVBCFC-0010')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="66.jpg" alt="Monogram Top Handle Satchel" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0020</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Monogram Top Handle Satchel</h3>
+          <p class="text-xs text-gray-400 mb-4">Elegant and structured</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">200,000 MMK</p></div>
+            <button onclick="addToInquiry('Monogram Top Handle Satchel', 'BVBCFC-0020')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="67.jpg" alt="Croc-Embossed Top Handle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0022</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Croc-Embossed Top Handle</h3>
+          <p class="text-xs text-gray-400 mb-4">Luxurious texture in black</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">225,000 MMK</p></div>
+            <button onclick="addToInquiry('Croc-Embossed Top Handle', 'BVBCFC-0022')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl overflow-hidden product-card transition duration-300 group relative">
+        <div class="h-72 overflow-hidden relative bg-gray-800">
+          <img src="68.jpg" alt="Quilted Mini Top Handle" class="product-img w-full h-full object-cover transition duration-700">
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded tracking-wider">BVBCFC-0023</span>
+        </div>
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-white truncate">Quilted Mini Top Handle</h3>
+          <p class="text-xs text-gray-400 mb-4">Chic and feminine design</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-[10px] text-gray-500 uppercase">Retail Price</p><p class="text-xl font-bold text-[#FFC700]">285,000 MMK</p></div>
+            <button onclick="addToInquiry('Quilted Mini Top Handle', 'BVBCFC-0023')" class="bg-white/10 hover:bg-[#FFC700] hover:text-black text-white h-10 w-10 rounded-full flex items-center justify-center transition border border-white/20"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+   <section id="chat" class="py-16 bg-[#0B1221] border-t border-white/10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-garamond font-bold text-white">Ask <span class="text-[#FFC700]">BRIA</span> About Bags</h2>
+        <p class="text-gray-400 mt-2">Need help choosing a style or checking bulk prices? Ask our AI.</p>
+      </div>
+
+      <div class="glass rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[500px] border border-[#FFC700]/20">
+        <div id="chatMessages" class="flex-1 overflow-y-auto p-6 space-y-4">
+          <div class="flex justify-start chat-bubble">
+            <div class="bg-slate-700 text-white rounded-lg rounded-tl-none px-5 py-3 max-w-[85%] border border-slate-600 shadow-md">
+              <p class="font-semibold text-[#FFC700] mb-1 text-xs">BRIA AI</p>
+              👋 Hi! I can help you with bag materials, sizes, or wholesale pricing. What would you like to know?
+            </div>
+          </div>
+        </div>
+        <div class="p-4 bg-black/40 border-t border-white/10 flex gap-3 items-center">
+          <input id="chatInput" type="text" placeholder="Ask about bags..." class="flex-1 bg-slate-900 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#FFC700] border border-slate-700 transition placeholder-gray-500">
+          <button id="chatSend" class="bg-[#FFC700] text-black px-6 py-3 rounded-xl font-bold hover:bg-yellow-400 transition shadow-lg flex items-center gap-2">Send ➤</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="inquiry-modal" class="fixed inset-0 z-[70] bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300">
+    <div class="bg-slate-900 border border-white/10 max-w-lg w-full rounded-2xl p-8 relative shadow-2xl">
+      <button onclick="toggleInquiryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl transition"><i class="fas fa-times"></i></button>
+      <h2 class="text-2xl font-garamond font-bold text-white mb-2">Request Quotation</h2>
+      
+      <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+           <h4 class="text-xs font-bold text-[#FFC700] uppercase tracking-wide">Selected Items</h4>
+           <button onclick="clearInquiryList()" class="text-xs text-red-400 hover:underline">Clear All</button>
+        </div>
+        <ul id="inquiry-list" class="text-sm text-gray-300 space-y-2 max-h-48 overflow-y-auto border border-white/10 p-3 rounded bg-black/30">
+          <li class="italic text-gray-500 text-center py-6">Your list is empty.</li>
+        </ul>
+      </div>
+
+      <form action="https://formsubmit.co/info@britiumventures.com" method="POST" onsubmit="return validateForm()">
+        <input type="hidden" name="_subject" value="New Bag Inquiry">
+        <input type="hidden" name="inquiry_details" id="hidden-inquiry-data">
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <input type="text" name="name" placeholder="Name" required class="w-full bg-slate-800 border-slate-700 rounded p-2 text-white text-sm">
+          <input type="text" name="contact" placeholder="Phone/Email" required class="w-full bg-slate-800 border-slate-700 rounded p-2 text-white text-sm">
+        </div>
+        <button type="submit" class="w-full bg-[#FFC700] hover:bg-yellow-500 text-black font-bold py-3 rounded-lg transition">Send Request</button>
+      </form>
     </div>
   </div>
-</section>
 
-<!-- PRODUCT SHOWCASE -->
-<section class="py-20 bg-slate-900/50">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h2 class="font-garamond text-4xl font-bold text-white mb-12">Our <span class="text-[#FFC700]">Collection</span></h2>
-    <div class="video-grid">
-      <video autoplay muted loop playsinline src="https://cdn1.site-media.eu/images/0/19097620/9-AHH7lxM2eFxUVE2PZwwn6A.mp4"></video>
-      <video autoplay muted loop playsinline src="https://cdn1.site-media.eu/images/0/19097679/7-Zemx1vAUBifyQlPs5A5o-Q.mp4"></video>
-      <video autoplay muted loop playsinline src="https://cdn1.site-media.eu/images/0/19097707/3-L8V4a9cybfs3AqR9NrFOiA.mp4"></video>
-      <video autoplay muted loop playsinline src="https://cdn1.site-media.eu/images/0/19097598/12-Dfo5dbCIVBwlJDn8yb8_Zg.mp4"></video>
-    </div>
-  </div>
-</section>
+  <footer class="bg-black py-8 text-center text-gray-500 text-xs border-t border-gray-900">
+    &copy; <span id="year"></span> Britium Ventures Co., Ltd. All Rights Reserved.
+  </footer>
 
-<!-- FOOTER -->
-<footer class="py-12 bg-slate-950/50 text-slate-400 border-t border-slate-800 text-center">
-  <div class="max-w-7xl mx-auto px-6">
-    <p>&copy; <span id="yr"></span> BRITIUM VENTURES CO., LTD. All Rights Reserved.</p>
-  </div>
-</footer>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // === Animate on scroll ===
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+  <script>
+    // --- INQUIRY LOGIC ---
+    let inquiryItems = [];
 
-    document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
+    function addToInquiry(name, sku) {
+      // Check if item already exists
+      const exists = inquiryItems.some(item => item.sku === sku);
+      if(exists) {
+        alert("This item is already in your inquiry list.");
+        return;
+      }
 
-    // === Footer Year ===
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // === Mobile Menu Toggle ===
-    const toggle = document.getElementById("mobile-toggle");
-    const menuContainer = document.getElementById("mobile-menu-container");
-    const menu = document.getElementById("mobile-menu");
-    const overlay = document.getElementById("mobile-menu-overlay");
-
-    if (toggle && menuContainer && menu && overlay) {
-      const toggleMenu = () => {
-        const isHidden = menuContainer.classList.contains("hidden");
-        if (isHidden) {
-          menuContainer.classList.remove("hidden");
-          setTimeout(() => menu.classList.remove("translate-x-full"), 20);
-        } else {
-          menu.classList.add("translate-x-full");
-          setTimeout(() => menuContainer.classList.add("hidden"), 300);
-        }
-      };
-
-      toggle.addEventListener("click", toggleMenu);
-      overlay.addEventListener("click", toggleMenu);
+      inquiryItems.push({ name, sku });
+      updateInquiryUI();
+      
+      // Animate badge
+      const badge = document.getElementById('inquiry-count');
+      badge.classList.remove('hidden');
+      badge.classList.add('badge-anim');
+      setTimeout(() => badge.classList.remove('badge-anim'), 300);
     }
 
-  // --- HERO VIDEO SOUND CONTROLS ---
-  const heroVideo = document.querySelector("#hero video");
-  const unmuteBtn = document.getElementById("unmute-btn");
-  const volumeSlider = document.getElementById("volume-slider");
+    function removeFromInquiry(index) {
+      inquiryItems.splice(index, 1);
+      updateInquiryUI();
+    }
 
-  if (heroVideo) {
-    async function playVideoWithSound() {
-      try {
-        heroVideo.muted = false;
-        await heroVideo.play();
-        unmuteBtn.textContent = "🔊";
-      } catch (err) {
-        heroVideo.muted = true;
-        heroVideo.play();
-        unmuteBtn.textContent = "🔇";
+    function clearInquiryList() {
+      inquiryItems = [];
+      updateInquiryUI();
+    }
+
+    function updateInquiryUI() {
+      const badge = document.getElementById('inquiry-count');
+      const list = document.getElementById('inquiry-list');
+      const hiddenInput = document.getElementById('hidden-inquiry-data');
+
+      // Update Badge
+      badge.textContent = inquiryItems.length;
+      if (inquiryItems.length === 0) badge.classList.add('hidden');
+      else badge.classList.remove('hidden');
+
+      // Update List HTML
+      if (inquiryItems.length === 0) {
+        list.innerHTML = '<li class="italic text-gray-500 text-center py-6">Your list is empty.</li>';
+        hiddenInput.value = "";
+      } else {
+        list.innerHTML = inquiryItems.map((item, index) => `
+          <li class="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 hover:bg-white/5 p-2 rounded transition">
+            <div class="flex flex-col">
+              <span class="font-semibold text-white">${item.name}</span>
+              <span class="text-[10px] text-gray-500 tracking-wider">${item.sku}</span>
+            </div>
+            <button onclick="removeFromInquiry(${index})" class="text-gray-500 hover:text-red-400 transition px-2">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </li>
+        `).join('');
+        
+        // Update Form Data
+        hiddenInput.value = inquiryItems.map(i => `${i.name} [${i.sku}]`).join(', ');
       }
     }
-    playVideoWithSound();
 
-    unmuteBtn.addEventListener("click", () => {
-      heroVideo.muted = !heroVideo.muted;
-      unmuteBtn.textContent = heroVideo.muted ? "🔇" : "🔊";
+    function toggleInquiryModal() {
+      const modal = document.getElementById('inquiry-modal');
+      modal.classList.toggle('hidden');
+    }
+
+    function validateForm() {
+      if (inquiryItems.length === 0) {
+        alert("Please select at least one item before sending an inquiry.");
+        return false;
+      }
+      return true;
+    }
+ // --- CHATBOT LOGIC ---
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+      const chatMessages = document.getElementById("chatMessages");
+
+      async function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        addMessage(text, true);
+        chatInput.value = "";
+        
+        const loadingId = "loading-" + Date.now();
+        const loadingDiv = document.createElement("div");
+        loadingDiv.className = "flex justify-start chat-bubble";
+        loadingDiv.innerHTML = `<div id="${loadingId}" class="bg-slate-700 text-gray-300 rounded-2xl rounded-tl-none px-5 py-3 text-sm italic">Thinking...</div>`;
+        chatMessages.appendChild(loadingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+          const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text })
+          });
+          const data = await response.json();
+          loadingDiv.remove();
+          addMessage(data.reply ? data.reply.replace(/\n/g, "<br>") : "Connection error.", false);
+        } catch (err) { loadingDiv.remove(); addMessage("Server error.", false); }
+      }
+
+      function addMessage(text, isUser) {
+        const div = document.createElement("div");
+        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} chat-bubble`;
+        div.innerHTML = `<div class="${isUser ? 'bg-[#FFC700] text-black rounded-tr-none' : 'bg-slate-700 text-white rounded-tl-none'} rounded-2xl px-5 py-3 max-w-[85%] text-sm shadow-md">${text}</div>`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      chatSend.addEventListener("click", sendMessage);
+      chatInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
     });
+  </script>
 
-    volumeSlider.addEventListener("input", (e) => {
-      heroVideo.volume = e.target.value;
-      if (heroVideo.volume > 0) {
-        heroVideo.muted = false;
-        unmuteBtn.textContent = "🔊";
-      }
-    });
-  }
-    // === Synchronized Gallery Slideshow ===
-    const galleryImages = [
-      "https://cdn1.site-media.eu/images/0/19065170/Untitleddesign5-N705BFCzUr9gDXeRdtVPNQ.jpg",
-      "https://cdn1.site-media.eu/images/0/19062237/6-H87QEwywSJoNUR0L4xvUxA.jpg",
-      "https://cdn1.site-media.eu/images/0/19059492/viber_image_2025-09-09_19-54-25-465-I_Az5INnLsq57CkmidwaTw.jpg",
-      "https://cdn1.site-media.eu/images/0/19062240/5-8n8aK1fNsJRUfQbSX2EciQ.jpg",
-      "https://cdn1.site-media.eu/images/0/19062243/4-iOMdXnLsKgvj9w60TZCnLA.jpg",
-      "https://cdn1.site-media.eu/images/0/19062234/7-vZ1t1UOLnULFpOMYKN6pnA.jpg",
-      "https://cdn1.site-media.eu/images/0/19062231/8-IGz2WUmU1YkO-GLb-3-sUg.jpg",
-      "https://cdn1.site-media.eu/images/0/19062225/10-AfT1QLfc6jDUUUdxjFyqfA.jpg",
-      "https://cdn1.site-media.eu/images/0/19059475/viber_image_2025-09-09_20-21-58-316-PObM7_KuLuwgoi-vAuaeYw.jpg"
-    ];
-
-    const img1 = document.getElementById("gallery-img-1");
-    const img2 = document.getElementById("gallery-img-2");
-    const img3 = document.getElementById("gallery-img-3");
-
-    let galleryIndex = 0;
-    function rotateGallery() {
-      if (img1 && img2 && img3) {
-        const total = galleryImages.length;
-        img1.src = galleryImages[galleryIndex % total];
-        img2.src = galleryImages[(galleryIndex + 1) % total];
-        img3.src = galleryImages[(galleryIndex + 2) % total];
-        galleryIndex++;
-      }
-    }
-    setInterval(rotateGallery, 4000);
-
-    // === Widgets ===
-
-    // Time
-    const timeEl = document.getElementById('local-time');
-    if (timeEl) {
-      const updateTime = () => {
-        timeEl.textContent = new Date().toLocaleTimeString('en-US', {
-          timeZone: 'Asia/Yangon',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false
-        });
-      };
-      updateTime();
-      setInterval(updateTime, 1000);
-    }
-
-    // Weather
-    (async () => {
-      const elW = document.getElementById('weather');
-      if (!elW) return;
-      try {
-        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=16.8&longitude=96.16&current_weather=true');
-        const data = await res.json();
-        elW.textContent = `${Math.round(data.current_weather.temperature)}°C`;
-      } catch {
-        elW.textContent = 'N/A';
-      }
-    })();
-
-    // Currency (USD → MMK)
-    (async () => {
-      const el = document.getElementById('currency');
-      if (!el) return;
-      try {
-        const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-        const data = await res.json();
-        const mmk = data?.rates?.MMK;
-        el.textContent = mmk ? Number(mmk).toLocaleString('en-US', { maximumFractionDigits: 0 }) : 'N/A';
-      } catch {
-        el.textContent = 'N/A';
-      }
-    })();
-
-    // Visitors
-    const visitorEl = document.getElementById('visitor-count');
-    if (visitorEl) {
-      let count = Math.floor(Math.random() * 5) + 3;
-      visitorEl.textContent = count;
-      setInterval(() => {
-        if (Math.random() > 0.6) {
-          count += Math.random() > 0.5 ? 1 : -1;
-          visitorEl.textContent = Math.max(count, 2);
-        }
-      }, 3000);
-    }
-
-    // === AI Chat ===
-    const chatWindow = document.getElementById("chat-window");
-    const chatInput = document.getElementById("chat-input");
-    const chatSend = document.getElementById("chat-send");
-    const apiKey = "OPENAI_API_KEY"; 
-    const addMessage = (text, isUser = false) => {
-      const div = document.createElement("div");
-      div.textContent = text;
-      div.className = `px-4 py-2 rounded-lg w-fit max-w-xs ${isUser ? 'ml-auto bg-[#FFC700] text-black font-medium' : 'bg-slate-700/50 text-white'}`;
-      chatWindow.appendChild(div);
-      chatWindow.scrollTop = chatWindow.scrollHeight;
-      return div;
-    };
-
-    const sendMessage = async () => {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      addMessage(text, true);
-      chatInput.value = "";
-
-      const loading = addMessage("Typing...", false);
-      try {
-        const res = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${apiKey}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-              { role: "system", content: "You are Britium Ventures' AI assistant. Be professional, concise, and helpful." },
-              { role: "user", content: text }
-            ],
-            temperature: 0.7
-          })
-        });
-
-        const data = await res.json();
-        const reply = data.choices?.[0]?.message?.content || "⚠️ Sorry, something went wrong.";
-        loading.remove();
-        addMessage(reply, false);
-      } catch (err) {
-        loading.remove();
-        addMessage("⚠️ Unable to reach AI right now. Please try again.", false);
-      }
-    };
-
-    if (chatSend) chatSend.addEventListener("click", sendMessage);
-    if (chatInput) chatInput.addEventListener("keypress", e => {
-      if (e.key === "Enter") sendMessage();
-    });
-  });
-
-  overlay.addEventListener("click", () => {
-    menu.classList.add("translate-x-full");
-    setTimeout(() => {
-      menuContainer.classList.add("hidden");
-    }, 300);
-  });
-
-  // Optional: close menu when clicking any link inside
-  document.querySelectorAll(".mobile-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.add("translate-x-full");
-      setTimeout(() => {
-        menuContainer.classList.add("hidden");
-      }, 300);
-    });
-  });
-</script>
 </body>
 </html>
