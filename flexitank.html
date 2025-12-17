@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flexitanks — BRITIUM VENTURES</title>
-  <meta name="description" content="Certified Flexitank solutions for safe, efficient bulk liquid transport of oils, juices, and industrial fluids." />
+  <title>Liquiride Flexitanks | BRITIUM VENTURES</title>
+  <meta name="description" content="Certified Liquiride Flexitank solutions for safe, efficient bulk liquid transport. rigorous testing and secure loading processes." />
   <meta name="theme-color" content="#020617" />
-  <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" />
+  <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png">
 
-  <!-- Fonts & Tailwind CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Styles -->
   <style>
     body {
       background-color: #020617;
@@ -28,6 +27,7 @@
     .glass {
       background: rgba(11, 21, 39, 0.65);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .hero-video {
@@ -40,7 +40,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(10, 25, 47, 0.55);
+      background: rgba(10, 25, 47, 0.7);
       z-index: 1;
     }
     .hero-content {
@@ -54,223 +54,239 @@
       text-align: center;
       padding: 2rem;
     }
-    .spinner {
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top: 4px solid #FFC700;
-      width: 24px;
-      height: 24px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    /* Chat Bubble Animation */
+    .chat-bubble { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
   </style>
 </head>
+
 <body class="antialiased overflow-x-hidden">
 
-<div id="particles-js"></div>
-
-<!-- HEADER -->
-<header class="fixed inset-x-0 top-0 z-50 bg-black/30 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3">
-      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
-   <span class="font-garamond text-xl font-bold text-white"> BRITIUM <span class="text-gold">VENTURES</span>
-    </a>
-    <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-200">
-      <a href="index.html" class="hover:text-[#FFC700]">Home</a>
-      <a href="about.html" class="hover:text-[#FFC700]">About</a>
-      <a href="team.html" class="hover:text-[#FFC700]">Team</a>
-      <a href="careers.html" class="hover:text-[#FFC700]">Careers</a>
-      <a href="capabilities.html" class="hover:text-[#FFC700]">Capabilities</a>
-      <a href="solutions.html" class="hover:text-[#FFC700]">Solutions</a>
-      <a href="products.html" class="hover:text-[#FFC700]">Products</a>
-      <a href="markets.html" class="hover:text-[#FFC700]">Markets</a>
-      <a href="gallery.html" class="hover:text-[#FFC700]">Gallery</a>
-      <a href="contact.html" class="hover:text-[#FFC700]">Contact</a>
-      <a href="chat.html" class="px-4 py-2 rounded-md bg-[#FFC700]/10 text-[#FFC700] border border-[#FFC700]/20 hover:bg-[#FFC700]/20">AI Chat</a>
-    </nav>
-    <button id="mobile-toggle" class="md:hidden text-white text-3xl" aria-label="Toggle Menu">☰</button>
-  </div>
-</header>
-
-<!-- MOBILE MENU -->
-<div id="mobile-menu-container" class="fixed inset-0 z-40 md:hidden hidden">
-  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/70"></div>
-  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-900/90 p-8 transform translate-x-full transition-transform">
-    <div class="flex flex-col gap-y-6 mt-16 text-lg text-white mobile-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="team.html">Team</a>
-      <a href="careers.html">Careers</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="products.html">Products</a>
-      <a href="markets.html">Markets</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="chat.html">AI Chat</a>
+  <header class="fixed w-full z-50 bg-black/90 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="products.html" class="flex items-center gap-2 text-gray-300 hover:text-[#FFC700] transition">
+        <i class="fas fa-arrow-left"></i> <span class="font-semibold">Back to Products</span>
+      </a>
+      <span class="text-xl font-bold text-white font-garamond">BRITIUM <span class="text-[#FFC700]">LOGISTICS</span></span>
     </div>
-  </nav>
-</div>
+  </header>
 
-<main>
-  <!-- HERO -->
-  <section class="relative h-[55vh] flex items-center justify-center text-center overflow-hidden">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="https://cdn1.site-media.eu/images/0/19098154/OTKI9888-pvjSLcgJ8pJUDRce0_SRdA.MP4" type="video/mp4" />
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="font-garamond text-white text-5xl font-bold">Bulk Liquid <span class="text-[#FFC700]">Flexitanks</span></h1>
-      <p class="mt-3 max-w-2xl">Safe, certified, and cost-effective transport for edible oils, juices, and industrial fluids.</p>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="py-20 max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div class="glass p-8 rounded-xl">
-        <h3 class="text-xl font-bold text-white">Technical Specs</h3>
-        <p class="mt-2">Capacity from 12,000 to 24,000 Liters. Multi-layer LLDPE with woven PP reinforcement.</p>
-      </div>
-      <div class="glass p-8 rounded-xl">
-        <h3 class="text-xl font-bold text-white">Certifications</h3>
-        <p class="mt-2">FDA approved, ISO 9001/14001 certified, rail impact tested, and insured up to USD 5M.</p>
-      </div>
-      <div class="glass p-8 rounded-xl">
-        <h3 class="text-xl font-bold text-white">Versatile Applications</h3>
-        <p class="mt-2">Ideal for food-grade liquids, non-hazardous chemicals, water, and agricultural extracts.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI LOGISTICS ASSISTANT -->
-  <section class="py-20 bg-slate-900/50" id="ai-logistics-assistant">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="font-garamond text-4xl font-bold text-white">✨ AI <span class="text-[#FFC700]">Bulk Liquid Assistant</span></h2>
-      <p class="mt-4 text-slate-300">Have a technical question? Ask our Gemini-powered assistant about shipping requirements.</p>
-      <div class="glass p-8 rounded-xl mt-12 text-left">
-        <label for="liquid-type" class="block text-sm font-medium text-white mb-2">What type of non-hazardous liquid are you shipping?</label>
-        <input type="text" id="liquid-type" class="w-full bg-slate-800 border border-slate-700 rounded-md p-2 text-white" placeholder="e.g., Palm oil, juice concentrate..." />
-        <div class="mt-6 text-center">
-          <button id="get-info-btn" class="px-8 py-3 rounded-lg font-bold bg-[#FFC700] text-slate-950 hover:bg-yellow-500 transition-colors">Get Shipping Info</button>
+  <main>
+    <section class="relative h-[60vh] flex items-center justify-center text-center overflow-hidden">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="BIG Red LIQUIRIDE Flexitank Container Testing.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="font-garamond text-5xl md:text-7xl font-bold text-white mb-4">Liquiride <span class="text-[#FFC700]">Flexitanks</span></h1>
+        <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto">Advanced bulk liquid transport solutions. Rigorously tested for safety and efficiency.</p>
+        <div class="mt-8 flex gap-4">
+             <a href="#process" class="bg-[#FFC700] text-black px-8 py-3 rounded-lg font-bold hover:bg-yellow-400 transition">See Process</a>
+             <a href="#chat" class="border border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-black transition">Ask AI</a>
         </div>
-        <div id="shipping-info" class="mt-6"></div>
       </div>
+    </section>
+
+    <section id="process" class="py-20 max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-garamond font-bold text-white">The <span class="text-[#FFC700]">Liquiride</span> Standard</h2>
+        <p class="text-gray-400 mt-3">Ensuring safe transportation through meticulous preparation and testing.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass p-6 rounded-2xl text-center hover:bg-white/5 transition">
+          <div class="text-[#FFC700] text-3xl mb-4"><i class="fas fa-box-open"></i></div>
+          <h3 class="text-lg font-bold text-white mb-2">Preparation</h3>
+          <p class="text-gray-400 text-sm">Container cleaning and inspection. Fitting of cardboard separation on walls and floor to protect the flexibag.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl text-center hover:bg-white/5 transition">
+          <div class="text-[#FFC700] text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="text-lg font-bold text-white mb-2">Installation</h3>
+          <p class="text-gray-400 text-sm">Expert installation of the Liquiride flexitank, including rigid metal frame and door separation for stability.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl text-center hover:bg-white/5 transition">
+          <div class="text-[#FFC700] text-3xl mb-4"><i class="fas fa-fill-drip"></i></div>
+          <h3 class="text-lg font-bold text-white mb-2">Loading</h3>
+          <p class="text-gray-400 text-sm">Secure connection of supply hose. Cargo capacities up to 24 tons or 26,000 liters loaded efficiently.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl text-center hover:bg-white/5 transition">
+          <div class="text-[#FFC700] text-3xl mb-4"><i class="fas fa-check-circle"></i></div>
+          <h3 class="text-lg font-bold text-white mb-2">Testing</h3>
+          <p class="text-gray-400 text-sm">Subjected to rigorous Rail Impact Tests (e.g., TÜV SÜD Rail Görlitz) to ensure durability during transport.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-slate-900/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                     <h2 class="text-3xl font-garamond font-bold text-white mb-6">Why Choose <span class="text-[#FFC700]">Flexitanks?</span></h2>
+                     <ul class="space-y-4 text-gray-300">
+                         <li class="flex items-start gap-3">
+                             <i class="fas fa-check-circle text-[#FFC700] mt-1"></i>
+                             <div><strong>Cost-Effective:</strong> Significantly lower shipping costs compared to drums or ISO tanks.</div>
+                         </li>
+                         <li class="flex items-start gap-3">
+                             <i class="fas fa-check-circle text-[#FFC700] mt-1"></i>
+                             <div><strong>High Capacity:</strong> Maximize your payload with capacities up to 26,000 liters.</div>
+                         </li>
+                         <li class="flex items-start gap-3">
+                             <i class="fas fa-check-circle text-[#FFC700] mt-1"></i>
+                             <div><strong>Safety First:</strong> Multi-layer protection and rigorous impact testing ensure zero leakage.</div>
+                         </li>
+                         <li class="flex items-start gap-3">
+                             <i class="fas fa-check-circle text-[#FFC700] mt-1"></i>
+                             <div><strong>Easy Handling:</strong> Simplified loading and unloading process with standard fittings.</div>
+                         </li>
+                     </ul>
+                </div>
+                <div class="glass p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Technical Specifications</h3>
+                    <table class="w-full text-left text-sm text-gray-400">
+                        <tbody>
+                            <tr class="border-b border-white/10">
+                                <td class="py-3 font-semibold text-white">Capacity</td>
+                                <td class="py-3">16,000L - 26,000L</td>
+                            </tr>
+                             <tr class="border-b border-white/10">
+                                <td class="py-3 font-semibold text-white">Valve Type</td>
+                                <td class="py-3">Top Load / Bottom Discharge</td>
+                            </tr>
+                             <tr class="border-b border-white/10">
+                                <td class="py-3 font-semibold text-white">Layers</td>
+                                <td class="py-3">Multi-layer PE + PP Sleeve</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-semibold text-white">Certification</td>
+                                <td class="py-3">COA, FDA, Rail Impact Tested</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                     <div class="mt-6">
+                        <button onclick="document.getElementById('chatInput').value='I need a quote for 24,000L flexitank shipping'; document.getElementById('chatSend').click(); window.location.href='#chat'" class="w-full bg-[#FFC700] text-black py-3 rounded-lg font-bold hover:bg-yellow-400 transition">Get a Quote</button>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chat" class="py-16 bg-[#0B1221] border-t border-white/10">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-garamond font-bold text-white">Ask <span class="text-[#FFC700]">BRIA</span></h2>
+          <p class="text-gray-400 mt-2">Questions about liquid compatibility or shipping routes? Ask our AI assistant.</p>
+        </div>
+
+        <div class="glass rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[500px] border border-[#FFC700]/20">
+          
+          <div id="chatMessages" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div class="flex justify-start chat-bubble">
+              <div class="bg-slate-700 text-white rounded-lg rounded-tl-none px-5 py-3 max-w-[85%] border border-slate-600 shadow-md">
+                <p class="font-semibold text-[#FFC700] mb-1 text-xs">BRIA AI</p>
+                👋 Hello! I'm BRIA. I can help you with Flexitank specifications, liquid compatibility checks, or shipping quotes. What liquid are you planning to transport?
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-black/40 border-t border-white/10 flex gap-3 items-center">
+            <input id="chatInput" type="text" placeholder="e.g. Can you ship sunflower oil?" class="flex-1 bg-slate-900 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#FFC700] border border-slate-700 transition placeholder-gray-500">
+            <button id="chatSend" class="bg-[#FFC700] text-black px-6 py-3 rounded-xl font-bold hover:bg-yellow-400 transition shadow-lg flex items-center gap-2">
+              Send <span class="text-lg">➤</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-12 bg-slate-950/50 text-slate-400 border-t border-slate-800 text-center">
+    <div class="max-w-7xl mx-auto px-6">
+      <p>&copy; <span id="yr"></span> BRITIUM VENTURES CO., LTD. All Rights Reserved.</p>
     </div>
-  </section>
+  </footer>
 
-  <!-- CTA -->
-  <section class="py-16 text-center">
-    <h3 class="font-garamond text-3xl md:text-4xl font-bold text-white">Inquire About Bulk Liquid Transport</h3>
-    <div class="mt-5 flex flex-wrap justify-center gap-3">
-      <a href="tel:+95989747711" class="px-6 py-3 rounded-lg font-bold bg-[#FFC700] text-slate-950 hover:bg-yellow-500 transition-colors">Call Us</a>
-      <a href="products.html" class="px-6 py-3 rounded-lg font-bold bg-transparent border border-[#FFC700] text-[#FFC700] hover:bg-[#FFC700]/10 transition-colors">Back to Products</a>
-    </div>
-  </section>
-</main>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set Year
+      document.getElementById("yr").textContent = new Date().getFullYear();
 
-<!-- FOOTER -->
-<footer class="py-12 bg-slate-950/50 text-slate-400 border-t border-slate-800">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <p>&copy; <span id="yr"></span> BRITIUM VENTURES CO., LTD. All Rights Reserved.</p>
-  </div>
-</footer>
+      // --- CHATBOT LOGIC ---
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+      const chatMessages = document.getElementById("chatMessages");
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const $ = sel => document.querySelector(sel);
-    $('#yr').textContent = new Date().getFullYear();
+      function addMessage(text, isUser) {
+        const div = document.createElement("div");
+        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} chat-bubble`;
+        
+        const label = isUser ? '' : '<p class="font-semibold text-[#FFC700] mb-1 text-xs">BRIA AI</p>';
+        const bubbleClass = isUser 
+          ? 'bg-[#FFC700] text-black rounded-tr-none' 
+          : 'bg-slate-700 text-white border border-slate-600 rounded-tl-none';
 
-    if ($('#particles-js')) {
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 40 },
-          color: { value: "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.2, random: true },
-          size: { value: 2.5, random: true },
-          line_linked: { enable: false },
-          move: { enable: true, speed: 1.5, direction: "none", random: true, out_mode: "out" }
-        },
-        interactivity: { detect_on: "canvas", events: { onhover: { enable: false } } }
-      });
-    }
-
-    const getInfoBtn = $('#get-info-btn');
-    const infoContainer = $('#shipping-info');
-
-    getInfoBtn.addEventListener('click', async () => {
-      const liquid = $('#liquid-type').value.trim();
-      if (!liquid) return;
-
-      infoContainer.innerHTML = `<div class="flex justify-center mt-4"><div class="spinner"></div></div>`;
-
-      const systemPrompt = `You are a logistics assistant at Britium Ventures. The user provides a non-hazardous liquid. Respond with expert shipping advice: temperature, documentation, handling, compatibility, etc.`;
-
-      const userPrompt = `What are the key shipping considerations for transporting "${liquid}" in a flexitank?`;
-
-      const apiKey = "OPENAI_API_KEY"; 
-      try {
-        const res = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${apiKey}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-              { role: "system", content: systemPrompt },
-              { role: "user", content: userPrompt }
-            ],
-            temperature: 0.7
-          })
-        });
-
-        const data = await res.json();
-        const reply = data.choices?.[0]?.message?.content || "⚠️ No response from AI.";
-
-        infoContainer.innerHTML = `<div class="glass p-6 rounded-lg mt-4 text-white text-justify"><p>${reply.replace(/\n/g, "<br/>")}</p></div>`;
-      } catch (err) {
-        console.error(err);
-        infoContainer.innerHTML = `<p class="text-red-400 mt-4">⚠️ Unable to fetch AI response.</p>`;
+        div.innerHTML = `
+          <div class="${bubbleClass} rounded-2xl px-5 py-3 max-w-[85%] shadow-md text-sm leading-relaxed">
+            ${label}
+            ${text}
+          </div>
+        `;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
       }
+
+      async function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        addMessage(text, true);
+        chatInput.value = "";
+        
+        // Loading Indicator
+        const loadingId = "loading-" + Date.now();
+        const loadingDiv = document.createElement("div");
+        loadingDiv.className = "flex justify-start chat-bubble";
+        loadingDiv.innerHTML = `
+          <div class="bg-slate-700 text-gray-300 rounded-2xl rounded-tl-none px-5 py-3 text-sm border border-slate-600 flex gap-2 items-center">
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+          </div>`;
+        chatMessages.appendChild(loadingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+          const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text })
+          });
+
+          const data = await response.json();
+          loadingDiv.remove(); 
+          
+          if (data.reply) {
+            // Clean up formatting for HTML display
+            const cleanReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, "<br>");
+            addMessage(cleanReply, false);
+          } else {
+            addMessage("⚠️ I'm having trouble connecting. Please try again.", false);
+          }
+        } catch (err) {
+          loadingDiv.remove();
+          addMessage("⚠️ Server error. Please check your connection.", false);
+        }
+      }
+
+      chatSend.addEventListener("click", sendMessage);
+      chatInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
     });
-  });
-  // Mobile menu toggle
-  const toggleBtn = document.getElementById("mobile-toggle");
-  const menuContainer = document.getElementById("mobile-menu-container");
-  const menu = document.getElementById("mobile-menu");
-  const overlay = document.getElementById("mobile-menu-overlay");
-
-  toggleBtn.addEventListener("click", () => {
-    menuContainer.classList.remove("hidden");
-    setTimeout(() => {
-      menu.classList.remove("translate-x-full");
-    }, 10);
-  });
-
-  overlay.addEventListener("click", () => {
-    menu.classList.add("translate-x-full");
-    setTimeout(() => {
-      menuContainer.classList.add("hidden");
-    }, 300);
-  });
-
-  // Optional: close menu when clicking any link inside
-  document.querySelectorAll(".mobile-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.add("translate-x-full");
-      setTimeout(() => {
-        menuContainer.classList.add("hidden");
-      }, 300);
-    });
-  });
-</script>
+  </script>
 </body>
 </html>
