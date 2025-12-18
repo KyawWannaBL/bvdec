@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporate Gifting | BRITIUM VENTURES</title>
+  <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body { background-color: #020617; color: #e2e8f0; font-family: 'Poppins', sans-serif; }
+    .font-garamond { font-family: 'Cormorant Garamond', serif; }
+    .glass { background: rgba(11, 21, 39, 0.65); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    
+    /* Hero Video Background */
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(10, 25, 47, 0.7); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+    
+    /* Animations */
+    .chat-bubble { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .zoom-cursor { cursor: zoom-in; }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+  </style>
+</head>
+
+<body class="antialiased overflow-x-hidden relative">
+
+  <header class="fixed w-full z-50 bg-black/90 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="products.html" class="flex items-center gap-2 text-gray-300 hover:text-[#FFC700] transition">
+        <i class="fas fa-arrow-left"></i> <span class="font-semibold">Back to Products</span>
+      </a>
+      <span class="text-xl font-bold text-white font-garamond">BRITIUM <span class="text-[#FFC700]">GIFTS</span></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative h-[60vh] flex items-center justify-center text-center overflow-hidden">
+       <video autoplay muted loop playsinline class="hero-video">
+        <source src="https://cdn1.site-media.eu/images/0/19098157/souvenirset-xjSXUa2AGIj6cQFlj3RDKQ.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="font-garamond text-5xl md:text-7xl font-bold text-white mb-4">Corporate <span class="text-[#FFC700]">Gifting</span></h1>
+        <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto">Premium, customizable gift sets tailored for your brand and employees.</p>
+         <div class="mt-8 flex gap-4">
+             <a href="#sets" class="bg-[#FFC700] text-black px-8 py-3 rounded-lg font-bold hover:bg-yellow-400 transition">View Sets</a>
+             <a href="#chat" class="border border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-black transition">Inquire Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sets" class="py-20 max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-garamond font-bold text-white">Curated for <span class="text-[#FFC700]">Success</span></h2>
+        <p class="text-gray-400 mt-3">From sleek notebooks to smart tumblers, impress your clients and team.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="glass p-2 rounded-xl overflow-hidden cursor-zoom-in group" onclick="openImageModal('1.jpg')">
+                <img src="1.jpg" alt="Gift Set Black" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition duration-500">
+            </div>
+            <div class="glass p-2 rounded-xl overflow-hidden cursor-zoom-in group" onclick="openImageModal('2.jpg')">
+                <img src="2.jpg" alt="Gift Set Colors" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition duration-500">
+            </div>
+        </div>
+
+        <div class="glass p-10 rounded-2xl">
+          <h3 class="text-2xl font-bold text-white mb-4">Executive Gift Box</h3>
+          <p class="text-gray-300 mb-6 text-justify">
+            Elevate your corporate gifting with our premium sets designed for companies and organizations. Each set is thoughtfully curated to combine functionality with elegance.
+          </p>
+          
+          <h4 class="text-lg font-bold text-[#FFC700] mb-3">What's Inside:</h4>
+          <ul class="space-y-3 text-gray-300 mb-8">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-book mt-1 text-[#FFC700]"></i>
+              <div>
+                <strong>Premium Notebook:</strong> High-quality cover with pen loop and magnetic closure. Available in various colors like Black, Red, Green, Blue, and Grey.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-pen-nib mt-1 text-[#FFC700]"></i>
+              <div>
+                <strong>Metal Pen:</strong> Sleek executive pen for smooth writing.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-mug-hot mt-1 text-[#FFC700]"></i>
+              <div>
+                <strong>Smart Tumbler:</strong> 
+                <ul class="list-disc list-inside ml-1 mt-1 text-sm text-gray-400">
+                    <li>Touch display shows temperature (e.g., 088°F)</li>
+                    <li>Double-layer vacuum body for insulation</li>
+                    <li>Food-grade stainless steel lid and spout</li>
+                    <li>Includes stainless steel fine mesh filter for tea</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+
+           <button onclick="document.getElementById('chatInput').value='I want to order custom corporate gift sets'; document.getElementById('chatSend').click(); window.location.href='#chat'" class="w-full bg-[#FFC700] text-black py-3 rounded-lg font-bold hover:bg-yellow-400 transition shadow-lg">Request Custom Quote</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="chat" class="py-16 bg-[#0B1221] border-t border-white/10">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-garamond font-bold text-white">Ask <span class="text-[#FFC700]">BRIA</span></h2>
+          <p class="text-gray-400 mt-2">Need branding options or bulk order details? Ask our AI assistant.</p>
+        </div>
+
+        <div class="glass rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[500px] border border-[#FFC700]/20">
+          
+          <div id="chatMessages" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div class="flex justify-start chat-bubble">
+              <div class="bg-slate-700 text-white rounded-lg rounded-tl-none px-5 py-3 max-w-[85%] border border-slate-600 shadow-md">
+                <p class="font-semibold text-[#FFC700] mb-1 text-xs">BRIA AI</p>
+                👋 Hello! I can help you with corporate gift customization, pricing for bulk orders, or shipping timelines. How can I assist you?
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-black/40 border-t border-white/10 flex gap-3 items-center">
+            <input id="chatInput" type="text" placeholder="e.g. Can we print our logo on the notebooks?" class="flex-1 bg-slate-900 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#FFC700] border border-slate-700 transition placeholder-gray-500">
+            <button id="chatSend" class="bg-[#FFC700] text-black px-6 py-3 rounded-xl font-bold hover:bg-yellow-400 transition shadow-lg flex items-center gap-2">
+              Send <span class="text-lg">➤</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="image-modal" class="fixed inset-0 z-[80] bg-black/95 hidden flex items-center justify-center backdrop-blur-md p-4 transition-opacity duration-300" onclick="closeImageModal()">
+    <div class="relative max-w-4xl max-h-[90vh] w-full flex items-center justify-center">
+      <img id="modal-img" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10">
+      <button onclick="closeImageModal()" class="absolute -top-10 right-0 text-white hover:text-[#FFC700] text-3xl font-bold transition">&times;</button>
+    </div>
+  </div>
+
+  <footer class="py-12 bg-slate-950/50 text-slate-400 border-t border-slate-800 text-center">
+    <div class="max-w-7xl mx-auto px-6">
+      <p>&copy; <span id="yr"></span> BRITIUM VENTURES CO., LTD. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- IMAGE MODAL LOGIC ---
+    function openImageModal(src) {
+      const modal = document.getElementById('image-modal');
+      const img = document.getElementById('modal-img');
+      img.src = src;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById('image-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto'; 
+    }
+
+    // --- CHATBOT LOGIC ---
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("yr").textContent = new Date().getFullYear();
+
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+      const chatMessages = document.getElementById("chatMessages");
+
+      function addMessage(text, isUser) {
+        const div = document.createElement("div");
+        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} chat-bubble`;
+        
+        const label = isUser ? '' : '<p class="font-semibold text-[#FFC700] mb-1 text-xs">BRIA AI</p>';
+        const bubbleClass = isUser 
+          ? 'bg-[#FFC700] text-black rounded-tr-none' 
+          : 'bg-slate-700 text-white border border-slate-600 rounded-tl-none';
+
+        div.innerHTML = `
+          <div class="${bubbleClass} rounded-2xl px-5 py-3 max-w-[85%] shadow-md text-sm leading-relaxed">
+            ${label}
+            ${text}
+          </div>
+        `;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      async function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        addMessage(text, true);
+        chatInput.value = "";
+        
+        const loadingId = "loading-" + Date.now();
+        const loadingDiv = document.createElement("div");
+        loadingDiv.className = "flex justify-start chat-bubble";
+        loadingDiv.innerHTML = `
+          <div class="bg-slate-700 text-gray-300 rounded-2xl rounded-tl-none px-5 py-3 text-sm border border-slate-600 flex gap-2 items-center">
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+          </div>`;
+        chatMessages.appendChild(loadingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+          const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text })
+          });
+
+          const data = await response.json();
+          loadingDiv.remove(); 
+          
+          if (data.reply) {
+            const cleanReply = data.reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, "<br>");
+            addMessage(cleanReply, false);
+          } else {
+            addMessage("⚠️ I'm having trouble connecting. Please try again.", false);
+          }
+        } catch (err) {
+          loadingDiv.remove();
+          addMessage("⚠️ Server error. Please check your connection.", false);
+        }
+      }
+
+      chatSend.addEventListener("click", sendMessage);
+      chatInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
+    });
+  </script>
+</body>
+</html>
