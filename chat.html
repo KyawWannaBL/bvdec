@@ -7,212 +7,308 @@
 
   <meta name="description" content="Chat with BRIA, Britium Ventures’ AI assistant, for trade, logistics, sourcing, and compliance support in Myanmar and beyond.">
   <meta name="author" content="Britium Ventures">
+  <meta name="theme-color" content="#0a0a0a" />
 
   <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: #0a192f;
-      color: #e2e8f0;
-      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: #a0aec0;
+      font-family: 'Inter', sans-serif;
     }
-
-    .metallic-gold-text {
-      color: #ffd700;
-      text-transform: uppercase;
-      text-shadow: 0 1px 1px #a27a00, 0 3px 3px #a27a00, 0 4px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.5);
-      animation: shimmer 3s ease-in-out infinite;
+    .font-garamond {
+      font-family: 'Cormorant Garamond', serif;
     }
-    @keyframes shimmer { 0%,100% { opacity: 1; } 50% { opacity: 0.8; } }
+    .text-gold {
+      color: #B8860B;
+    }
+    .border-gold {
+      border-color: #B8860B;
+    }
+    
+    /* --- PARTICLES & ANIMATIONS --- */
+    #particles-js {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+    }
+    .animated-element {
+      opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .animated-element.is-visible { opacity: 1; transform: translateY(0); }
 
-    .acrylic-panel {
-      background: rgba(17, 34, 64, 0.6);
+    /* --- CHAT STYLES --- */
+    .glass {
+      background: rgba(17, 24, 39, 0.7);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(251,191,36,0.3);
-      border-radius: 1rem;
-      padding: 2rem;
+      border: 1px solid rgba(184, 134, 11, 0.2);
     }
+    .chat-bubble {
+        padding: 12px 18px;
+        border-radius: 12px;
+        max-width: 80%;
+        line-height: 1.6;
+        animation: fadeIn 0.3s ease;
+    }
+    .bubble-bot {
+        background-color: rgba(30, 41, 59, 0.8);
+        color: #e2e8f0;
+        border-top-left-radius: 0;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .bubble-user {
+        background-color: #B8860B;
+        color: #0a0a0a;
+        align-self: flex-end;
+        border-top-right-radius: 0;
+        font-weight: 600;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Chat styles */
-    #chat-box {
-      background: rgba(17, 34, 64, 0.8);
-      border: 1px solid rgba(251,191,36,0.4);
-      border-radius: 1rem;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    #chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .bubble {
-      padding: 0.8rem 1rem;
-      border-radius: 0.8rem;
-      max-width: 80%;
-      word-wrap: break-word;
-      line-height: 1.5;
-      animation: fadeIn 0.3s ease;
-    }
-    .user-bubble {
-      background-color: #fbbf24;
-      color: #0a192f;
-      align-self: flex-end;
-      border-bottom-right-radius: 0;
-    }
-    .ai-bubble {
-      background-color: rgba(30, 41, 59, 0.9);
-      color: #fff;
-      align-self: flex-start;
-      border-bottom-left-radius: 0;
-    }
-    @keyframes fadeIn { from {opacity:0; transform:translateY(5px);} to {opacity:1; transform:translateY(0);} }
-
-    /* BRIA Robot Greeter */
+    /* --- BRIA WIDGET --- */
     #bria-greeter {
-      position: fixed;
-      bottom: 110px;
-      right: 25px;
-      background: rgba(17, 34, 64, 0.9);
-      border: 2px solid #fbbf24;
-      color: #fff;
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      box-shadow: 0 0 15px rgba(251,191,36,0.4);
-      z-index: 40;
+      position: fixed; bottom: 30px; right: 30px;
+      background: rgba(15, 23, 42, 0.95); border: 2px solid #B8860B;
+      color: #fff; padding: 0.8rem 1.2rem; border-radius: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+      box-shadow: 0 0 15px rgba(184, 134, 11, 0.3); z-index: 50;
       animation: fadeIn 1s ease forwards;
     }
-    #bria-greeter img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #fbbf24;
-      padding: 5px;
+    #bria-greeter img { 
+        width: 50px; height: 50px; 
+        border-radius: 50%; background: #B8860B; padding: 4px; 
+        object-fit: cover; 
     }
     #bria-text {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      animation: waveText 8s infinite;
-    }
-    @keyframes waveText {
-      0% { opacity: 1; transform: translateY(0); }
-      25% { opacity: 0; transform: translateY(-10px); }
-      50% { opacity: 1; transform: translateY(0); }
-      75% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
+        font-size: 0.9rem; font-weight: 500; transition: opacity 0.5s ease-in-out;
     }
   </style>
 </head>
 
-<body>
-  <header class="bg-[#0a192f]/80 backdrop-blur-sm border-b border-blue-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-      <a href="index.html" class="flex items-center gap-3 text-white text-2xl font-bold">
-        <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Ventures" class="h-10 w-10">
-        BRITIUM <span class="text-amber-400">VENTURES</span>
-      </a>
-      <a href="index.html" class="text-sm text-gray-300 hover:text-amber-400">⬅ Back to Home</a>
-    </div>
-  </header>
+<body class="antialiased overflow-x-hidden">
 
-  <main class="max-w-5xl mx-auto py-20 px-4 text-center">
-    <h1 class="text-4xl font-bold metallic-gold-text mb-6">💬 BRIA AI Chat Assistant</h1>
-    <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
-      Ask BRIA anything about trade, logistics, sourcing, and Myanmar market insights — available 24/7.
-    </p>
+<div id="particles-js"></div>
 
-    <div id="chat-box" class="relative acrylic-panel">
-      <div id="chat-messages">
-        <div class="bubble ai-bubble">👋 Hello! I’m BRIA, Britium Ventures’ AI assistant. How can I help you today?</div>
-      </div>
-      <div class="flex border-t border-amber-400">
-        <input id="chat-input" type="text" placeholder="Type your message..." class="flex-grow bg-[#0a192f] text-white p-3 rounded-l focus:outline-none" />
-        <button id="chat-send" class="bg-amber-500 hover:bg-amber-600 text-black px-6 font-semibold rounded-r">Send</button>
-      </div>
-    </div>
-  </main>
-
-  <div id="bria-greeter">
-    <img src="https://cdn1.iconfinder.com/data/icons/artificial-intelligence-112/64/AI_robot_greeting-512.png" alt="BRIA Robot">
-    <div id="bria-text">Hello ကျွန်တော်ကတော့ BRIA ပါ။ <br>အားလုံးကိုတွေ့ရတာဝမ်းသာပါတယ်ခင်ဗျာ။</div>
+<header class="fixed inset-x-0 top-0 z-50 bg-black/30 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
+      <span class="font-garamond text-xl font-bold text-white"> BRITIUM <span class="text-gold">VENTURES</span></span>
+    </a>
+    
+    <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-200 items-center">
+      <a href="index.html" class="hover:text-[#FFC700] transition">Home</a>
+      <a href="express.html" class="text-[#FFC700] border border-[#FFC700]/50 px-3 py-1 rounded hover:bg-[#FFC700] hover:text-black transition">Britium Express</a>
+      <a href="about.html" class="hover:text-[#FFC700] transition">About</a>
+      <a href="team.html" class="hover:text-[#FFC700] transition">Team</a>
+      <a href="careers.html" class="hover:text-[#FFC700] transition">Careers</a>
+      <a href="capabilities.html" class="hover:text-[#FFC700] transition">Capabilities</a>
+      <a href="solutions.html" class="hover:text-[#FFC700] transition">Solutions</a>
+      <a href="products.html" class="hover:text-[#FFC700] transition">Products</a>
+      <a href="markets.html" class="hover:text-[#FFC700] transition">Markets</a>
+      <a href="gallery.html" class="hover:text-[#FFC700] transition">Gallery</a>
+      <a href="contact.html" class="hover:text-[#FFC700] transition">Contact</a>
+      <a href="chat.html" class="px-4 py-2 rounded-md bg-[#FFC700] text-black font-bold border border-[#FFC700] hover:bg-[#FFC700]/80 transition">AI Chat</a>
+    </nav>
+    <button id="mobile-toggle" class="md:hidden text-white text-3xl" aria-label="Toggle Menu">☰</button>
   </div>
+</header>
 
-  <footer class="bg-black text-gray-400 py-10 text-center text-sm">
-    <p>Confidence in Motion — powered by Britium Ventures. © <span id="year"></span></p>
-  </footer>
+<div id="mobile-menu-container" class="fixed inset-0 z-40 md:hidden hidden">
+  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/70"></div>
+  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-900/90 p-8 transform translate-x-full transition-transform border-l border-[#FFC700]/20 overflow-y-auto">
+    <button id="mobile-menu-close" class="absolute top-4 right-4 text-white text-3xl">×</button>
+    <div class="flex flex-col gap-y-6 mt-16 text-lg text-white font-medium">
+      <a href="index.html">Home</a>
+      <a href="express.html" class="text-[#FFC700] border-l-2 border-[#FFC700] pl-3">Britium Express</a>
+      <a href="about.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="careers.html">Careers</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="products.html">Products</a>
+      <a href="markets.html">Markets</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="chat.html" class="bg-[#FFC700] text-black text-center py-2 rounded font-bold">Chat with AI</a>
+    </div>
+  </nav>
+</div>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const messages = document.getElementById("chat-messages");
-    const input = document.getElementById("chat-input");
-    const sendBtn = document.getElementById("chat-send");
-    const year = document.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
+<main class="pt-24 pb-20 min-h-screen relative">
+    
+    <div class="text-center mb-10 px-4">
+        <h1 class="font-garamond text-4xl md:text-6xl font-bold text-white mb-4 animated-element">
+            Chat with <span class="text-gold">BRIA</span>
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto animated-element">
+            Your 24/7 AI assistant for logistics quotes, compliance checks, and trade support.
+        </p>
+    </div>
 
-    function addBubble(text, user=false) {
-      const div = document.createElement("div");
-      div.className = `bubble ${user ? "user-bubble" : "ai-bubble"}`;
-      div.innerHTML = text.replace(/\n/g, "<br>");
-      messages.appendChild(div);
-      messages.scrollTop = messages.scrollHeight;
-      return div;
-    }
+    <div class="max-w-4xl mx-auto px-4 animated-element">
+        <div class="glass rounded-xl h-[65vh] flex flex-col shadow-2xl">
+            
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-6 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-[#B8860B] scrollbar-track-slate-800">
+                <div class="chat-bubble bubble-bot">
+                    👋 Hello! I am BRIA. How can I assist with your logistics or trade needs today?
+                </div>
+            </div>
 
-    async function sendMessage() {
-      const text = input.value.trim();
-      if (!text) return;
+            <div class="p-4 bg-slate-900/80 border-t border-slate-700 rounded-b-xl flex gap-3">
+                <input type="text" id="chatInput" placeholder="Ask about shipping rates, documents, or services..." 
+                    class="flex-1 bg-slate-800 text-white border border-slate-600 rounded-lg px-4 py-3 focus:outline-none focus:border-[#B8860B] transition placeholder-slate-500">
+                <button id="sendBtn" class="bg-[#B8860B] text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-600 transition flex items-center gap-2">
+                    SEND <span>➤</span>
+                </button>
+            </div>
+        </div>
+        
+        <p class="text-center text-slate-500 text-sm mt-4">
+            For complex inquiries, please <a href="contact.html" class="text-gold hover:underline">contact our team directly</a>.
+        </p>
+    </div>
 
-      addBubble(text, true);
-      input.value = "";
-      const typing = addBubble("Typing...", false);
+</main>
 
-      try {
-        // CORRECTED LINE: Removing .php extension
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text })
+<div id="bria-greeter">
+  <img src="BRIA (1).gif" alt="BRIA Robot">
+  <div id="bria-text">Hello! I'm BRIA. 🇬🇧</div>
+</div>
+
+<footer class="py-10 bg-[#111111]/80 backdrop-blur-sm text-gray-400 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-6 text-center text-sm">
+    <p>&copy; <span id="year"></span> Britium Ventures. All Rights Reserved.</p>
+    <p class="mt-2">Yangon, Myanmar | <a href="mailto:info@britiumventures.com" class="hover:text-gold">info@britiumventures.com</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- PARTICLES ---
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+          "particles": {
+            "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#B8860B" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.3, "random": true },
+            "size": { "value": 3, "random": true },
+            "line_linked": { "enable": true, "distance": 150, "color": "#B8860B", "opacity": 0.2, "width": 1 },
+            "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+          },
+          "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
+          "retina_detect": true
         });
-        
-        if (!res.ok) throw new Error("Network response was not ok");
-        
-        const data = await res.json();
-        typing.innerHTML = data.reply || "⚠️ No response received.";
-      } catch (err) {
-        typing.textContent = "⚠️ Network error contacting AI.";
-        console.error(err);
-      }
     }
 
-    sendBtn.addEventListener("click", sendMessage);
-    input.addEventListener("keypress", e => { if (e.key === "Enter") sendMessage(); });
+    // --- ANIMATIONS ---
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
 
-    // Multilingual Greetings
+    // --- MOBILE MENU ---
+    const toggle = document.getElementById("mobile-toggle");
+    const menuContainer = document.getElementById("mobile-menu-container");
+    const menu = document.getElementById("mobile-menu");
+    const closeBtn = document.getElementById("mobile-menu-close");
+    const overlay = document.getElementById("mobile-menu-overlay");
+
+    if (toggle) {
+        const toggleMenu = (open) => {
+            if (open) {
+                menuContainer.classList.remove("hidden");
+                setTimeout(() => menu.classList.remove("translate-x-full"), 10);
+            } else {
+                menu.classList.add("translate-x-full");
+                setTimeout(() => menuContainer.classList.add("hidden"), 300);
+            }
+        };
+        toggle.addEventListener("click", () => toggleMenu(true));
+        closeBtn.addEventListener("click", () => toggleMenu(false));
+        overlay.addEventListener("click", () => toggleMenu(false));
+    }
+
+    // --- FOOTER YEAR ---
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // --- CHAT LOGIC ---
+    const sendBtn = document.getElementById('sendBtn');
+    const userMsg = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    async function handleSend() {
+        const text = userMsg.value.trim();
+        if(!text) return;
+
+        // User Bubble
+        const divUser = document.createElement('div');
+        divUser.className = 'chat-bubble bubble-user';
+        divUser.textContent = text;
+        chatMessages.appendChild(divUser);
+        
+        userMsg.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Bot Thinking Placeholder
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'chat-bubble bubble-bot';
+        loadingDiv.textContent = "Thinking...";
+        chatMessages.appendChild(loadingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+            const res = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: text })
+            });
+            const data = await res.json();
+            
+            loadingDiv.innerHTML = data.reply ? data.reply.replace(/\n/g, "<br>") : "⚠️ No response received.";
+        } catch (err) {
+            console.error(err);
+            loadingDiv.textContent = "⚠️ Network Error: Could not reach AI service.";
+        }
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    userMsg.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
+
+    // --- BRIA GREETINGS ---
     const greetings = [
-      "Hello ကျွန်တော်ကတော့ BRIA ပါ။ အားလုံးကိုတွေ့ရတာဝမ်းသာပါတယ်ခင်ဗျာ။ 🇲🇲",
-      "Hello! I'm BRIA – great to meet you! 🇬🇧",
-      "Bonjour! Je suis BRIA. 🇫🇷",
-      "Hola! Soy BRIA. 🇪🇸",
-      "こんにちは！私はBRIAです。🇯🇵",
-      "नमस्ते! मैं BRIA हूँ। 🇮🇳"
+        "Hello! I'm BRIA. 🇬🇧", 
+        "မင်္ဂလာပါ BRIA ပါ။ 🇲🇲", 
+        "Hola! Soy BRIA. 🇪🇸",
+        "Bonjour! Je suis BRIA. 🇫🇷",
+        "你好！我是 BRIA。 🇨🇳",
+        "สวัสดีครับ! ผมชื่อ BRIA. 🇹🇭",
+        "مرحبًا! أنا BRIA. 🇸🇦"
     ];
     let gi = 0;
-    setInterval(()=>{
-      document.getElementById("bria-text").textContent = greetings[gi];
-      gi = (gi + 1) % greetings.length;
-    }, 6000);
-  });
-  </script>
+    setInterval(() => {
+        const textEl = document.getElementById('bria-text');
+        if(textEl) {
+          textEl.style.opacity = 0;
+          setTimeout(() => {
+              textEl.textContent = greetings[gi];
+              textEl.style.opacity = 1;
+              gi = (gi + 1) % greetings.length;
+          }, 500);
+        }
+    }, 4000);
+});
+</script>
+
 </body>
 </html>
