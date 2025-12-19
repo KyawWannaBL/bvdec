@@ -67,14 +67,51 @@
 
 <body class="antialiased overflow-x-hidden">
 
-  <header class="fixed w-full z-50 bg-black/90 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="products.html" class="flex items-center gap-2 text-gray-300 hover:text-[#FFC700] transition">
-        <i class="fas fa-arrow-left"></i> <span class="font-semibold">Back to Products</span>
-      </a>
-      <span class="text-xl font-bold text-white font-garamond">BRITIUM <span class="text-[#FFC700]">TECH</span></span>
+ <header class="fixed inset-x-0 top-0 z-50 bg-black/30 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
+      <span class="font-garamond text-xl font-bold text-white"> BRITIUM <span class="text-[#FFC700]">VENTURES</span></span>
+    </a>
+    
+    <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-200 items-center">
+      <a href="index.html" class="hover:text-[#FFC700] transition">Home</a>
+      <a href="express.html" class="text-[#FFC700] border border-[#FFC700]/50 px-3 py-1 rounded hover:bg-[#FFC700] hover:text-black transition">Britium Express</a>
+      <a href="about.html" class="hover:text-[#FFC700] transition">About</a>
+      <a href="team.html" class="hover:text-[#FFC700] transition">Team</a>
+      <a href="careers.html" class="hover:text-[#FFC700] transition">Careers</a>
+      <a href="capabilities.html" class="hover:text-[#FFC700] transition">Capabilities</a>
+      <a href="solutions.html" class="hover:text-[#FFC700] transition">Solutions</a>
+      <a href="products.html" class="hover:text-[#FFC700] transition">Products</a>
+      <a href="markets.html" class="hover:text-[#FFC700] transition">Markets</a>
+      <a href="gallery.html" class="hover:text-[#FFC700] transition">Gallery</a>
+      <a href="contact.html" class="hover:text-[#FFC700] transition">Contact</a>
+      <a href="chat.html" class="px-4 py-2 rounded-md bg-[#FFC700]/10 text-[#FFC700] border border-[#FFC700]/20 hover:bg-[#FFC700]/20 transition">AI Chat</a>
+    </nav>
+    <button id="mobile-toggle" class="md:hidden text-white text-3xl" aria-label="Toggle Menu">☰</button>
+  </div>
+</header>
+
+<div id="mobile-menu-container" class="fixed inset-0 z-40 md:hidden hidden">
+  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/70"></div>
+  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-900/90 p-8 transform translate-x-full transition-transform border-l border-[#FFC700]/20 overflow-y-auto">
+    <button id="mobile-menu-close" class="absolute top-4 right-4 text-white text-3xl">×</button>
+    <div class="flex flex-col gap-y-6 mt-16 text-lg text-white font-medium">
+      <a href="index.html">Home</a>
+      <a href="express.html" class="text-[#FFC700] border-l-2 border-[#FFC700] pl-3">Britium Express</a>
+      <a href="about.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="careers.html">Careers</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="products.html">Products</a>
+      <a href="markets.html">Markets</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="chat.html" class="bg-[#FFC700] text-black text-center py-2 rounded font-bold">Chat with AI</a>
     </div>
-  </header>
+  </nav>
+</div>
 
   <main>
     <section class="relative h-[60vh] flex items-center justify-center text-center overflow-hidden">
@@ -316,3 +353,4 @@
   </script>
 </body>
 </html>
+
