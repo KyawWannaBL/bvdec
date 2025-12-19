@@ -8,16 +8,20 @@
   <meta name="theme-color" content="#020617"/>
 
   <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" />
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* --- THEME SETTINGS --- */
+    /* --- CORE STYLES --- */
     body { background-color: #020617; color: #e2e8f0; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
     .font-garamond { font-family: 'Cormorant Garamond', serif; }
     .text-gold { color: #FFC700; }
     
-    /* Gold Text Effect */
+    /* Gold Shimmer Effect */
     .metallic-gold-text {
       color: #ffd700;
       text-transform: uppercase;
@@ -26,7 +30,7 @@
     }
     @keyframes shimmer { 0%,100% { opacity: 1; } 50% { opacity: 0.8; } }
 
-    /* Glass Panels */
+    /* Glass/Acrylic Panels */
     .acrylic-panel { 
         background: rgba(17, 34, 64, 0.6); 
         backdrop-filter: blur(10px); 
@@ -34,14 +38,38 @@
         border-radius: 1rem; 
         padding: 2rem; 
     }
+    .service-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+    .service-card:hover {
+        border-color: #FFC700;
+        transform: translateY(-5px);
+        background: rgba(30, 41, 59, 0.7);
+    }
 
     /* Animations */
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-in.is-visible { opacity: 1; transform: translateY(0); }
     
+    /* Swiper Slider Overrides */
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 400px;
+        border-radius: 1rem;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 1rem; }
+    .swiper-pagination-bullet { background: #fff; opacity: 0.5; }
+    .swiper-pagination-bullet-active { background: #FFC700; opacity: 1; }
+
     /* --- BRIA GREETER WIDGET --- */
     #bria-greeter {
-      position: fixed; bottom: 20px; right: 90px; /* Left of the toggle button */
+      position: fixed; bottom: 20px; right: 90px;
       background: rgba(15, 23, 42, 0.95); border: 2px solid #FFC700;
       color: #fff; padding: 0.5rem 1rem; border-radius: 2rem;
       display: flex; align-items: center; gap: 0.8rem;
@@ -166,13 +194,11 @@
         <h3 class="text-xl font-bold text-white mb-2">Britium Express</h3>
         <p class="text-gray-400 text-sm">Fast, reliable parcel delivery connecting Yangon, Naypyitaw, and Mandalay.</p>
       </div>
-      
       <div class="acrylic-panel hover:border-[#FFC700] transition cursor-pointer group" onclick="window.location.href='capabilities.html'">
         <div class="text-5xl mb-4 group-hover:scale-110 transition">⚓</div>
         <h3 class="text-xl font-bold text-white mb-2">Integrated Logistics</h3>
         <p class="text-gray-400 text-sm">Freight forwarding, customs clearance, and complex project cargo handling.</p>
       </div>
-
       <div class="acrylic-panel hover:border-[#FFC700] transition cursor-pointer group" onclick="window.location.href='products.html'">
         <div class="text-5xl mb-4 group-hover:scale-110 transition">📦</div>
         <h3 class="text-xl font-bold text-white mb-2">Trading & Sourcing</h3>
@@ -182,27 +208,62 @@
   </div>
 </section>
 
-<section class="py-20 bg-[#0a192f] text-center border-t border-gray-800">
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="acrylic-panel fade-in">
-      <h2 class="text-4xl font-bold metallic-gold-text mb-4">AI-Powered Insights</h2>
-      <p class="text-gray-300 mb-12">Leverage data to make smarter trade decisions.</p>
+<section id="gadgets" class="py-20 bg-[#0a192f] text-center border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="acrylic-panel max-w-4xl mx-auto fade-in">
+      <h2 class="text-3xl font-garamond font-bold metallic-gold-text mb-2">AI-Powered Trade Dashboard</h2>
+      <p class="text-gray-400 uppercase tracking-wide text-sm">Real-time, intelligent insights to keep you ahead.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 mt-12 gap-8">
       
-      <div class="grid md:grid-cols-2 gap-10">
-        <div class="bg-[#1e293b] p-6 rounded-lg border border-gray-700 hover:border-[#FFC700]/50 transition">
-          <h3 class="text-xl font-semibold mb-2 text-white">✨ Market Snapshot</h3>
-          <p class="text-gray-400 mb-4 text-sm">Get the latest Myanmar trade and logistics trends.</p>
-          <a href="markets.html" class="bg-[#FFC700] hover:bg-yellow-400 px-4 py-2 rounded font-semibold text-black transition w-full inline-block">View Markets</a>
+      <div class="service-card p-8 rounded-xl fade-in flex flex-col items-center">
+        <div class="text-4xl mb-4">📈</div>
+        <h3 class="text-xl font-bold text-white mb-2">Market Snapshot</h3>
+        <p class="text-slate-400 text-sm mb-4">Latest trade news for Myanmar, powered by Search.</p>
+        <div id="market-snapshot-result" class="bg-gray-800/50 p-4 rounded text-left w-full mb-4 text-gray-300 text-sm min-h-[80px] border border-gray-700">
+          Click button to generate summary...
         </div>
-        
-        <div class="bg-[#1e293b] p-6 rounded-lg border border-gray-700 hover:border-[#FFC700]/50 transition">
-          <h3 class="text-xl font-semibold mb-2 text-white">📄 Chat with AI</h3>
-          <p class="text-gray-400 mb-4 text-sm">Ask BRIA about documents, rates, and compliance.</p>
-          <a href="chat.html" class="bg-[#FFC700] hover:bg-yellow-400 px-4 py-2 rounded font-semibold text-black transition w-full inline-block">Start Chat</a>
-        </div>
+        <button id="market-snapshot-btn" class="border border-[#FFC700] text-[#FFC700] hover:bg-[#FFC700] hover:text-black px-6 py-2 rounded-full font-bold transition w-full">Generate Report</button>
       </div>
+      
+      <div class="service-card p-8 rounded-xl fade-in flex flex-col items-center" style="transition-delay:100ms">
+        <div class="text-4xl mb-4">📄</div>
+        <h3 class="text-xl font-bold text-white mb-2">Document Helper</h3>
+        <select id="doc-selector" class="w-full bg-gray-800 text-white p-2 rounded mb-4 border border-gray-600 focus:border-[#FFC700] outline-none">
+            <option value="Bill of Lading">Bill of Lading</option>
+            <option value="Letter of Credit">Letter of Credit</option>
+            <option value="Certificate of Origin">Certificate of Origin</option>
+            <option value="Commercial Invoice">Commercial Invoice</option>
+        </select>
+        <div id="doc-helper-result" class="bg-gray-800/50 p-4 rounded text-left w-full mb-4 text-gray-300 text-sm min-h-[80px] border border-gray-700">
+          Select a document to explain...
+        </div>
+        <button id="doc-helper-btn" class="border border-[#FFC700] text-[#FFC700] hover:bg-[#FFC700] hover:text-black px-6 py-2 rounded-full font-bold transition w-full">Explain Document</button>
+      </div>
+
     </div>
   </div>
+</section>
+
+<section id="photo-gallery" class="py-20 bg-slate-900 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <div class="acrylic-panel max-w-4xl mx-auto fade-in">
+            <h2 class="text-3xl font-garamond font-bold metallic-gold-text mb-2">Our Operations in Action</h2>
+            <p class="text-gray-400 uppercase tracking-wide text-sm">A glimpse into our dedicated team and global network.</p>
+        </div>
+        <div class="swiper gallery-slider fade-in mt-12">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19097425/6-tRSGV700Abc5HlHdinLFRw.jpg" alt="Office"></div>
+                <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19084602/GroupPic-nu-LWNAI62yTnEktRq9tDg.png" alt="Group"></div>
+                <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341309/5-rA5iUmklfVGK9vfHAHZAGg.jpg" alt="Logistics"></div>
+                <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341304/4-HAK8F_Z1SNmO2WerlSmRqA.jpg" alt="Operations"></div>
+                <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341292/7-88SSifJuTAZeE3p3F9EOOg.jpg" alt="Team"></div>
+                <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19086738/BritiumGalleryclip4-wPlcCdMHteCm1JGfWIsYbg.jpg" alt="Port"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
 </section>
 
 <footer class="bg-black text-gray-400 py-16 border-t border-gray-900">
@@ -210,10 +271,10 @@
     <div>
       <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Customer Care</h4>
       <ul class="space-y-2 text-sm">
-        <li><a href="track_order.html" class="hover:text-[#FFC700]">Track My Order</a></li>
-        <li><a href="return_request.html" class="hover:text-[#FFC700]">Start a Return</a></li>
-        <li><a href="shipping_&_returns.html" class="hover:text-[#FFC700]">Shipping Policy</a></li>
-        <li><a href="faq.html" class="hover:text-[#FFC700]">FAQs</a></li>
+        <li><a href="contact.html" class="hover:text-[#FFC700]">Track My Order</a></li>
+        <li><a href="contact.html" class="hover:text-[#FFC700]">Start a Return</a></li>
+        <li><a href="contact.html" class="hover:text-[#FFC700]">Shipping Policy</a></li>
+        <li><a href="chat.html" class="hover:text-[#FFC700]">FAQs</a></li>
       </ul>
     </div>
     <div>
@@ -222,14 +283,14 @@
         <li><a href="about.html" class="hover:text-[#FFC700]">About Us</a></li>
         <li><a href="careers.html" class="hover:text-[#FFC700]">Careers</a></li>
         <li><a href="gallery.html" class="hover:text-[#FFC700]">Gallery</a></li>
-        <li><a href="store_locator.html" class="hover:text-[#FFC700]">Find a Store</a></li>
+        <li><a href="contact.html" class="hover:text-[#FFC700]">Find a Store</a></li>
       </ul>
     </div>
     <div>
       <h4 class="text-white font-bold mb-4 uppercase tracking-wider">For Business</h4>
       <ul class="space-y-2 text-sm">
         <li><a href="gallery.html" class="hover:text-[#FFC700]">Flexitank Services</a></li>
-        <li><a href="gallery.html" class="hover:text-[#FFC700]">Corporate Gifting</a></li>
+        <li><a href="products.html" class="hover:text-[#FFC700]">Corporate Gifting</a></li>
         <li><a href="solutions.html" class="hover:text-[#FFC700]">Solutions</a></li>
         <li><a href="contact.html" class="hover:text-[#FFC700]">B2B Contact</a></li>
       </ul>
@@ -237,10 +298,10 @@
     <div>
       <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Legal & Staff</h4>
       <ul class="space-y-2 text-sm">
-        <li><a href="terms_&_conditions.html" class="hover:text-[#FFC700]">Terms & Conditions</a></li>
-        <li><a href="privacy_policy.html" class="hover:text-[#FFC700]">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-[#FFC700]">Terms & Conditions</a></li>
+        <li><a href="#" class="hover:text-[#FFC700]">Privacy Policy</a></li>
         <li class="pt-4 border-t border-gray-800 mt-4">
-          <a href="admin_login.html" class="text-gray-600 hover:text-white flex items-center gap-2">
+          <a href="#" class="text-gray-600 hover:text-white flex items-center gap-2">
             <span>🔒</span> Staff Portal
           </a>
         </li>
@@ -252,17 +313,15 @@
   </div>
 </footer>
 
-<div id="bria-greeter">
+<div id="bria-greeter" onclick="document.getElementById('chatInterface').classList.toggle('open')">
   <img src="BRIA (1).gif" alt="BRIA Robot">
   <div id="bria-text">Hello! I'm BRIA. 🇬🇧</div>
 </div>
 
-<div class="chat-btn" id="toggleChat">💬</div>
-
 <div class="chat-box" id="chatInterface">
   <div class="bg-black p-4 border-b border-[#FFC700] flex justify-between items-center">
     <h4 class="text-[#FFC700] font-garamond font-bold">Britium Concierge</h4>
-    <span class="text-white cursor-pointer text-xl" id="closeChat">×</span>
+    <span class="text-white cursor-pointer text-xl" onclick="document.getElementById('chatInterface').classList.remove('open')">×</span>
   </div>
   <div class="flex-1 overflow-y-auto p-5 flex flex-col gap-3 scrollbar-thin scrollbar-thumb-amber-500" id="chatHistory">
     <div class="bg-[#1e293b] text-white p-3 rounded-lg max-w-[85%] self-start border border-gray-600 text-sm">
@@ -275,10 +334,14 @@
   </div>
 </div>
 
+<div class="chat-btn" id="toggleChat">💬</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- VIDEO AUDIO CONTROL ---
+    // --- 1. HERO VIDEO AUDIO ---
     const video = document.getElementById('heroVideo');
     const btn = document.getElementById('unmute-btn');
     if (video && btn) {
@@ -288,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- ANIMATIONS ---
+    // --- 2. ANIMATIONS ---
     const io = new IntersectionObserver((entries, observer) => { 
         entries.forEach(entry => { 
             if (entry.isIntersecting) { 
@@ -299,10 +362,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
-    // --- FOOTER YEAR ---
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // --- MOBILE MENU LOGIC ---
+    // --- 3. MOBILE MENU ---
     const mmBtn = document.getElementById('mobile-toggle');
     const panel = document.getElementById('mobile-menu-container');
     const menu = document.getElementById('mobile-menu');
@@ -324,52 +386,58 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.addEventListener('click', () => toggleMenu(false));
     }
 
-    // --- BRIA GREETER ROTATION ---
-    const greetings = [
-        "Hello! I'm BRIA. 🇬🇧", 
-        "မင်္ဂလာပါ BRIA ပါ။ 🇲🇲", 
-        "Hola! Soy BRIA. 🇪🇸",
-        "Bonjour! Je suis BRIA. 🇫🇷",
-        "你好！我是 BRIA。 🇨🇳",
-        "สวัสดีครับ! ผมชื่อ BRIA. 🇹🇭",
-        "مرحبًا! أنا BRIA. 🇸🇦"
-    ];
-    let gi = 0;
-    setInterval(() => {
-        const textEl = document.getElementById('bria-text');
-        if(textEl) {
-          textEl.style.opacity = 0; // Fade out
-          setTimeout(() => {
-              textEl.textContent = greetings[gi];
-              textEl.style.opacity = 1; // Fade in
-              gi = (gi + 1) % greetings.length;
-          }, 500);
-        }
-    }, 4000);
+    // --- 4. SWIPER GALLERY ---
+    new Swiper('.gallery-slider', {
+      effect: 'coverflow', grabCursor: true, centeredSlides: true,
+      slidesPerView: 'auto', loop: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true, },
+      pagination: { el: '.swiper-pagination', clickable: true },
+    });
 
-    // --- CHATBOT LOGIC ---
-    const greeter = document.getElementById('bria-greeter');
+    // --- 5. DASHBOARD MOCK LOGIC ---
+    const mktBtn = document.getElementById('market-snapshot-btn');
+    const mktRes = document.getElementById('market-snapshot-result');
+    if(mktBtn){
+        mktBtn.addEventListener('click', () => {
+            mktRes.innerHTML = "<span class='text-[#FFC700]'>Loading Analysis...</span>";
+            setTimeout(() => {
+                mktRes.innerHTML = "<strong>Update:</strong> Trade volume across the Thai-Myanmar border has increased by 15% this quarter. Logistics routes via Myawaddy are stable.";
+            }, 1500);
+        });
+    }
+
+    const docBtn = document.getElementById('doc-helper-btn');
+    const docRes = document.getElementById('doc-helper-result');
+    const docSel = document.getElementById('doc-selector');
+    if(docBtn){
+        docBtn.addEventListener('click', () => {
+            const val = docSel.value;
+            docRes.innerHTML = "<span class='text-[#FFC700]'>Analyzing...</span>";
+            setTimeout(() => {
+                docRes.innerHTML = `<strong>${val}:</strong> A critical document for international shipping. Ensure all signatures and stamps match the commercial invoice exactly.`;
+            }, 1000);
+        });
+    }
+
+    // --- 6. CHATBOT LOGIC ---
     const toggleChat = document.getElementById('toggleChat');
     const closeChat = document.getElementById('closeChat');
     const chatInterface = document.getElementById('chatInterface');
     const sendBtn = document.getElementById('sendMsg');
     const userMsg = document.getElementById('userMsg');
     const chatHistory = document.getElementById('chatHistory');
+    const greeter = document.getElementById('bria-greeter');
 
-    // Open chat via button or greeter
-    const openChat = () => {
-        chatInterface.classList.add('open');
-        userMsg.focus();
-    };
+    function openChat() { chatInterface.classList.add('open'); userMsg.focus(); }
     toggleChat.addEventListener('click', openChat);
-    greeter.addEventListener('click', openChat);
+    if(greeter) greeter.addEventListener('click', openChat);
     closeChat.addEventListener('click', () => chatInterface.classList.remove('open'));
 
     function handleSend() {
         const text = userMsg.value.trim();
         if(!text) return;
 
-        // Add User Message
         const uDiv = document.createElement('div');
         uDiv.className = "bg-[#FFC700] text-black p-3 rounded-lg max-w-[85%] self-end text-sm mb-2 font-medium";
         uDiv.innerText = text;
@@ -377,17 +445,13 @@ document.addEventListener("DOMContentLoaded", () => {
         userMsg.value = '';
         chatHistory.scrollTop = chatHistory.scrollHeight;
 
-        // Bot Response
         setTimeout(() => {
             let response = "I am connecting you to our support team.";
             const lower = text.toLowerCase();
-
-            if(lower.includes('bag') || lower.includes('shop')) response = "Explore our latest collection in the <a href='Britium_Shop.html' class='underline font-bold'>Fashion Shop</a>.";
-            else if(lower.includes('flexitank') || lower.includes('gift') || lower.includes('venture')) response = "For business solutions, please visit our <a href='gallery.html' class='underline font-bold'>Ventures Gallery</a>.";
-            else if(lower.includes('track')) response = "Track your shipment here: <a href='track_order.html' class='underline font-bold'>Track Order</a>.";
-            else if(lower.includes('return')) response = "Start a return here: <a href='return_request.html' class='underline font-bold'>Return Center</a>.";
-            else if(lower.includes('location')) response = "Find us here: <a href='store_locator.html' class='underline font-bold'>Store Locator</a>.";
-            else if(lower.includes('login')) response = "Log in to your account <a href='login_code.html' class='underline font-bold'>here</a>.";
+            if(lower.includes('express')) response = "For express delivery, please check our <a href='express.html' class='underline font-bold text-amber-400'>Britium Express</a> services.";
+            else if(lower.includes('logistics')) response = "We offer integrated logistics. See our <a href='capabilities.html' class='underline font-bold text-amber-400'>Capabilities</a> page.";
+            else if(lower.includes('product')) response = "Browse our trading products here: <a href='products.html' class='underline font-bold text-amber-400'>Product Catalog</a>.";
+            else if(lower.includes('contact')) response = "You can request a quote on our <a href='contact.html' class='underline font-bold text-amber-400'>Contact Page</a>.";
 
             const bDiv = document.createElement('div');
             bDiv.className = "bg-[#1e293b] text-white p-3 rounded-lg max-w-[85%] self-start border border-gray-600 text-sm mb-2";
@@ -396,9 +460,23 @@ document.addEventListener("DOMContentLoaded", () => {
             chatHistory.scrollTop = chatHistory.scrollHeight;
         }, 600);
     }
-
     sendBtn.addEventListener('click', handleSend);
     userMsg.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
+
+    // --- 7. GREETER ROTATION ---
+    const greetings = [ "Hello! I'm BRIA. 🇬🇧", "မင်္ဂလာပါ BRIA ပါ။ 🇲🇲", "Hola! Soy BRIA. 🇪🇸", "Bonjour! Je suis BRIA. 🇫🇷", "你好！我是 BRIA。 🇨🇳", "สวัสดีครับ! ผมชื่อ BRIA. 🇹🇭", "مرحبًا! أنا BRIA. 🇸🇦" ];
+    let gi = 0;
+    setInterval(() => {
+        const textEl = document.getElementById('bria-text');
+        if(textEl) {
+          textEl.style.opacity = 0;
+          setTimeout(() => {
+              textEl.textContent = greetings[gi];
+              textEl.style.opacity = 1;
+              gi = (gi + 1) % greetings.length;
+          }, 500);
+        }
+    }, 4000);
 });
 </script>
 
