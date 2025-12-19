@@ -3,312 +3,310 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BRIA Chat – Britium Ventures AI Assistant</title>
-
-  <meta name="description" content="Chat with BRIA, Britium Ventures’ AI assistant, for trade, logistics, sourcing, and compliance support in Myanmar and beyond.">
-  <meta name="author" content="Britium Ventures">
-  <meta name="theme-color" content="#0a0a0a" />
+  <title>AI Chat | Britium Ventures</title>
+  <meta name="description" content="Britium AI Assistant – Your intelligent partner for logistics, trade, and business queries."/>
+  <meta name="theme-color" content="#020617"/>
 
   <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=garet@800&f[]=helvetica-world@700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body {
-      background-color: #0a0a0a;
-      color: #a0aec0;
-      font-family: 'Inter', sans-serif;
-    }
-    .font-garamond {
-      font-family: 'Cormorant Garamond', serif;
-    }
-    .text-gold {
-      color: #B8860B;
-    }
-    .border-gold {
-      border-color: #B8860B;
+    /* --- CORE VARIABLES --- */
+    :root { 
+      --ink: #020617; 
+      --fg: #e2e8f0; 
+      --amber: #FFC700; 
+      --panel: #111827; 
     }
     
-    /* --- PARTICLES & ANIMATIONS --- */
-    #particles-js {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+    body { 
+      background-color: var(--ink); 
+      color: var(--fg); 
+      font-family: 'Poppins', sans-serif; 
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    .animated-element {
-      opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .animated-element.is-visible { opacity: 1; transform: translateY(0); }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .font-garamond { font-family: 'Cormorant Garamond', serif; }
+    .font-garet { font-family: 'Garet', sans-serif; }
+    .text-gold { color: var(--amber); }
 
-    /* --- CHAT STYLES --- */
-    .glass {
-      background: rgba(17, 24, 39, 0.7);
+    /* Metallic Gold Text */
+    .metallic-gold-text {
+      color: #ffd700;
+      text-transform: uppercase;
+      text-shadow: 0 1px 1px #a27a00, 0 3px 3px #a27a00, 0 4px 6px rgba(0,0,0,0.4);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer { 0%,100% { opacity: 1; } 50% { opacity: 0.8; } }
+
+    /* Acrylic Panels */
+    .acrylic-panel {
+      background: rgba(17, 34, 64, 0.6);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(184, 134, 11, 0.2);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 1rem;
+      padding: 2rem;
     }
-    .chat-bubble {
-        padding: 12px 18px;
-        border-radius: 12px;
-        max-width: 80%;
-        line-height: 1.6;
-        animation: fadeIn 0.3s ease;
-    }
-    .bubble-bot {
-        background-color: rgba(30, 41, 59, 0.8);
-        color: #e2e8f0;
-        border-top-left-radius: 0;
-        border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-    .bubble-user {
-        background-color: #B8860B;
-        color: #0a0a0a;
-        align-self: flex-end;
-        border-top-right-radius: 0;
-        font-weight: 600;
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* --- BRIA WIDGET --- */
-    #bria-greeter {
-      position: fixed; bottom: 30px; right: 30px;
-      background: rgba(15, 23, 42, 0.95); border: 2px solid #B8860B;
-      color: #fff; padding: 0.8rem 1.2rem; border-radius: 1rem;
-      display: flex; align-items: center; gap: 1rem;
-      box-shadow: 0 0 15px rgba(184, 134, 11, 0.3); z-index: 50;
-      animation: fadeIn 1s ease forwards;
+    /* Navigation */
+    .site-header { position: sticky; top: 0; z-index: 50; background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .brand { font-family: 'Garet', sans-serif; font-weight: 800; font-size: 1.75rem; color: #fff; text-decoration: none; text-transform: uppercase;}
+    .brand span { color: var(--amber); }
+    .main-nav { display: none; } @media (min-width: 1024px) { .main-nav { display: flex; gap: 1.5rem; align-items: center;} }
+    .main-nav a { color: var(--fg); text-decoration: none; transition: 0.3s; } .main-nav a:hover { color: var(--amber); }
+    .mobile-btn { display: block; color: #fff; background: none; border: none; cursor: pointer; } @media (min-width: 1024px) { .mobile-btn { display: none; } }
+    
+    .mpanel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 300px; height: 100%; background: var(--panel); transition: right 0.4s ease-in-out; z-index: 60; border-left: 1px solid var(--amber); }
+    .mpanel.is-open { right: 0; }
+    .mclose { position: absolute; top: 1.5rem; right: 1.5rem; color: #fff; background: none; border: none; }
+    .mnav { display: flex; flex-direction: column; gap: 1.5rem; padding: 6rem 2rem; } .mnav a { font-size: 1.25rem; }
+
+    /* Hero */
+    .hero { position:relative; overflow:hidden; height:50vh; display:flex; align-items:center; justify-content:center; }
+    .hero-video { width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:0; }
+    .hero-overlay { position:absolute; inset:0; background:rgba(3, 7, 18, 0.7); z-index:1; }
+    .hero-content { position:relative; z-index:2; text-align:center; padding:2rem; }
+    .hero-title { font-size:3rem; font-weight:700; line-height:1.1; }
+    .hero-sub { font-size:1.1rem; margin-top:1rem; color:#d1d5db; max-width:700px; margin-left:auto; margin-right:auto; }
+
+    /* Greeting Robot */
+    .greetings { text-align:center; padding: 4rem 1rem; background: #0B1221; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .greetings img { height:160px; margin: 0 auto 1.5rem; object-fit: contain; drop-shadow: 0 0 15px rgba(251,191,36,0.3); }
+    .greetings p { font-size:1.1rem; margin:.5rem 0; color:var(--amber); font-weight:500; font-family: 'Poppins', sans-serif; }
+
+    /* Chat Container */
+    .chat-section { padding: 4rem 1rem; background: var(--ink); }
+    .chat-container { 
+        max-width: 900px; margin: 0 auto; 
+        background: rgba(17, 24, 39, 0.6); 
+        backdrop-filter: blur(10px);
+        border-radius: 1rem; padding: 2rem; 
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+        border: 1px solid rgba(251,191,36,0.2); 
+        display: flex; flex-direction: column; height: 70vh; 
     }
-    #bria-greeter img { 
-        width: 50px; height: 50px; 
-        border-radius: 50%; background: #B8860B; padding: 4px; 
-        object-fit: cover; 
+    .chat-window { 
+        flex-grow: 1; overflow-y: auto; margin-bottom: 1rem; padding-right: .5rem; 
+        /* Scrollbar styling */
+        scrollbar-width: thin; scrollbar-color: var(--amber) #1e293b;
     }
-    #bria-text {
-        font-size: 0.9rem; font-weight: 500; transition: opacity 0.5s ease-in-out;
+    .bubble { padding: 1rem 1.25rem; border-radius: 1rem; margin-bottom: 1rem; max-width: 80%; line-height: 1.6; font-size: 0.95rem; }
+    .user { background: var(--amber); color: #000; align-self: flex-end; border-bottom-right-radius: 0; font-weight: 500; margin-left: auto; }
+    .assistant { background: #1e293b; color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 0; border: 1px solid rgba(255,255,255,0.1); }
+    
+    .chat-input { display: flex; gap: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+    .chat-input input { 
+        flex-grow: 1; padding: 0.75rem 1.25rem; border-radius: 0.5rem; 
+        border: 1px solid #334155; background: #020617; color: #fff; 
+        transition: 0.3s;
     }
+    .chat-input input:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 2px rgba(251,191,36,0.2); }
+    .chat-input button { 
+        background: var(--amber); color: #000; font-weight: 700; 
+        padding: 0.75rem 2rem; border: none; border-radius: 0.5rem; 
+        cursor: pointer; transition: 0.3s; 
+    }
+    .chat-input button:hover { background: #eab308; transform: translateY(-1px); }
+
+    /* Intermission */
+    .intermission { padding: 4rem 1rem; text-align: center; background: #050a14; border-top: 1px solid rgba(255,255,255,0.05); }
+    .intermission video { width: 100%; max-width: 900px; border-radius: 1rem; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+
+    /* Footer */
+    .site-footer { padding: 4rem 0 2rem; background-color: #000; border-top: 1px solid #1f2937; margin-top: auto; }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; margin-top: 2rem; text-align: center; }
   </style>
 </head>
+<body class="antialiased">
 
-<body class="antialiased overflow-x-hidden">
-
-<div id="particles-js"></div>
-
-<header class="fixed inset-x-0 top-0 z-50 bg-black/30 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-3">
-      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
-      <span class="font-garamond text-xl font-bold text-white"> BRITIUM <span class="text-gold">VENTURES</span></span>
-    </a>
-    
-    <nav class="hidden md:flex gap-6 text-sm font-semibold text-slate-200 items-center">
-      <a href="index.html" class="hover:text-[#FFC700] transition">Home</a>
-      <a href="express.html" class="text-[#FFC700] border border-[#FFC700]/50 px-3 py-1 rounded hover:bg-[#FFC700] hover:text-black transition">Britium Express</a>
-      <a href="about.html" class="hover:text-[#FFC700] transition">About</a>
-      <a href="team.html" class="hover:text-[#FFC700] transition">Team</a>
-      <a href="careers.html" class="hover:text-[#FFC700] transition">Careers</a>
-      <a href="capabilities.html" class="hover:text-[#FFC700] transition">Capabilities</a>
-      <a href="solutions.html" class="hover:text-[#FFC700] transition">Solutions</a>
-      <a href="products.html" class="hover:text-[#FFC700] transition">Products</a>
-      <a href="markets.html" class="hover:text-[#FFC700] transition">Markets</a>
-      <a href="gallery.html" class="hover:text-[#FFC700] transition">Gallery</a>
-      <a href="contact.html" class="hover:text-[#FFC700] transition">Contact</a>
-      <a href="chat.html" class="px-4 py-2 rounded-md bg-[#FFC700] text-black font-bold border border-[#FFC700] hover:bg-[#FFC700]/80 transition">AI Chat</a>
-    </nav>
-    <button id="mobile-toggle" class="md:hidden text-white text-3xl" aria-label="Toggle Menu">☰</button>
-  </div>
-</header>
-
-<div id="mobile-menu-container" class="fixed inset-0 z-40 md:hidden hidden">
-  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/70"></div>
-  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-slate-900/90 p-8 transform translate-x-full transition-transform border-l border-[#FFC700]/20 overflow-y-auto">
-    <button id="mobile-menu-close" class="absolute top-4 right-4 text-white text-3xl">×</button>
-    <div class="flex flex-col gap-y-6 mt-16 text-lg text-white font-medium">
-      <a href="index.html">Home</a>
-      <a href="express.html" class="text-[#FFC700] border-l-2 border-[#FFC700] pl-3">Britium Express</a>
-      <a href="about.html">About</a>
-      <a href="team.html">Team</a>
-      <a href="careers.html">Careers</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="products.html">Products</a>
-      <a href="markets.html">Markets</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="chat.html" class="bg-[#FFC700] text-black text-center py-2 rounded font-bold">Chat with AI</a>
+  <header class="site-header">
+    <div class="nav-row container">
+      <a href="index.html" class="brand flex items-center gap-3">
+        <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
+        BRITIUM <span>VENTURES</span>
+      </a>
+      <nav class="main-nav">
+          <a href="index.html">Home</a>
+          <a href="express.html">Britium Express</a>
+          <a href="about.html">About</a>
+          <a href="team.html">Team</a>
+          <a href="careers.html">Careers</a>
+          <a href="capabilities.html">Capabilities</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="products.html">Products</a>
+          <a href="markets.html">Markets</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+          <a href="chat.html" class="text-amber-400 font-bold border border-amber-400 px-3 py-1 rounded">AI Chat</a>
+      </nav>
+      <button id="mobile-menu-button" class="mobile-btn" aria-label="Open menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
-  </nav>
-</div>
-
-<main class="pt-24 pb-20 min-h-screen relative">
     
-    <div class="text-center mb-10 px-4">
-        <h1 class="font-garamond text-4xl md:text-6xl font-bold text-white mb-4 animated-element">
-            Chat with <span class="text-gold">BRIA</span>
-        </h1>
-        <p class="text-slate-400 text-lg max-w-2xl mx-auto animated-element">
-            Your 24/7 AI assistant for logistics quotes, compliance checks, and trade support.
-        </p>
+    <div id="mobile-menu" class="mpanel">
+      <button id="mobile-menu-close" class="mclose" aria-label="Close menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <nav class="mnav">
+        <a href="index.html">Home</a>
+        <a href="express.html">Britium Express</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="careers.html">Careers</a>
+        <a href="capabilities.html">Capabilities</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="products.html">Products</a>
+        <a href="markets.html">Markets</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="chat.html" class="text-amber-400">AI Chat</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="max-w-4xl mx-auto px-4 animated-element">
-        <div class="glass rounded-xl h-[65vh] flex flex-col shadow-2xl">
-            
-            <div id="chatMessages" class="flex-1 overflow-y-auto p-6 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-[#B8860B] scrollbar-track-slate-800">
-                <div class="chat-bubble bubble-bot">
-                    👋 Hello! I am BRIA. How can I assist with your logistics or trade needs today?
-                </div>
-            </div>
+  <main>
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline
+        src="https://cdn1.site-media.eu/images/0/19088878/assets_task_01k4hj3btcfx08xd49ajsnx1fj_task_01k4hj3btcfx08xd49ajsnx1fj_genid_364f2962-6d00-4dc6-a6bc-52d6ae9c6723_25_09_07_07_47_803564_videos_00000_35133591_source-SERuFZw1tusoZpDDjcR3fg.mp4"></video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content fade-in">
+        <h1 class="hero-title font-garet metallic-gold-text">Britium AI Assistant</h1>
+        <p class="hero-sub font-helvetica">Your intelligent partner for logistics, trade, compliance, and business insights — available 24/7.</p>
+      </div>
+    </section>
 
-            <div class="p-4 bg-slate-900/80 border-t border-slate-700 rounded-b-xl flex gap-3">
-                <input type="text" id="chatInput" placeholder="Ask about shipping rates, documents, or services..." 
-                    class="flex-1 bg-slate-800 text-white border border-slate-600 rounded-lg px-4 py-3 focus:outline-none focus:border-[#B8860B] transition placeholder-slate-500">
-                <button id="sendBtn" class="bg-[#B8860B] text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-600 transition flex items-center gap-2">
-                    SEND <span>➤</span>
-                </button>
-            </div>
+    <section class="greetings fade-in">
+      <img src="BRIA%20(1).gif" onerror="this.src='https://cdn1.site-media.eu/images/0/19088871/BritiumGalleryclip-ySS_I9BJjCY5TwoEoUHrYw.gif'" alt="Greeting Robot">
+      
+      <div id="greeting-text">
+          <p>Hello! I’m BRITIUM. Great to meet you.</p>
+      </div>
+    </section>
+
+    <section class="chat-section">
+      <div class="chat-container fade-in">
+        <div class="chat-window" id="chat-window">
+          <div class="bubble assistant">Hello! I’m the Britium AI Assistant. How can I help you today?</div>
+          <div class="bubble user">Can you tell me about customs clearance support?</div>
+          <div class="bubble assistant">Certainly. We provide end-to-end customs brokerage services, ensuring regulatory compliance, FDA approvals, and risk mitigation for smooth import/export operations.</div>
         </div>
-        
-        <p class="text-center text-slate-500 text-sm mt-4">
-            For complex inquiries, please <a href="contact.html" class="text-gold hover:underline">contact our team directly</a>.
-        </p>
-    </div>
+        <div class="chat-input">
+          <input type="text" id="chat-input" placeholder="Type your message here...">
+          <button id="chat-send">Send</button>
+        </div>
+      </div>
+    </section>
 
-</main>
+    <section class="intermission fade-in">
+      <h2 class="text-2xl font-garet metallic-gold-text mb-6">Our Digital Frontier</h2>
+      <video autoplay muted loop playsinline
+        src="https://cdn1.site-media.eu/images/0/19088875/BritiumGalleryclip11-zytYAyJcUhLq7fkL5a-LoQ.mp4"></video>
+    </section>
+  </main>
 
-<div id="bria-greeter">
-  <img src="BRIA (1).gif" alt="BRIA Robot">
-  <div id="bria-text">Hello! I'm BRIA. 🇬🇧</div>
-</div>
+  <footer class="site-footer">
+      <div class="container">
+          <div class="footer-bottom">
+              <p class="text-sm text-gray-400">&copy; <span id="bvYear"></span> Britium Ventures. All rights reserved.</p>
+          </div>
+      </div>
+  </footer>
 
-<footer class="py-10 bg-[#111111]/80 backdrop-blur-sm text-gray-400 border-t border-gray-800">
-  <div class="max-w-6xl mx-auto px-6 text-center text-sm">
-    <p>&copy; <span id="year"></span> Britium Ventures. All Rights Reserved.</p>
-    <p class="mt-2">Yangon, Myanmar | <a href="mailto:info@britiumventures.com" class="hover:text-gold">info@britiumventures.com</a></p>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
     
-    // --- PARTICLES ---
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-          "particles": {
-            "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#B8860B" },
-            "shape": { "type": "circle" },
-            "opacity": { "value": 0.3, "random": true },
-            "size": { "value": 3, "random": true },
-            "line_linked": { "enable": true, "distance": 150, "color": "#B8860B", "opacity": 0.2, "width": 1 },
-            "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-          },
-          "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
-          "retina_detect": true
-        });
+    // --- 1. MOBILE MENU LOGIC ---
+    const mmBtn = document.getElementById('mobile-menu-button');
+    const panel = document.getElementById('mobile-menu');
+    const closeX = document.getElementById('mobile-menu-close');
+    
+    if (mmBtn && panel && closeX) {
+        mmBtn.addEventListener('click', () => panel.classList.add('is-open'));
+        closeX.addEventListener('click', () => panel.classList.remove('is-open'));
     }
 
-    // --- ANIMATIONS ---
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
+    // --- 2. ROBOT GREETING ROTATION ---
+    const greetingContainer = document.getElementById('greeting-text');
+    if(greetingContainer){
+      const lines = [
+        "ကျွန်တော့်နာမည် မောင် BRITIUM ပါ။ တွေ့ရတာဝမ်းသာပါတယ်။ အားလုံးကိုအရမ်းချစ်ပါတယ်။ ဘာများကူညီရမလဲခင်ဗျာ။",
+        "Hello! I’m BRITIUM. Great to meet you.",
+        "您好！我是 BRITIUM。很高兴见到您。",
+        "こんにちは！BRITIUMです。お会いできて嬉しいです。",
+        "안녕하세요! BRITIUM 입니다.",
+        "Bonjour! Je suis BRITIUM.",
+        "¡Hola! Soy BRITIUM."
+      ];
+      let i = 0; 
+      // Initial set
+      greetingContainer.innerHTML = `<p>${lines[0]}</p>`;
+      
+      setInterval(() => {
+          i = (i + 1) % lines.length; 
+          // Fade effect logic could be added here, currently simple replacement
+          greetingContainer.innerHTML = `<p>${lines[i]}</p>`;
+      }, 4500);
+    }
+
+    // --- 3. CHAT LOGIC (Client-Side Mock) ---
+    const chatWindow = document.getElementById("chat-window");
+    const chatInput = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("chat-send");
+
+    function sendMessage() {
+      const msg = chatInput.value.trim();
+      if (!msg) return;
+
+      // Add User Message
+      const userBubble = document.createElement("div");
+      userBubble.className = "bubble user";
+      userBubble.innerText = msg;
+      chatWindow.appendChild(userBubble);
+      
+      chatInput.value = "";
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+
+      // Simulate Assistant Response
+      setTimeout(() => {
+          const assistantBubble = document.createElement("div");
+          assistantBubble.className = "bubble assistant";
+          
+          let reply = "Thanks for your question. A specialist will follow up shortly.";
+          const lower = msg.toLowerCase();
+          
+          if(lower.includes('rate') || lower.includes('price')) reply = "For accurate rates, please visit our <a href='contact.html' class='text-amber-400 underline'>Contact Page</a> to request a quote.";
+          else if(lower.includes('express')) reply = "Britium Express offers same-day delivery in Yangon. Check <a href='express.html' class='text-amber-400 underline'>Express Services</a>.";
+          else if(lower.includes('shop') || lower.includes('buy')) reply = "Visit our <a href='Britium_Shop.html' class='text-amber-400 underline'>Luxury Shop</a> to browse products.";
+
+          assistantBubble.innerHTML = reply;
+          chatWindow.appendChild(assistantBubble);
+          chatWindow.scrollTop = chatWindow.scrollHeight;
+      }, 800);
+    }
+
+    if(sendBtn && chatInput) {
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') sendMessage(); });
+    }
+
+    // --- 4. ANIMATIONS & FOOTER ---
+    const io = new IntersectionObserver((entries, observer) => { 
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) { 
+                entry.target.classList.add('is-visible'); 
+                observer.unobserve(entry.target); 
+            } 
+        }); 
     }, { threshold: 0.1 });
-    document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
-    // --- MOBILE MENU ---
-    const toggle = document.getElementById("mobile-toggle");
-    const menuContainer = document.getElementById("mobile-menu-container");
-    const menu = document.getElementById("mobile-menu");
-    const closeBtn = document.getElementById("mobile-menu-close");
-    const overlay = document.getElementById("mobile-menu-overlay");
-
-    if (toggle) {
-        const toggleMenu = (open) => {
-            if (open) {
-                menuContainer.classList.remove("hidden");
-                setTimeout(() => menu.classList.remove("translate-x-full"), 10);
-            } else {
-                menu.classList.add("translate-x-full");
-                setTimeout(() => menuContainer.classList.add("hidden"), 300);
-            }
-        };
-        toggle.addEventListener("click", () => toggleMenu(true));
-        closeBtn.addEventListener("click", () => toggleMenu(false));
-        overlay.addEventListener("click", () => toggleMenu(false));
-    }
-
-    // --- FOOTER YEAR ---
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // --- CHAT LOGIC ---
-    const sendBtn = document.getElementById('sendBtn');
-    const userMsg = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
-
-    async function handleSend() {
-        const text = userMsg.value.trim();
-        if(!text) return;
-
-        // User Bubble
-        const divUser = document.createElement('div');
-        divUser.className = 'chat-bubble bubble-user';
-        divUser.textContent = text;
-        chatMessages.appendChild(divUser);
-        
-        userMsg.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        // Bot Thinking Placeholder
-        const loadingDiv = document.createElement('div');
-        loadingDiv.className = 'chat-bubble bubble-bot';
-        loadingDiv.textContent = "Thinking...";
-        chatMessages.appendChild(loadingDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        try {
-            const res = await fetch("/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: text })
-            });
-            const data = await res.json();
-            
-            loadingDiv.innerHTML = data.reply ? data.reply.replace(/\n/g, "<br>") : "⚠️ No response received.";
-        } catch (err) {
-            console.error(err);
-            loadingDiv.textContent = "⚠️ Network Error: Could not reach AI service.";
-        }
-    }
-
-    sendBtn.addEventListener('click', handleSend);
-    userMsg.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
-
-    // --- BRIA GREETINGS ---
-    const greetings = [
-        "Hello! I'm BRIA. 🇬🇧", 
-        "မင်္ဂလာပါ BRIA ပါ။ 🇲🇲", 
-        "Hola! Soy BRIA. 🇪🇸",
-        "Bonjour! Je suis BRIA. 🇫🇷",
-        "你好！我是 BRIA。 🇨🇳",
-        "สวัสดีครับ! ผมชื่อ BRIA. 🇹🇭",
-        "مرحبًا! أنا BRIA. 🇸🇦"
-    ];
-    let gi = 0;
-    setInterval(() => {
-        const textEl = document.getElementById('bria-text');
-        if(textEl) {
-          textEl.style.opacity = 0;
-          setTimeout(() => {
-              textEl.textContent = greetings[gi];
-              textEl.style.opacity = 1;
-              gi = (gi + 1) % greetings.length;
-          }, 500);
-        }
-    }, 4000);
-});
-</script>
+    document.getElementById('bvYear').textContent = new Date().getFullYear();
+  });
+  </script>
 
 </body>
 </html>
