@@ -9,6 +9,8 @@
 
   <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=garet@800&f[]=helvetica-world@700&display=swap" rel="stylesheet">
   
@@ -262,7 +264,12 @@
                     <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19084602/GroupPic-nu-LWNAI62yTnEktRq9tDg.png" alt="Team"></div>
                     <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341309/5-rA5iUmklfVGK9vfHAHZAGg.jpg" alt="Gallery"></div>
                     <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341304/4-HAK8F_Z1SNmO2WerlSmRqA.jpg" alt="Operations"></div>
+                    <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341292/7-88SSifJuTAZeE3p3F9EOOg.jpg" alt="Team"></div>
                     <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19086738/BritiumGalleryclip4-wPlcCdMHteCm1JGfWIsYbg.jpg" alt="Logistics"></div>
+                    <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19097425/6-tRSGV700Abc5HlHdinLFRw.jpg" alt="Office"></div>
+                    <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19084602/GroupPic-nu-LWNAI62yTnEktRq9tDg.png" alt="Team"></div>
+                    <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341309/5-rA5iUmklfVGK9vfHAHZAGg.jpg" alt="Gallery"></div>
+                    <div class="swiper-slide"><img src="https://cdn1.site-media.eu/images/0/19341304/4-HAK8F_Z1SNmO2WerlSmRqA.jpg" alt="Operations"></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -275,7 +282,7 @@
       <div class="container py-12">
           <div class="footer-grid">
               <div><h4 class="font-garet text-lg uppercase">Britium Ventures</h4><p>Leading trade & logistics partner for Myanmar.</p></div>
-              <div><h4 class="font-garet text-lg uppercase">Company</h4><ul class="space-y-2"><li><a href="about.html">About Us</a></li><li><a href="team.html">Team</a></li><li><a href="careers.html">Career</a></li><li><a href="gallery.html">Photo Gallery</a></li></ul></div>
+              <div><h4 class="font-garet text-lg uppercase">Company</h4><ul class="space-y-2"><li><a href="about.html">About Us</a></li><li><a href="team.html">Team</a></li><li><a href="careers.html">Career</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
               <div><h4 class="font-garet text-lg uppercase">Solutions</h4><ul class="space-y-2"><li><a href="capabilities.html">Capabilities</a></li><li><a href="solutions.html">Solutions</a></li><li><a href="markets.html">Market</a></li><li><a href="#ai">Britium AI</a></li></ul></div>
               <div><h4 class="font-garet text-lg uppercase">Products</h4><ul class="space-y-2"><li><a href="products.html">All Products</a></li></ul></div>
           </div>
@@ -293,51 +300,7 @@
     const $ = (s, r=document) => r.querySelector(s);
     const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 
-    // 1. MOBILE MENU LOGIC
-    const mmBtn = $('#mobile-menu-button'), panel = $('#mobile-menu'), closeX = $('#mobile-menu-close');
-    if (mmBtn && panel && closeX) {
-        mmBtn.addEventListener('click', () => panel.classList.add('is-open'));
-        closeX.addEventListener('click', () => panel.classList.remove('is-open'));
-    }
-
-    // 2. HERO AUDIO CONTROL
-    const heroVideo = document.getElementById("hero-video");
-    const muteBtn = document.getElementById("unmute-btn");
-    
-    if(heroVideo && muteBtn){
-      // NOTE: Browsers BLOCK autoplay with sound. User MUST click.
-      // We start muted (to allow autoplay), and let user unmute.
-      muteBtn.addEventListener('click', () => {
-          if(heroVideo.muted) {
-              heroVideo.muted = false;
-              heroVideo.volume = 1.0; // Max volume on click
-              muteBtn.innerHTML = "🔊 Mute Video";
-          } else {
-              heroVideo.muted = true;
-              muteBtn.innerHTML = "🔇 Unmute Video";
-          }
-      });
-    }
-
-    // 3. ROBOT GREETING ROTATION
-    const bubble = document.getElementById('robotBubble');
-    if(bubble){
-      const lines = [
-        "ကျွန်တော့်နာမည် မောင် BRITIUM ပါ။ တွေ့ရတာဝမ်းသာပါတယ်။ အားလုံးကိုအရမ်းချစ်ပါတယ်။ ဘာများကူညီရမလဲခင်ဗျာ။",
-        "Hello! I’m BRITIUM. Great to meet you.",
-        "您好！我是 BRITIUM。很高兴见到您。",
-        "こんにちは！BRITIUMです。お会いできて嬉しいです。",
-        "안녕하세요! BRITIUM 입니다."
-      ];
-      let i = 0; 
-      bubble.textContent = lines[0];
-      setInterval(() => {
-          i = (i + 1) % lines.length; 
-          bubble.textContent = lines[i];
-      }, 4500);
-    }
-
-    // 4. CHAT ECHO (DEMO)
+    // --- 1. CHATBOT LOGIC (Top priority) ---
     const chat = document.getElementById('chat');
     const input = document.getElementById('chatInput');
     const send = document.getElementById('chatSend');
@@ -356,18 +319,74 @@
           if(!t) return; 
           add(t, true); 
           input.value = ''; 
-          setTimeout(() => add("Thanks! A specialist will follow up with you."), 700);
+          setTimeout(() => add("Thanks! A specialist will follow up with you shortly."), 700);
       };
 
       send.addEventListener('click', handleChat);
       input.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleChat(); });
     }
 
-    // 5. ANIMATIONS
-    const io = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
+    // --- 2. MOBILE MENU LOGIC ---
+    const mmBtn = $('#mobile-menu-button'), panel = $('#mobile-menu'), closeX = $('#mobile-menu-close');
+    if (mmBtn && panel && closeX) {
+        mmBtn.addEventListener('click', () => panel.classList.add('is-open'));
+        closeX.addEventListener('click', () => panel.classList.remove('is-open'));
+    }
+
+    // --- 3. HERO AUDIO FADE-IN ---
+    const heroVideo = document.getElementById("hero-video");
+    const muteBtn = document.getElementById("unmute-btn");
+    
+    if(heroVideo && muteBtn){
+      heroVideo.volume = 0.02; // Start very low
+      const fadeIn = setInterval(() => {
+        if(heroVideo.volume < 0.25){
+          heroVideo.volume = Math.min(heroVideo.volume + 0.01, 0.25);
+        } else { clearInterval(fadeIn); }
+      }, 500);
+
+      muteBtn.addEventListener('click', () => {
+          if(heroVideo.muted) {
+              heroVideo.muted = false;
+              heroVideo.volume = 1.0; 
+              muteBtn.innerHTML = "🔊 Mute Video";
+          } else {
+              heroVideo.muted = true;
+              muteBtn.innerHTML = "🔇 Unmute Video";
+          }
+      });
+    }
+
+    // --- 4. ROBOT GREETING ROTATION ---
+    const bubble = document.getElementById('robotBubble');
+    if(bubble){
+      const lines = [
+        "ကျွန်တော့်နာမည် မောင် BRITIUM ပါ။ တွေ့ရတာဝမ်းသာပါတယ်။ အားလုံးကိုအရမ်းချစ်ပါတယ်။ ဘာများကူညီရမလဲခင်ဗျာ။",
+        "Hello! I’m BRITIUM. Great to meet you.",
+        "您好！我是 BRITIUM。很高兴见到您。",
+        "こんにちは！BRITIUMです。お会いできて嬉しいです。",
+        "안녕하세요! BRITIUM 입니다."
+      ];
+      let i = 0; 
+      bubble.textContent = lines[0];
+      setInterval(() => {
+          i = (i + 1) % lines.length; 
+          bubble.textContent = lines[i];
+      }, 4500);
+    }
+
+    // --- 5. ANIMATIONS & SWIPER ---
+    const io = new IntersectionObserver((entries, observer) => { 
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) { 
+                entry.target.classList.add('is-visible'); 
+                observer.unobserve(entry.target); 
+            } 
+        }); 
+    }, { threshold: 0.1 });
     $$('.fade-in').forEach(el => io.observe(el));
 
-    // 6. SWIPER GALLERY
+    // Gallery slider config with duplicated slides for looping
     new Swiper('.gallery-slider', {
       effect: 'coverflow', grabCursor: true, centeredSlides: true,
       slidesPerView: 'auto', loop: true,
@@ -376,10 +395,10 @@
       pagination: { el: '.swiper-pagination', clickable: true },
     });
 
-    // 7. FOOTER YEAR
+    // --- 6. FOOTER YEAR ---
     const y = $('#bvYear'); if(y) y.textContent = new Date().getFullYear();
 
-    // 8. DASHBOARD LOGIC (Mock)
+    // --- 7. DASHBOARD LOGIC (Mock) ---
     const mktBtn = $('#market-snapshot-btn'), mktRes = $('#market-snapshot-result');
     if (mktBtn) mktBtn.addEventListener('click', () => {
         mktRes.innerHTML = "<span class='text-amber-400'>Loading...</span>";
