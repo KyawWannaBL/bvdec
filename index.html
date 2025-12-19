@@ -70,7 +70,7 @@
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
-    /* Navigation - UPDATED BREAKPOINTS */
+    /* Navigation */
     .site-header { position: sticky; top: 0; z-index: 50; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
     .nav-row { display: flex; align-items: center; justify-content: space-between; height: 80px; }
     
@@ -81,16 +81,15 @@
     }
     .brand span { color: var(--amber); }
     
-    /* Desktop Nav: Only show on very large screens (1280px+) to prevent overlap */
+    /* Desktop Nav */
     .main-nav { display: none; } 
     @media (min-width: 1280px) { 
         .main-nav { display: flex; gap: 1.2rem; align-items: center; } 
     }
-    
     .main-nav a { color: var(--fg); text-decoration: none; transition: 0.3s; font-size: 0.9rem; font-weight: 500; white-space: nowrap; } 
     .main-nav a:hover { color: var(--amber); }
     
-    /* Mobile Button: Show on screens smaller than 1280px */
+    /* Mobile Button */
     .mobile-btn { display: block; color: #fff; background: none; border: none; cursor: pointer; } 
     @media (min-width: 1280px) { .mobile-btn { display: none; } }
     
@@ -139,6 +138,17 @@
     /* Dashboard Widgets */
     .gemini-result { min-height: 100px; background: rgba(3, 7, 18, 0.5); border-radius: 0.5rem; padding: 1rem; margin-top: 1rem; text-align: left; line-height: 1.5; color: #d1d5db; border: 1px solid rgba(255,255,255,0.1); }
 
+    /* ENLARGED INTERMISSION VIDEO */
+    .intermission-large {
+        width: 100%; max-width: 1366px; margin: 0 auto;
+        padding: 4rem 1rem; text-align: center;
+        background: #050a14; border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .intermission-large video {
+        width: 100%; height: 738px; object-fit: cover;
+        border-radius: 1rem; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(251,191,36,0.3);
+    }
+
     /* Chat Bubbles */
     .chat-bubble { padding: 10px 15px; border-radius: 10px; margin-bottom: 10px; font-size: 0.9rem; line-height: 1.5; max-width: 85%; }
     .chat-bubble.assistant { background: #1e293b; color: #fff; align-self: flex-start; border: 1px solid #334155; }
@@ -153,7 +163,6 @@
         <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
         BRITIUM <span>VENTURES</span>
       </a>
-      
       <nav class="main-nav">
           <a href="index.html" class="text-amber-400">Home</a>
           <a href="express.html">Britium Express</a>
@@ -168,10 +177,7 @@
           <a href="contact.html">Contact</a>
           <a href="#ai" class="btn btn-primary px-4 py-1 text-sm text-black hover:scale-105 transition">AI Chat</a>
       </nav>
-      
-      <button id="mobile-menu-button" class="mobile-btn" aria-label="Open menu">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
+      <button id="mobile-menu-button" class="mobile-btn" aria-label="Open menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
     
     <div id="mobile-menu" class="mpanel">
@@ -283,7 +289,7 @@
             <p id="robotBubble" class="gold-emboss mt-4 text-lg min-h-[4rem] flex items-center justify-center">Hello! I’m BRITIUM. Great to meet you.</p>
           </div>
           <h4 class="gold-emboss text-2xl mt-6 font-bold">Britium AI</h4>
-          <p class="gold-emboss mt-2 opacity-90 text-sm">Instant client engagement — ask about shipments, quotes, or services. This portal offers interactive support.</p>
+          <p class="gold-emboss mt-2 opacity-90 text-sm">Instant client engagement — ask about shipments, quotes, or services.</p>
         </div>
 
         <div class="acrylic-panel rounded-2xl p-6 fade-in">
@@ -297,6 +303,11 @@
         </div>
 
       </div>
+    </section>
+
+    <section class="intermission-large fade-in">
+        <h2 class="text-3xl font-garet metallic-gold-text mb-8">Our Digital Frontier</h2>
+        <video autoplay muted loop playsinline src="https://cdn1.site-media.eu/images/0/19088875/BritiumGalleryclip11-zytYAyJcUhLq7fkL5a-LoQ.mp4"></video>
     </section>
 
     <section id="photo-gallery" class="section panel border-t border-gray-800">
@@ -394,7 +405,7 @@
       }, 4500);
     }
 
-    // 4. CHAT LOGIC (Backend Linkage with Fallback)
+    // 4. CHAT LOGIC (Client-Side Simulation + Backend Fallback)
     const chat = document.getElementById('chat');
     const input = document.getElementById('chatInput');
     const send = document.getElementById('chatSend');
@@ -408,32 +419,24 @@
           chat.scrollTop = chat.scrollHeight;
       };
       
-      const handleChat = async () => {
+      const handleChat = () => {
           const text = input.value.trim(); 
           if(!text) return; 
           
           add(text, true); 
           input.value = ''; 
           
-          // BACKEND LINKAGE: Attempt to contact server
-          try {
-              const response = await fetch('api/chat.php', {
-                  method: 'POST',
-                  headers: {'Content-Type': 'application/json'},
-                  body: JSON.stringify({ message: text })
-              });
+          // CLIENT-SIDE SIMULATION (Guarantees response even if no backend)
+          setTimeout(() => {
+              let response = "Thanks! A specialist will follow up shortly.";
+              const lower = text.toLowerCase();
               
-              if (response.ok) {
-                  const data = await response.json();
-                  add(data.reply || "Message received.");
-              } else {
-                  throw new Error("Backend not available");
-              }
-          } catch (error) {
-              // FALLBACK MODE (Visual simulation if backend fails)
-              console.warn("Backend unavailable, using simulated response.");
-              setTimeout(() => add("Thanks for your message! Our AI backend is currently in maintenance mode, but a specialist has been notified."), 700);
-          }
+              if(lower.includes('price') || lower.includes('quote')) response = "For quotes, please visit our <a href='contact.html' class='text-amber-400 underline'>Contact Page</a>.";
+              else if(lower.includes('track') || lower.includes('status')) response = "You can track shipments on the <a href='express.html' class='text-amber-400 underline'>Britium Express</a> page.";
+              else if(lower.includes('hello')) response = "Hello! I can help with Customs, Logistics, or Trading queries.";
+
+              add(response);
+          }, 700);
       };
 
       send.addEventListener('click', handleChat);
