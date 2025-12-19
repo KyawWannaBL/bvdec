@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Britium Ventures | Integrated Trade & Logistics Partner</title>
-  <meta name="description" content="Britium Ventures – Myanmar’s trusted partner for trade, logistics, sourcing, and AI-driven market solutions.">
+  <title>Britium | Luxury & Innovation</title>
   <meta name="theme-color" content="#020617"/>
 
-  <link rel="icon" href="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body { background-color: #020617; color: #e2e8f0; font-family: 'Poppins', sans-serif; }
+    /* --- CORE STYLES --- */
+    body { background-color: #020617; color: #e2e8f0; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
     .font-garamond { font-family: 'Cormorant Garamond', serif; }
     .text-gold { color: #FFC700; }
     
+    /* Gold Shimmer Effect */
     .metallic-gold-text {
       color: #ffd700;
       text-transform: uppercase;
@@ -24,22 +24,53 @@
     }
     @keyframes shimmer { 0%,100% { opacity: 1; } 50% { opacity: 0.8; } }
 
+    /* Animations */
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-in.is-visible { opacity: 1; transform: translateY(0); }
     
     .acrylic-panel { background: rgba(17, 34, 64, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(251,191,36,0.3); border-radius: 1rem; padding: 2rem; }
     
-    /* Bria Greeter */
+    /* --- BRIA GREETER WIDGET --- */
     #bria-greeter {
-      position: fixed; bottom: 20px; right: 20px;
+      position: fixed; bottom: 20px; right: 90px; /* Positioned to the left of the chat button */
       background: rgba(17, 34, 64, 0.95); border: 2px solid #FFC700;
-      color: #fff; padding: 0.8rem 1.2rem; border-radius: 1rem;
-      display: flex; align-items: center; gap: 1rem;
-      box-shadow: 0 0 15px rgba(251,191,36,0.4); z-index: 100;
+      color: #fff; padding: 0.5rem 1rem; border-radius: 2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      box-shadow: 0 0 15px rgba(251,191,36,0.4); z-index: 998;
       animation: fadeIn 1s ease forwards;
+      pointer-events: none; /* Let clicks pass through if needed */
     }
-    #bria-greeter img { width: 50px; height: 50px; border-radius: 50%; background: #FFC700; padding: 4px; }
+    #bria-greeter img { 
+      width: 50px; height: 50px; 
+      border-radius: 50%; background: #FFC700; padding: 2px; 
+      object-fit: cover; 
+    }
+    #bria-text {
+        font-size: 0.9rem; font-weight: 500;
+        transition: opacity 0.5s ease-in-out; /* Smooth text fade */
+    }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Chat Button */
+    .chat-btn {
+        position: fixed; bottom: 20px; right: 20px;
+        width: 60px; height: 60px; background-color: #FFC700;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 30px; cursor: pointer; z-index: 999;
+        box-shadow: 0 4px 15px rgba(255, 199, 0, 0.5);
+        transition: transform 0.3s;
+    }
+    .chat-btn:hover { transform: scale(1.1); }
+
+    /* Chat Window */
+    .chat-box {
+        position: fixed; bottom: 90px; right: 20px;
+        width: 350px; height: 500px;
+        background-color: #0a192f; border: 1px solid #FFC700;
+        border-radius: 12px; display: none; flex-direction: column;
+        z-index: 1000; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    }
+    .chat-box.open { display: flex; }
   </style>
 </head>
 
@@ -48,183 +79,192 @@
 <header class="fixed inset-x-0 top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
   <div class="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-3">
-      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Britium Logo" class="h-9 w-9">
+      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Logo" class="h-9 w-9">
       <span class="font-garamond text-xl font-bold text-white"> BRITIUM <span class="text-gold">VENTURES</span></span>
     </a>
     
-    <nav class="hidden xl:flex gap-5 text-sm font-semibold text-slate-200 items-center">
-      <a href="index.html" class="hover:text-[#FFC700]">Home</a>
-      <a href="express.html" class="text-[#FFC700] border border-[#FFC700]/50 px-3 py-1 rounded hover:bg-[#FFC700] hover:text-black transition">Britium Express</a>
-      <a href="about.html" class="hover:text-[#FFC700]">About</a>
-      <a href="team.html" class="hover:text-[#FFC700]">Team</a>
-      <a href="careers.html" class="hover:text-[#FFC700]">Careers</a>
-      <a href="capabilities.html" class="hover:text-[#FFC700]">Capabilities</a>
-      <a href="solutions.html" class="hover:text-[#FFC700]">Solutions</a>
-      <a href="products.html" class="hover:text-[#FFC700]">Products</a>
-      <a href="markets.html" class="hover:text-[#FFC700]">Markets</a>
+    <nav class="hidden xl:flex gap-6 text-sm font-semibold text-slate-200 items-center">
+      <a href="index.html" class="text-[#FFC700]">Home</a>
+      <a href="Britium_Shop.html" class="hover:text-[#FFC700]">Shop</a>
       <a href="gallery.html" class="hover:text-[#FFC700]">Gallery</a>
-      <a href="contact.html" class="hover:text-[#FFC700]">Contact</a>
-      <a href="#chat" class="px-4 py-2 rounded-md bg-[#FFC700]/10 text-[#FFC700] border border-[#FFC700]/20 hover:bg-[#FFC700]/20">Ask AI</a>
+      <a href="about_us.html" class="hover:text-[#FFC700]">About</a>
+      <a href="contact_us.html" class="hover:text-[#FFC700]">Contact</a>
     </nav>
-    <button id="mobile-toggle" class="xl:hidden text-white text-3xl" aria-label="Toggle Menu">☰</button>
+
+    <div class="hidden xl:flex gap-4 text-xl text-slate-200">
+      <a href="search_results.html" title="Search">🔍</a>
+      <a href="login_code.html" title="Login">👤</a>
+      <a href="wishlist.html" title="Wishlist">♡</a>
+      <a href="shopping_cart.html" title="Cart">🛒</a>
+    </div>
   </div>
 </header>
 
-<div id="mobile-menu-container" class="fixed inset-0 z-40 xl:hidden hidden">
-  <div id="mobile-menu-overlay" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
-  <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-[#0a192f] p-8 border-l border-[#FFC700]/30 transform translate-x-full transition-transform duration-300 overflow-y-auto">
-    <button id="mobile-menu-close" class="absolute top-4 right-4 text-white text-3xl">×</button>
-    <div class="flex flex-col gap-y-5 mt-10 text-lg text-white font-medium">
-      <a href="index.html" class="hover:text-[#FFC700]">Home</a>
-      <a href="express.html" class="text-[#FFC700] font-bold border-l-4 border-[#FFC700] pl-4">Britium Express</a>
-      <a href="about.html">About</a>
-      <a href="team.html">Team</a>
-      <a href="careers.html">Careers</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="products.html">Products</a>
-      <a href="markets.html">Markets</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="#chat" class="mt-4 bg-[#FFC700] text-black text-center py-2 rounded font-bold">Chat with AI</a>
-    </div>
-  </nav>
-</div>
-
-<section class="relative text-white h-screen flex items-center justify-center text-center overflow-hidden">
-  <video id="homeHeroVideo" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-    <source src="https://cdn1.site-media.eu/images/0/18721110/IntegratedTradeVenturesPartner-bRCOg5hk15kza40uhsphbg.mp4" type="video/mp4">
+<section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+  <video id="heroVideo" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+    <source src="BVWeb.mp4" type="video/mp4">
   </video>
-  <div class="absolute inset-0 bg-black/70"></div>
+  <div class="absolute inset-0 bg-black/60"></div>
   
-  <div class="relative z-10 acrylic-panel fade-in max-w-3xl mx-auto mx-4">
-    <h1 class="text-5xl md:text-7xl font-bold metallic-gold-text">Confidence in Motion</h1>
-    <p class="mt-4 text-lg text-gray-200">Simplifying complexity and driving trade across Myanmar and beyond.</p>
-    <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-      <a href="contact.html" class="bg-[#FFC700] hover:bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold transition">Get Consultation</a>
-      <a href="express.html" class="border border-[#FFC700] text-[#FFC700] hover:bg-[#FFC700]/10 px-8 py-3 rounded-lg font-semibold transition">Britium Express</a>
+  <div class="relative z-10 acrylic-panel fade-in max-w-4xl mx-auto px-6">
+    <h1 class="text-5xl md:text-7xl font-bold metallic-gold-text mb-6">Confidence in Motion</h1>
+    <p class="text-lg text-gray-200 mb-8 font-light">From timeless luxury handbags to cutting-edge business solutions.</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-5">
+      <a href="Britium_Shop.html" class="bg-[#FFC700] hover:bg-yellow-400 text-black px-8 py-3 rounded-full font-bold transition shadow-lg shadow-amber-500/20">SHOP FASHION</a>
+      <a href="gallery.html" class="border-2 border-[#FFC700] text-[#FFC700] hover:bg-[#FFC700]/10 px-8 py-3 rounded-full font-bold transition">EXPLORE VENTURES</a>
     </div>
   </div>
 </section>
 
-<section class="py-20 bg-slate-900 border-b border-gray-800">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row items-center gap-12 fade-in">
-      <div class="md:w-1/2">
-        <h2 class="text-3xl font-garamond font-bold text-white mb-4">🚀 Britium <span class="text-[#FFC700]">Express</span></h2>
-        <p class="text-gray-300 mb-6 text-justify">
-          Need speed? Britium Express offers premium, expedited logistics solutions for urgent shipments. 
-          We guarantee priority handling, real-time tracking, and swift customs clearance to ensure your goods arrive on time, every time.
-        </p>
-        <ul class="text-gray-400 mb-8 space-y-2">
-          <li>✔ Priority Customs Clearance</li>
-          <li>✔ Door-to-Door Rapid Delivery</li>
-          <li>✔ 24/7 Dedicated Support</li>
-        </ul>
-        <a href="express.html" class="text-[#FFC700] font-bold border-b-2 border-[#FFC700] hover:text-white hover:border-white transition pb-1">
-          Explore Express Services &rarr;
-        </a>
-      </div>
-      <div class="md:w-1/2">
-        <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" class="rounded-lg shadow-2xl border border-[#FFC700]/20 w-1/2 mx-auto object-cover grayscale hover:grayscale-0 transition duration-500">
-      </div>
+<section class="grid md:grid-cols-2 border-t border-gray-800">
+  <div class="relative group h-[500px] overflow-hidden">
+    <div class="absolute inset-0 bg-[url('a3.jpg')] bg-cover bg-center transition duration-700 group-hover:scale-110"></div>
+    <div class="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition duration-500 flex flex-col items-center justify-center text-center p-8">
+      <h2 class="text-3xl font-garamond font-bold text-white mb-2">The Gallery</h2>
+      <p class="text-gray-300 mb-6 max-w-sm">Timeless handbags, totes, and accessories crafted for elegance.</p>
+      <a href="Britium_Shop.html" class="text-[#FFC700] border-b-2 border-[#FFC700] pb-1 hover:text-white hover:border-white transition">View Collection</a>
+    </div>
+  </div>
+  
+  <div class="relative group h-[500px] overflow-hidden border-l border-gray-800">
+    <div class="absolute inset-0 bg-[url('a4.jpg')] bg-cover bg-center transition duration-700 group-hover:scale-110"></div>
+    <div class="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition duration-500 flex flex-col items-center justify-center text-center p-8">
+      <h2 class="text-3xl font-garamond font-bold text-white mb-2">The Ventures</h2>
+      <p class="text-gray-300 mb-6 max-w-sm">Flexitanks, Dual Screens, and Corporate Gifting solutions.</p>
+      <a href="gallery.html" class="text-[#FFC700] border-b-2 border-[#FFC700] pb-1 hover:text-white hover:border-white transition">View Solutions</a>
     </div>
   </div>
 </section>
 
-<section class="py-20 bg-[#0a192f] text-center border-t border-gray-800">
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="acrylic-panel fade-in">
-      <h2 class="text-4xl font-bold metallic-gold-text mb-4">AI-Powered Trade Dashboard</h2>
-      <p class="text-gray-300">Real-time, intelligent insights to keep you ahead of the market.</p>
-      
-      <div class="grid md:grid-cols-2 gap-10 mt-12">
-        <div class="bg-[#1e293b] p-6 rounded-lg border border-gray-700 hover:border-[#FFC700]/50 transition">
-          <h3 class="text-xl font-semibold mb-2 text-white">✨ Market Snapshot</h3>
-          <p class="text-gray-400 mb-4 text-sm">Get the latest Myanmar trade and logistics trends.</p>
-          <div id="market-snapshot-result" class="bg-gray-800 p-4 rounded text-left mb-4 text-gray-300 text-sm min-h-[80px]">Click below to generate summary...</div>
-          <button id="market-snapshot-btn" class="bg-[#FFC700] hover:bg-yellow-400 px-4 py-2 rounded font-semibold text-black transition w-full">Generate Report</button>
-        </div>
-        
-        <div class="bg-[#1e293b] p-6 rounded-lg border border-gray-700 hover:border-[#FFC700]/50 transition">
-          <h3 class="text-xl font-semibold mb-2 text-white">📄 Document Helper</h3>
-          <select id="doc-selector" class="w-full bg-gray-700 text-white p-2 rounded mb-3 border border-gray-600 focus:border-[#FFC700] outline-none">
-            <option>Bill of Lading</option>
-            <option>Letter of Credit</option>
-            <option>Certificate of Origin</option>
-            <option>Commercial Invoice</option>
-          </select>
-          <div id="doc-helper-result" class="bg-gray-800 p-4 rounded text-left mb-4 text-gray-300 text-sm min-h-[80px]">Select a document to learn more...</div>
-          <button id="doc-helper-btn" class="bg-[#FFC700] hover:bg-yellow-400 px-4 py-2 rounded font-semibold text-black transition w-full">Explain Document</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="chat" class="py-20 bg-[#111827] text-center relative border-t border-gray-800">
-  <div class="max-w-4xl mx-auto px-4 fade-in">
-    <h2 class="text-4xl font-bold metallic-gold-text mb-8">Chat with BRIA</h2>
-    <p class="text-gray-400 mb-6">Ask about logistics rates, customs compliance, or shipping schedules.</p>
+<section class="py-20 bg-[#0a192f] text-center">
+  <div class="max-w-[1400px] mx-auto px-6">
+    <h2 class="text-3xl font-garamond font-bold text-[#FFC700] mb-12 uppercase tracking-widest">Trending Now</h2>
     
-    <div class="bg-[#0a192f] rounded-xl border border-[#FFC700]/30 overflow-hidden shadow-2xl">
-      <div id="chatMessages" class="h-96 overflow-y-auto p-6 flex flex-col gap-3 text-left scrollbar-thin scrollbar-thumb-amber-500 scrollbar-track-gray-800"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <div class="bg-[#1e293b] p-4 flex gap-2 border-t border-gray-700">
-        <input id="chatInput" type="text" class="flex-1 bg-gray-800 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC700] transition placeholder-gray-500" placeholder="Type your question here..." />
-        <button id="chatSend" class="bg-[#FFC700] hover:bg-yellow-400 text-black px-6 rounded-lg font-bold transition flex items-center gap-2">
-          <span>Send</span>
-          <span>➤</span>
-        </button>
-      </div>
+      <a href="Britium_Shop.html" class="group bg-[#112240] border border-gray-800 rounded-lg overflow-hidden hover:border-[#FFC700] transition">
+        <div class="h-64 overflow-hidden bg-black flex items-center justify-center">
+          <img src="a12.jpg" alt="Fashion Item" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+        </div>
+        <div class="p-6 text-left">
+          <h3 class="text-white text-lg font-bold">Luxury Handbag Series</h3>
+          <p class="text-sm text-[#FFC700] mt-1">View Collection &rarr;</p>
+        </div>
+      </a>
+
+      <a href="Britium_Shop.html" class="group bg-[#112240] border border-gray-800 rounded-lg overflow-hidden hover:border-[#FFC700] transition">
+        <div class="h-64 overflow-hidden bg-black flex items-center justify-center">
+          <img src="48.jpg" alt="Product" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+        </div>
+        <div class="p-6 text-left">
+          <h3 class="text-white text-lg font-bold">Exclusive Arrivals</h3>
+          <p class="text-sm text-[#FFC700] mt-1">New Season &rarr;</p>
+        </div>
+      </a>
+
+      <a href="gallery.html" class="group bg-[#112240] border border-gray-800 rounded-lg overflow-hidden hover:border-[#FFC700] transition">
+        <div class="h-64 overflow-hidden bg-black flex items-center justify-center">
+          <img src="52.jpg" alt="Tech" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+        </div>
+        <div class="p-6 text-left">
+          <h3 class="text-white text-lg font-bold">Modern Innovations</h3>
+          <p class="text-sm text-[#FFC700] mt-1">Tech & Gadgets &rarr;</p>
+        </div>
+      </a>
+
+      <a href="gallery.html" class="group bg-[#112240] border border-gray-800 rounded-lg overflow-hidden hover:border-[#FFC700] transition">
+        <div class="h-64 overflow-hidden bg-black flex items-center justify-center">
+          <img src="60.jpg" alt="Gift" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+        </div>
+        <div class="p-6 text-left">
+          <h3 class="text-white text-lg font-bold">Corporate Solutions</h3>
+          <p class="text-sm text-[#FFC700] mt-1">Business Gifting &rarr;</p>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<div id="bria-greeter">
-  <img src="https://cdn1.iconfinder.com/data/icons/artificial-intelligence-112/64/AI_robot_greeting-512.png" alt="BRIA Robot">
-  <div id="bria-text">Hello ကျွန်တော်ကတော့ BRIA ပါ။ <br>အားလုံးကိုတွေ့ရတာဝမ်းသာပါတယ်ခင်ဗျာ။</div>
-</div>
-
-<footer class="bg-black text-gray-500 py-10 border-t border-gray-900">
-  <div class="max-w-6xl mx-auto text-center px-4">
-    <div class="mb-4">
-      <img src="https://cdn1.site-media.eu/images/0/19084582/LOGO.PNG-9iXCvFfz1_iDnJ1k8_JD5g.png" alt="Logo" class="h-8 w-8 inline-block opacity-50 grayscale hover:grayscale-0 transition">
+<footer class="bg-black text-gray-400 py-16 border-t border-gray-900">
+  <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+    
+    <div>
+      <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Customer Care</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="track_order.html" class="hover:text-[#FFC700]">Track My Order</a></li>
+        <li><a href="return_request.html" class="hover:text-[#FFC700]">Start a Return</a></li>
+        <li><a href="shipping_&_returns.html" class="hover:text-[#FFC700]">Shipping Policy</a></li>
+        <li><a href="faq.html" class="hover:text-[#FFC700]">FAQs</a></li>
+      </ul>
     </div>
-    <p>Confidence in Motion — powered by Britium Ventures.</p>
-    <p class="text-sm mt-2">© <span id="bvYear"></span> All Rights Reserved.</p>
+
+    <div>
+      <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Discover Britium</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="about_us.html" class="hover:text-[#FFC700]">Our Story</a></li>
+        <li><a href="careers.html" class="hover:text-[#FFC700]">Careers</a></li>
+        <li><a href="blog.html" class="hover:text-[#FFC700]">Journal</a></li>
+        <li><a href="store_locator.html" class="hover:text-[#FFC700]">Find a Store</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-white font-bold mb-4 uppercase tracking-wider">For Business</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="gallery.html" class="hover:text-[#FFC700]">Flexitank Services</a></li>
+        <li><a href="gallery.html" class="hover:text-[#FFC700]">Corporate Gifting</a></li>
+        <li><a href="gallery.html" class="hover:text-[#FFC700]">Tech Hardware</a></li>
+        <li><a href="contact_us.html" class="hover:text-[#FFC700]">B2B Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Legal & Staff</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="terms_&_conditions.html" class="hover:text-[#FFC700]">Terms & Conditions</a></li>
+        <li><a href="privacy_policy.html" class="hover:text-[#FFC700]">Privacy Policy</a></li>
+        <li class="pt-4 border-t border-gray-800 mt-4">
+          <a href="admin_login.html" class="text-gray-600 hover:text-white flex items-center gap-2">
+            <span>🔒</span> Staff Portal
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  
+  <div class="max-w-[1400px] mx-auto px-6 mt-12 pt-8 border-t border-gray-900 text-center text-sm">
+    <p>&copy; 2025 Britium Gallery & Ventures. All Rights Reserved.</p>
   </div>
 </footer>
 
+<div id="bria-greeter">
+  <img src="BRIA (1).gif" alt="BRIA Robot">
+  <div id="bria-text">Hello! I'm BRIA. 🇬🇧</div>
+</div>
+
+<div class="chat-btn" id="toggleChat">💬</div>
+
+<div class="chat-box" id="chatInterface">
+  <div class="bg-black p-4 border-b border-[#FFC700] flex justify-between items-center">
+    <h4 class="text-[#FFC700] font-garamond font-bold">Britium Concierge</h4>
+    <span class="text-white cursor-pointer text-xl" id="closeChat">×</span>
+  </div>
+  <div class="flex-1 overflow-y-auto p-5 flex flex-col gap-3 scrollbar-thin scrollbar-thumb-amber-500" id="chatHistory">
+    <div class="bg-[#1e293b] text-white p-3 rounded-lg max-w-[85%] self-start border border-gray-600 text-sm">
+      Welcome to Britium. I can assist with Luxury Fashion orders or Business Venture inquiries. How can I help you today?
+    </div>
+  </div>
+  <div class="bg-[#111] p-3 border-t border-gray-700 flex gap-2">
+    <input type="text" id="userMsg" class="flex-1 bg-[#222] border border-gray-600 text-white rounded p-2 text-sm outline-none focus:border-[#FFC700]" placeholder="Type your question...">
+    <button id="sendMsg" class="bg-[#FFC700] text-black font-bold px-4 rounded hover:bg-yellow-400">Send</button>
+  </div>
+</div>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    "use strict";
-    const $ = (s, r=document) => r.querySelector(s);
-    const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
-
-    // 1. Mobile Menu Logic
-    const mmBtn = $('#mobile-toggle');
-    const panel = $('#mobile-menu-container');
-    const menu = $('#mobile-menu');
-    const closeX = $('#mobile-menu-close');
-    const overlay = $('#mobile-menu-overlay');
-
-    if (mmBtn && panel) {
-        const toggleMenu = (show) => {
-            if (show) {
-               panel.classList.remove('hidden');
-               setTimeout(() => menu.classList.remove('translate-x-full'), 10);
-            } else {
-               menu.classList.add('translate-x-full');
-               setTimeout(() => panel.classList.add('hidden'), 300);
-            }
-        };
-        mmBtn.addEventListener('click', () => toggleMenu(true));
-        closeX.addEventListener('click', () => toggleMenu(false));
-        overlay.addEventListener('click', () => toggleMenu(false));
-    }
-
-    // 2. Animations
+    // --- ANIMATIONS ---
     const io = new IntersectionObserver((entries, observer) => { 
         entries.forEach(entry => { 
             if (entry.isIntersecting) { 
@@ -233,73 +273,81 @@ document.addEventListener("DOMContentLoaded", () => {
             } 
         }); 
     }, { threshold: 0.1 });
-    $$('.fade-in').forEach(el => io.observe(el));
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
-    $('#bvYear').textContent = new Date().getFullYear();
-
-    // 3. Mock Dashboard Buttons
-    const marketBtn = $('#market-snapshot-btn');
-    if(marketBtn) {
-        marketBtn.addEventListener('click', () => {
-             $('#market-snapshot-result').innerHTML = "<span class='text-green-400'>✔ Updated:</span> Export volume up 12% in Q4. Rubber and garments leading the trend.";
-        });
-    }
-    const docBtn = $('#doc-helper-btn');
-    if(docBtn) {
-        docBtn.addEventListener('click', () => {
-             const sel = $('#doc-selector').value;
-             $('#doc-helper-result').innerHTML = `<span class='text-[#FFC700]'>${sel}:</span> A critical document in international trade. BRIA can help draft this for you.`;
-        });
-    }
-
-    // 4. Chatbot Logic
-    const list = $('#chatMessages');
-    const input = $('#chatInput');
-    const send = $('#chatSend');
-
-    if(list && input && send){
-      const chatEndpoint = '/api/chat'; 
-
-      function bubble(text, who){ 
-          const w = document.createElement('div'); w.className = 'flex ' + (who==='user' ? 'justify-end' : 'justify-start'); 
-          const b = document.createElement('div'); b.className = (who==='user' ? 'bg-[#FFC700] text-black shadow-lg shadow-amber-500/20' : 'bg-[#1e293b] text-white border border-gray-600') + ' rounded-lg px-4 py-2 max-w-[80%] text-sm md:text-base'; 
-          b.innerHTML = text.replace(/\n/g,'<br>'); w.appendChild(b); list.appendChild(w); list.scrollTop = list.scrollHeight; return b; 
-      }
-      
-      bubble("👋 Hello! I'm BRIA. How can I assist with your logistics or trade needs today?", 'ai');
-      
-      async function sendMsg(){ 
-          const text = input.value.trim(); if(!text) return;
-          bubble(text, 'user'); input.value = ''; const loadingBubble = bubble('Thinking...', 'ai');
-          
-          try {
-              const r = await fetch(chatEndpoint, { 
-                  method: 'POST', 
-                  headers: {'Content-Type': 'application/json'}, 
-                  body: JSON.stringify({message: text}) 
-              });
-              
-              if(!r.ok) throw new Error(`HTTP Error: ${r.status}`);
-              const d = await r.json(); 
-              loadingBubble.innerHTML = d.reply ? d.reply.replace(/\n/g,'<br>') : "⚠️ No response received.";
-          } catch(e) {
-              loadingBubble.innerHTML = "<span class='text-red-400'>⚠️ Network Error:</span> Could not reach server. Please try again.";
-          }
-      }
-      send.addEventListener('click', sendMsg);
-      input.addEventListener('keydown', e => { if(e.key === 'Enter') sendMsg(); });
-    }
-
-    // 5. Greeter
-    const greetings = [ "Hello! I'm BRIA. 🇬🇧", "မင်္ဂလာပါ BRIA ပါ။ 🇲🇲", "Hola! Soy BRIA. 🇪🇸" ];
+    // --- BRIA GREETER ROTATION ---
+    const greetings = [
+        "Hello! I'm BRIA. 🇬🇧", 
+        "မင်္ဂလာပါ BRIA ပါ။ 🇲🇲", 
+        "Hola! Soy BRIA. 🇪🇸",
+        "Bonjour! Je suis BRIA. 🇫🇷",
+        "你好！我是 BRIA。 🇨🇳",
+        "สวัสดีครับ! ผมชื่อ BRIA. 🇹🇭",
+        "مرحبًا! أنا BRIA. 🇸🇦"
+    ];
     let gi = 0;
     setInterval(() => {
-        if($('#bria-text')) {
-          $('#bria-text').textContent = greetings[gi];
-          gi = (gi + 1) % greetings.length;
+        const textEl = document.getElementById('bria-text');
+        if(textEl) {
+          textEl.style.opacity = 0; // Fade out
+          setTimeout(() => {
+              textEl.textContent = greetings[gi];
+              textEl.style.opacity = 1; // Fade in
+              gi = (gi + 1) % greetings.length;
+          }, 500);
         }
-    }, 5000);
+    }, 4000);
+
+    // --- CHATBOT LOGIC ---
+    const toggleChat = document.getElementById('toggleChat');
+    const closeChat = document.getElementById('closeChat');
+    const chatInterface = document.getElementById('chatInterface');
+    const sendBtn = document.getElementById('sendMsg');
+    const userMsg = document.getElementById('userMsg');
+    const chatHistory = document.getElementById('chatHistory');
+
+    toggleChat.addEventListener('click', () => {
+        chatInterface.classList.add('open');
+        userMsg.focus();
+    });
+    closeChat.addEventListener('click', () => chatInterface.classList.remove('open'));
+
+    function handleSend() {
+        const text = userMsg.value.trim();
+        if(!text) return;
+
+        // Add User Message
+        const uDiv = document.createElement('div');
+        uDiv.className = "bg-[#FFC700] text-black p-3 rounded-lg max-w-[85%] self-end text-sm mb-2 font-medium";
+        uDiv.innerText = text;
+        chatHistory.appendChild(uDiv);
+        userMsg.value = '';
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+
+        // Bot Response
+        setTimeout(() => {
+            let response = "I am connecting you to our support team.";
+            const lower = text.toLowerCase();
+
+            if(lower.includes('bag') || lower.includes('shop')) response = "Explore our latest collection in the <a href='Britium_Shop.html' class='underline font-bold'>Fashion Shop</a>.";
+            else if(lower.includes('flexitank') || lower.includes('gift') || lower.includes('venture')) response = "For business solutions, please visit our <a href='gallery.html' class='underline font-bold'>Ventures Gallery</a>.";
+            else if(lower.includes('track')) response = "Track your shipment here: <a href='track_order.html' class='underline font-bold'>Track Order</a>.";
+            else if(lower.includes('return')) response = "Start a return here: <a href='return_request.html' class='underline font-bold'>Return Center</a>.";
+            else if(lower.includes('location')) response = "Find us here: <a href='store_locator.html' class='underline font-bold'>Store Locator</a>.";
+            else if(lower.includes('login')) response = "Log in to your account <a href='login_code.html' class='underline font-bold'>here</a>.";
+
+            const bDiv = document.createElement('div');
+            bDiv.className = "bg-[#1e293b] text-white p-3 rounded-lg max-w-[85%] self-start border border-gray-600 text-sm mb-2";
+            bDiv.innerHTML = response;
+            chatHistory.appendChild(bDiv);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }, 600);
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    userMsg.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
 });
 </script>
+
 </body>
 </html>
